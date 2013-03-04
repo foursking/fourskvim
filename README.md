@@ -1,12 +1,10 @@
-# Fousking's Vim Plugin Settings #
+# Fousking's Vim Plugin Settings
+
+Authentically this is my first time to use the git&github and write something with markdown. Hope it is useful~
+
+[view on github](https://github.com/foursking)
 
 
- >=============================================================================
- >     FileName: README.md
- >   CreateTime: 2013-03-04 09:42:15
- >       Author: yifeng@leju.com
- >   LastChange: 2013-03-04 09:42:15
- >=============================================================================
 
 
-log: add CtrlP
+[Fousking]:https://github.com/forsking
