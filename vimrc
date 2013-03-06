@@ -153,10 +153,12 @@ if has("gui_macvim") || has("gui_running")
   "let macvim_hig_shift_movement = 1
   "设置背景透明度
   "set transparency=10
+  set macmeta     "设置macmeta
+  set linespace=2 "行间距
+  set columns=180 "初始化窗口宽度
+  set lines=55    "初始化窗口高度
   colorscheme molokai
-  set linespace=2     " 行间距
-  "set columns=150    " 初始窗口的宽度
-  "set lines=35       " 初始窗口的高度
+  set guifont=Monaco:h12
   "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
   "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
