@@ -15,9 +15,9 @@ Authentically this is my first time to use the git&github and write something wi
 3. As windows is insensitive of case , the environment variable are setted to capital :(
 
 ## 2012.03.05
-1. Add CtrlP in bundle
-2. Add renamer.vim in plugin
-3. Add esfcodestyle.vim in plugin
+1. Add `CtrlP` in bundle
+2. Add `renamer.vim` in plugin
+3. Add `esfcodestyle.vim` in plugin
 
 [Fousking]:https://github.com/forsking
 [Sround]:http://www.baidu.com
