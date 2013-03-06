@@ -1,18 +1,35 @@
 "=============================================================================
-"     FileName: _vimrc
+"     FileName: vimrc
 "   CreateTime: 2012-09-08 21:08:53
 "       Author: yifeng@leju.com
-"   LastChange: 2012-09-08 21:09:26
+"   LastChange: 2013-03-06 16:55:04
 "=============================================================================
 
+"用作测试信息
+let $TESTMSG = "testmsg"
+
 "----------------自己设定的function {{{
+
+" check MySys 检测当先系统类型
+function! MySys()
+    if has("win32")
+        return "windows"
+    elseif has("unix")
+        return "linux"
+    elseif has("mac")
+        return "osx"
+    endif
+endfunction
+
+"}}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 获取当前路径，将$home_vim转化为~
 " 这里要在环境变量里设置：home_vim=D:\Program Files\Vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CurDir()
-    let curdir = substitute(getcwd(), $home_vim, "~", "g")
+    let $home_vim = ""
+    let curdir = substitute(getcwd(), $home_vim, "", "g")
     return curdir
 endfunction
 
@@ -98,17 +115,6 @@ function! AddPythonFuncList()
 endfunction
 
 
-" check MySys 检测当先系统类型
-function! MySys()
-    if has("win32")
-        return "windows"
-    else
-        return "linux"
-    endif
-endfunction
-
-"}}}
-
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
 "set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936 
@@ -131,10 +137,10 @@ if MySys() == "windows"
 	let $VIMRUNTIME = $PROGRAMFILES."\\Vim\\vim73"
 	let $VIMRC      = $PROGRAMFILES."\\Vim\\_vimrc"
 	"let $DESKTOP    = $USERPROFILE."\\桌面"
-"elseif has("unix")
+elseif MySys() == "lunix"
 "	let $VIM        = $HOME."/usr/four/vim"
 "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
-"	let $VIMRC      = $HOME."/.vimrc"
+	let $VIMRC      = $HOME."/.vimrc"
 "	let $DESKTOP    = $HOME
 "else
 endif
@@ -168,7 +174,7 @@ if MySys() == "windows"
 	set guifont=YaHei\ Mono:h11 "设置中文字体
 	au GUIEnter * simalt ~x     "窗口最大化
 else
-	au GUIEnter * call MaximizeWindow()
+"	au GUIEnter * call MaximizeWindow()
 endif
 
 "gvim 标签定制
@@ -351,7 +357,7 @@ map <silent> <leader>pp :tabnew c://windows/system32/drivers/etc/hosts<CR>
 "Fast editing of conf 
 map <silent> <leader>qq :tabnew d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf<CR>
 "When .vimrc is edited, reload it
-autocmd! bufwritepost _vimrc source $vim/_vimrc
+autocmd! bufwritepost vimrc source $VIMRC
 
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
@@ -496,10 +502,13 @@ au BufEnter *.txt setlocal ft=txt
 
 
 "============================"
-"     Fenc View 
+"     weibo.vim
 "============================"
 let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
+
+
+
 
 
 
