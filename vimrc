@@ -5,8 +5,7 @@
 "   LastChange: 2013-03-06 16:55:04
 "=============================================================================
 
-"用作测试信息
-let $TESTMSG = "testmsg"
+
 
 "----------------自己设定的function {{{
 
@@ -16,16 +15,13 @@ function! MySys()
         return "windows"
     elseif has("unix")
         return "linux"
-    elseif has("mac")
-        return "osx"
     endif
 endfunction
 
 "}}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 获取当前路径，将$home_vim转化为~
-" 这里要在环境变量里设置：home_vim=D:\Program Files\Vim
+" 获取当前路径
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CurDir()
     let $home_vim = ""
@@ -133,15 +129,18 @@ source $VIMRUNTIME/mswin.vim
 " => Setting VIM and VIMRUNTIME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if MySys() == "windows"
-	let $VIM        = $PROGRAMFILES."\\Vim"
-	let $VIMRUNTIME = $PROGRAMFILES."\\Vim\\vim73"
-	let $VIMRC      = $PROGRAMFILES."\\Vim\\_vimrc"
-	"let $DESKTOP    = $USERPROFILE."\\桌面"
-elseif MySys() == "lunix"
-"	let $VIM        = $HOME."/usr/four/vim"
+    let $TESTMSG    = "testmsg"
+	let $MYVIM      = $PROGRAMFILES."\\Vim"
+	let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
+	let $MYVIMRC    = $PROGRAMFILES."\\Vim\\_vimrc"
+	"let $DESKTOP   = $USERPROFILE."\\桌面"
+    let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
+elseif MySys() == "linux"
+"	let $MYVIM      = $HOME."/usr/four/vim"
 "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
-	let $VIMRC      = $HOME."/.vimrc"
+	let $MYVIMRC    = "/Users/mac/.vimrc"
 "	let $DESKTOP    = $HOME
+    let $MYHOSTS    = "/etc/hosts" 
 "else
 endif
 
@@ -351,15 +350,17 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 nmap <leader>fd :se fileformat=dos<CR>
 nmap <leader>fu :se fileformat=unix<CR>
 "Fast reloading of the .vimrc
-map <silent> <leader>ss :source $vim/_vimrc<CR>
+map <silent> <leader>ss :source $MYVIMRC<CR>
 "Fast editing of .vimrc
-map <silent> <leader>ee :tabnew $vim/_vimrc<CR>
+map <silent> <leader>ee :tabnew $MYVIMRC<CR>
 "Fast editing of hosts
-map <silent> <leader>pp :tabnew c://windows/system32/drivers/etc/hosts<CR>
+map <silent> <leader>pp :tabnew $MYHOSTS<CR>
 "Fast editing of conf 
 map <silent> <leader>qq :tabnew d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf<CR>
 "When .vimrc is edited, reload it
-autocmd! bufwritepost vimrc source $VIMRC
+if has("autocmd")
+autocmd! bufwritepost vimrc source $MYVIMRC
+endif
 
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
@@ -508,9 +509,3 @@ au BufEnter *.txt setlocal ft=txt
 "============================"
 let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
-
-
-
-
-
-

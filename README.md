@@ -13,6 +13,7 @@ Authentically this is my first time to use the git&github and write something wi
 1. Add function MySys() in [vimrc]() and change the formation :)
 2. Add weibo.vim in plugin (For Tencent Weibo)     **Need Python 2.3+ and/or 3.x**
 3. As windows is insensitive of case , the environment variable are setted to capital :(
+4. Set the path of $MYVIM $MYVIMRC $MYHOSTS
 
 ## 2012.03.05
 1. Add `CtrlP` in bundle
