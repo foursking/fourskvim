@@ -5,7 +5,109 @@
 "   LastChange: 2012-09-08 21:09:26
 "=============================================================================
 
+"----------------自己设定的function {{{
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 获取当前路径，将$home_vim转化为~
+" 这里要在环境变量里设置：home_vim=D:\Program Files\Vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CurDir()
+    let curdir = substitute(getcwd(), $home_vim, "~", "g")
+    return curdir
+endfunction
+
+function! SetOption()
+  set expandtab    " 使用空格代替tab
+  set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
+  set tabstop=4    " 用4个空格代替1个tab
+  set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
+  set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
+  set smartindent  " 智能对齐方式
+  set autoindent   " 自动对齐
+  set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
+  set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
+  set matchtime=2  " 短暂跳转到匹配括号的时间
+  " set fdm=indent " 代码折叠
+  set lbr          " 智能换行
+  set tw=500       " 500个字符后自动换行(回车效果)fo+=Mn支持中文
+  set wrap         " 自动换行
+endfunction
+
+function! ShortTabLabel ()
+  let bufnrlist = tabpagebuflist (v:lnum)
+  let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
+  let filename = fnamemodify (label, ':t')
+  return filename
+endfunction
+
+function! MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " 选择高亮
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " 设置标签页号 (用于鼠标点击)
+    let s .= '%' . (i + 1) . 'T'
+
+    " MyTabLabel() 提供完整路径标签 MyShortTabLabel 提供文件名标签
+    let s .= ' %{MyShortTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " 最后一个标签页之后用 TabLineFill 填充并复位标签页号
+  let s .= '%#TabLineFill#%T'
+
+  " 右对齐用于关闭当前标签页的标签
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+
+  return s
+endfunction
+
+" 文件名标签
+function! MyShortTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let label = bufname (buflist[tabpagewinnr (a:n) -1])
+  let filename = fnamemodify (label, ':t')
+  return filename
+endfunction
+"完整路径标签
+function! MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+
+" 当编辑php文件的时候，导入PHP函数列表，按 ctrl+n 自动补全
+" au FileType php call AddPHPFuncList() " 有neocomplacache都不用这些函数了，自带的
+function! AddPHPFuncList()
+  set dict-=~/.vim/php_funclist.txt dict+=~/.vim/php_funclist.txt
+  set complete-=k complete+=k
+endfunction
+
+" 当编辑python文件的时候，导入python函数列表，按 ctrl+n 自动补全
+" au FileType python call AddPythonFuncList() " 有neocomplacache都不用这些函数了，自带的
+function! AddPythonFuncList()
+  set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
+  set complete-=k complete+=k isk-=., isk+=.,
+  " set complete+=k~/.vim/pydiction isk+=.,
+endfunction
+
+
+" check MySys 检测当先系统类型
+function! MySys()
+    if has("win32")
+        return "windows"
+    else
+        return "linux"
+    endif
+endfunction
+
+"}}}
 
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
@@ -20,9 +122,11 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 "}}}
 
+
+
 " => Setting VIM and VIMRUNTIME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("win32")
+if MySys() == "windows"
 	let $VIM        = $PROGRAMFILES."\\Vim"
 	let $VIMRUNTIME = $PROGRAMFILES."\\Vim\\vim73"
 	let $VIMRC      = $PROGRAMFILES."\\Vim\\_vimrc"
@@ -60,7 +164,7 @@ endif
 
 "---------------界面选项{{{
 
-if has("win32")
+if MySys() == "windows"
 	set guifont=YaHei\ Mono:h11 "设置中文字体
 	au GUIEnter * simalt ~x     "窗口最大化
 else
@@ -251,6 +355,8 @@ autocmd! bufwritepost _vimrc source $vim/_vimrc
 
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
+"delete to the end of line
+map DD d$a
 
 "定义输入快捷键
 imap <M-h> <Left>
@@ -259,102 +365,9 @@ imap <M-k> <Up>
 imap <M-l> <Right>
 "}}}
 
-"----------------自己设定的function {{{
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 获取当前路径，将$home_vim转化为~
-" 这里要在环境变量里设置：home_vim=D:\Program Files\Vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CurDir()
-    let curdir = substitute(getcwd(), $home_vim, "~", "g")
-    return curdir
-endfunction
-
-function! SetOption()
-  set expandtab    " 使用空格代替tab
-  set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
-  set tabstop=4    " 用4个空格代替1个tab
-  set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
-  set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
-  set smartindent  " 智能对齐方式
-  set autoindent   " 自动对齐
-  set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
-  set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
-  set matchtime=2  " 短暂跳转到匹配括号的时间
-  " set fdm=indent " 代码折叠
-  set lbr          " 智能换行
-  set tw=500       " 500个字符后自动换行(回车效果)fo+=Mn支持中文
-  set wrap         " 自动换行
-endfunction
-
-function! ShortTabLabel ()
-  let bufnrlist = tabpagebuflist (v:lnum)
-  let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
-  let filename = fnamemodify (label, ':t')
-  return filename
-endfunction
-
-function! MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    " 选择高亮
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
-
-    " 设置标签页号 (用于鼠标点击)
-    let s .= '%' . (i + 1) . 'T'
-
-    " MyTabLabel() 提供完整路径标签 MyShortTabLabel 提供文件名标签
-    let s .= ' %{MyShortTabLabel(' . (i + 1) . ')} '
-  endfor
-
-  " 最后一个标签页之后用 TabLineFill 填充并复位标签页号
-  let s .= '%#TabLineFill#%T'
-
-  " 右对齐用于关闭当前标签页的标签
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xclose'
-  endif
-
-  return s
-endfunction
-
-" 文件名标签
-function! MyShortTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let label = bufname (buflist[tabpagewinnr (a:n) -1])
-  let filename = fnamemodify (label, ':t')
-  return filename
-endfunction
-"完整路径标签
-function! MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
-endfunction
-
-" 当编辑php文件的时候，导入PHP函数列表，按 ctrl+n 自动补全
-" au FileType php call AddPHPFuncList() " 有neocomplacache都不用这些函数了，自带的
-function! AddPHPFuncList()
-  set dict-=~/.vim/php_funclist.txt dict+=~/.vim/php_funclist.txt
-  set complete-=k complete+=k
-endfunction
-
-" 当编辑python文件的时候，导入python函数列表，按 ctrl+n 自动补全
-" au FileType python call AddPythonFuncList() " 有neocomplacache都不用这些函数了，自带的
-function! AddPythonFuncList()
-  set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
-  set complete-=k complete+=k isk-=., isk+=.,
-  " set complete+=k~/.vim/pydiction isk+=.,
-endfunction
 
 
-"}}}
-
-"------------------ plugin settiny {{{
+"------------------ Bundle plugin settiny {{{
 
 
 "============================"
@@ -482,6 +495,10 @@ filetype plugin on
 au BufEnter *.txt setlocal ft=txt
 
 
+"============================"
+"     Fenc View 
+"============================"
+let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
 
 
