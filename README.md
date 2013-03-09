@@ -9,6 +9,10 @@ Authentically this is my first time to use the git&github and write something wi
 
 ![foursking-vim image](http://f.hiphotos.baidu.com/album/s%3D1100%3Bq%3D90/sign=542c814e4ec2d562f608d4ecd721ab9e/f703738da97739125e0faa4ff9198618367ae2f7.jpg)
 
+#   2012.03.10
+1. Add `$MYPHPINI`
+2. Add `<leader>sudo :w !sudo tee %` in [vimrc]()
+
 ##  2012.03.06
 1. Add function MySys() in [vimrc]() and change the formation :)
 2. Add weibo.vim in plugin (For Tencent Weibo)     **Need Python 2.3+ and/or 3.x**

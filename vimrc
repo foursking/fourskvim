@@ -141,6 +141,8 @@ elseif MySys() == "linux"
 	let $MYVIMRC    = "/Users/mac/.vimrc"
 "	let $DESKTOP    = $HOME
     let $MYHOSTS    = "/etc/hosts" 
+    let $MYVHOST    = "/etc/apache2/extra/httpd-vhosts.conf"
+    let $MYPHPINI   = "/etc/php.ini"
 "else
 endif
 
@@ -150,7 +152,6 @@ if has("gui_macvim") || has("gui_running")
   "let macvim_skip_cmd_opt_movement = 1
   "let macvim_hig_shift_movement = 1
   "设置背景透明度
-  "set transparency=10
   set macmeta     "设置macmeta
   set linespace=2 "行间距
   set columns=180 "初始化窗口宽度
@@ -240,8 +241,6 @@ set autoread
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
-au BufWinLeave *.* silent mkview
-au BufWinEnter *.* silent loadview
 
  " 不要闪烁
 set novisualbell
@@ -356,16 +355,23 @@ map <silent> <leader>ee :tabnew $MYVIMRC<CR>
 "Fast editing of hosts
 map <silent> <leader>pp :tabnew $MYHOSTS<CR>
 "Fast editing of conf 
-map <silent> <leader>qq :tabnew d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf<CR>
+map <silent> <leader>qq :tabnew $MYVHOST<CR>
+"Fast editing of php.ini 
+map <silent> <leader>rr :tabnew $MYPHPINI<CR>
 "When .vimrc is edited, reload it
 if has("autocmd")
 autocmd! bufwritepost vimrc source $MYVIMRC
+au BufWinLeave *.* silent mkview
+au BufWinEnter *.* silent loadview
 endif
 
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
 "delete to the end of line
 map DD d$a
+
+"sudo
+map <leader>sudo :w !sudo tee %<CR>foursking<CR>L<ESC>
 
 "定义输入快捷键
 imap <M-h> <Left>
