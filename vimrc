@@ -2,7 +2,7 @@
 "     FileName: vimrc
 "   CreateTime: 2012-09-08 21:08:53
 "       Author: yifeng@leju.com
-"   LastChange: 2013-03-06 16:55:04
+"   LastChange: 2013-03-11 10:34:24
 "=============================================================================
 
 
@@ -30,84 +30,84 @@ function! CurDir()
 endfunction
 
 function! SetOption()
-  set expandtab    " 使用空格代替tab
-  set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
-  set tabstop=4    " 用4个空格代替1个tab
-  set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
-  set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
-  set smartindent  " 智能对齐方式
-  set autoindent   " 自动对齐
-  set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
-  set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
-  set matchtime=2  " 短暂跳转到匹配括号的时间
-  " set fdm=indent " 代码折叠
-  set lbr          " 智能换行
-  set tw=500       " 500个字符后自动换行(回车效果)fo+=Mn支持中文
-  set wrap         " 自动换行
+    set expandtab    " 使用空格代替tab
+    set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
+    set tabstop=4    " 用4个空格代替1个tab
+    set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
+    set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
+    set smartindent  " 智能对齐方式
+    set autoindent   " 自动对齐
+    set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
+    set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
+    set matchtime=2  " 短暂跳转到匹配括号的时间
+    " set fdm=indent " 代码折叠
+    set lbr          " 智能换行
+    set tw=500       " 500个字符后自动换行(回车效果)fo+=Mn支持中文
+    set wrap         " 自动换行
 endfunction
 
 function! ShortTabLabel ()
-  let bufnrlist = tabpagebuflist (v:lnum)
-  let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
-  let filename = fnamemodify (label, ':t')
-  return filename
+    let bufnrlist = tabpagebuflist (v:lnum)
+    let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
+    let filename = fnamemodify (label, ':t')
+    return filename
 endfunction
 
 function! MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    " 选择高亮
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
+    let s = ''
+    for i in range(tabpagenr('$'))
+        " 选择高亮
+        if i + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+
+        " 设置标签页号 (用于鼠标点击)
+        let s .= '%' . (i + 1) . 'T'
+
+        " MyTabLabel() 提供完整路径标签 MyShortTabLabel 提供文件名标签
+        let s .= ' %{MyShortTabLabel(' . (i + 1) . ')} '
+    endfor
+
+    " 最后一个标签页之后用 TabLineFill 填充并复位标签页号
+    let s .= '%#TabLineFill#%T'
+
+    " 右对齐用于关闭当前标签页的标签
+    if tabpagenr('$') > 1
+        let s .= '%=%#TabLine#%999Xclose'
     endif
 
-    " 设置标签页号 (用于鼠标点击)
-    let s .= '%' . (i + 1) . 'T'
-
-    " MyTabLabel() 提供完整路径标签 MyShortTabLabel 提供文件名标签
-    let s .= ' %{MyShortTabLabel(' . (i + 1) . ')} '
-  endfor
-
-  " 最后一个标签页之后用 TabLineFill 填充并复位标签页号
-  let s .= '%#TabLineFill#%T'
-
-  " 右对齐用于关闭当前标签页的标签
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xclose'
-  endif
-
-  return s
+    return s
 endfunction
 
 " 文件名标签
 function! MyShortTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let label = bufname (buflist[tabpagewinnr (a:n) -1])
-  let filename = fnamemodify (label, ':t')
-  return filename
+    let buflist = tabpagebuflist(a:n)
+    let label = bufname (buflist[tabpagewinnr (a:n) -1])
+    let filename = fnamemodify (label, ':t')
+    return filename
 endfunction
 "完整路径标签
 function! MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    return bufname(buflist[winnr - 1])
 endfunction
 
 " 当编辑php文件的时候，导入PHP函数列表，按 ctrl+n 自动补全
 " au FileType php call AddPHPFuncList() " 有neocomplacache都不用这些函数了，自带的
 function! AddPHPFuncList()
-  set dict-=~/.vim/php_funclist.txt dict+=~/.vim/php_funclist.txt
-  set complete-=k complete+=k
+    set dict-=~/.vim/php_funclist.txt dict+=~/.vim/php_funclist.txt
+    set complete-=k complete+=k
 endfunction
 
 " 当编辑python文件的时候，导入python函数列表，按 ctrl+n 自动补全
 " au FileType python call AddPythonFuncList() " 有neocomplacache都不用这些函数了，自带的
 function! AddPythonFuncList()
-  set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
-  set complete-=k complete+=k isk-=., isk+=.,
-  " set complete+=k~/.vim/pydiction isk+=.,
+    set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
+    set complete-=k complete+=k isk-=., isk+=.,
+    " set complete+=k~/.vim/pydiction isk+=.,
 endfunction
 
 
@@ -130,53 +130,53 @@ source $VIMRUNTIME/mswin.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if MySys() == "windows"
     let $TESTMSG    = "testmsg"
-	let $MYVIM      = $PROGRAMFILES."\\Vim"
-	let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
-	let $MYVIMRC    = $PROGRAMFILES."\\Vim\\_vimrc"
-	"let $DESKTOP   = $USERPROFILE."\\桌面"
+    let $MYVIM      = $PROGRAMFILES."\\Vim"
+    let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
+    let $MYVIMRC    = $PROGRAMFILES."\\Vim\\vimrc"
+    "let $DESKTOP   = $USERPROFILE."\\桌面"
     let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
+    let $EJU        = "D://workspace/esf.eju.com"
 elseif MySys() == "linux"
-"	let $MYVIM      = $HOME."/usr/four/vim"
-"	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
-	let $MYVIMRC    = "/Users/mac/.vimrc"
-"	let $DESKTOP    = $HOME
+    "	let $MYVIM      = $HOME."/usr/four/vim"
+    "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
+    let $MYVIMRC    = "/Users/mac/.vimrc"
+    "	let $DESKTOP    = $HOME
     let $MYHOSTS    = "/etc/hosts" 
-    let $MYVHOST    = "/etc/apache2/extra/httpd-vhosts.conf"
-    let $MYPHPINI   = "/etc/php.ini"
-"else
+    "else
 endif
 
-" 运行gvim
-if has("gui_macvim") || has("gui_running") 
-  " 取消默认的快捷键
-  "let macvim_skip_cmd_opt_movement = 1
-  "let macvim_hig_shift_movement = 1
-  "设置背景透明度
-  set macmeta     "设置macmeta
-  set linespace=2 "行间距
-  set columns=180 "初始化窗口宽度
-  set lines=55    "初始化窗口高度
-  colorscheme molokai
-  set guifont=Monaco:h12
-  "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
-  "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
+" 运行mac_vim
+if has("gui_macvim") 
+    " 取消默认的快捷键
+    "let macvim_skip_cmd_opt_movement = 1
+    "let macvim_hig_shift_movement = 1
+    "设置背景透明度
+    "set transparency=10
+    set macmeta     "设置macmeta
+    set linespace=2 "行间距
+    set columns=180 "初始化窗口宽度
+    set lines=55    "初始化窗口高度
+    colorscheme molokai
+    set guifont=Monaco:h12
+    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
+    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
-  set t_Co=256       " 让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
-  colorscheme molokai
-  set linespace=2
-  set columns=180
-  set lines=45
-  " colorscheme evening
+    set t_Co=256       " 让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
+    colorscheme molokai
+    set linespace=2
+    set columns=180
+    set lines=45
+    " colorscheme evening
 endif
 
 
 "---------------界面选项{{{
 
 if MySys() == "windows"
-	set guifont=YaHei\ Mono:h11 "设置中文字体
-	au GUIEnter * simalt ~x     "窗口最大化
+    set guifont=YaHei\ Mono:h11 "设置中文字体
+    au GUIEnter * simalt ~x     "窗口最大化
 else
-"	au GUIEnter * call MaximizeWindow()
+    "	au GUIEnter * call MaximizeWindow()
 endif
 
 "gvim 标签定制
@@ -193,8 +193,6 @@ set guioptions-=m
 set guioptions-=T
 
 
-set nocompatible	" Disable vi-compatibility
-set laststatus=2	" Always show the statusline
 
 "Enable filetype plugin
 filetype plugin on
@@ -203,59 +201,58 @@ filetype indent on
 filetype on
 filetype plugin indent on
 
-
+set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
+set helplang=cn                        "设置中文帮助
 set showcmd
-set fileformat=unix     "设置文件格式 
-set tabstop=4           "设置tab字符 
-set shiftwidth=4
+set fileformat=unix                    "设置文件格式 
+set tabstop=4                          "设置tab字符 
+set shiftwidth=4                       "设置shift宽度
 set sts=4
-set nobackup            "不生成备份文件
-set noswapfile
-set history=180         "设置历史记录数
-set nu                  "设置行号
-set showmatch           "高亮显示匹配的括号
-set iskeyword+=_,$,@,%,#,-                           "带有如下符号的单词不要被换行分割
-set wildignore=*.o,*.obj,*.bak,*.exe                 " Tab补全时忽略这些忽略这些
-set showtabline=1                                    "设置标签页 0永远不显示 1 两个以上显示 2 永远显示
-set foldenable          " 用空格键来开关折叠
+set nobackup                           "不生成备份文件
+set noswapfile                         "不要生成swap文件，当buffer被丢弃的时候隐藏它
+set history=180                        "设置历史记录数
+set nu                                 "设置行号
+set showmatch                          "高亮显示匹配的括号
+set iskeyword+=_,$,@,%,#,-             "带有如下符号的单词不要被换行分割
+set wildignore=*.o,*.obj,*.bak,*.exe   "Tab补全时忽略这些忽略这些
+set showtabline=1                      "设置标签页 0永远不显示 1 两个以上显示 2 永远显示
+set foldenable                         "用空格键来开关折叠
 set foldmethod=manual
-" 共享外部剪贴板
-set clipboard+=unnamed
-"Set magic on
-set magic
-"No sound on errors.
-set noerrorbells
+set clipboard+=unnamed                 "共享外部剪贴板 in windows
+set magic                              "正则 Set magic on
+set noerrorbells                       "取消滴滴声 :) No sound on errors.
 set novisualbell
-set whichwrap=b,s,<,>,[,] "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
-set et "编辑时将所有tab替换为空格
-set ambiwidth=double "防止特殊符号无法正常显示，如五角星等
+set whichwrap=b,s,<,>,[,]              "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
+set et                                 "编辑时将所有tab替换为空格
+set ambiwidth=double                   "防止特殊符号无法正常显示，如五角星等
+set nocompatible	                   "Disable vi-compatibility
+set laststatus=2	                   "Always show the statusline
+set autoread                           "当文件内容被其他编辑器改变时自动加载
+set novisualbell                       "不要闪烁
+set modifiable                         "允许修改缓冲区内容
+set fillchars=vert:\ ,stl:\ ,stlnc:\   " 在被分割的窗口间显示空白，便于阅读
+" Search options
+set incsearch                          "从键入时就开始匹配
+set hlsearch                           "高亮搜索结果
+set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
 
-" 开启语法高亮
+"高亮字符，让其不受100列限制
+highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+match OverLength '\%101v.*'
+
+"开启语法高亮
 syntax enable
 syntax on
 
-" 当文件内容被其他编辑器改变时自动加载
-set autoread
 
 "可以在buffer的任何区域使用鼠标
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
+au BufWinLeave *.* silent mkview
+au BufWinEnter *.* silent loadview
 
- " 不要闪烁
-set novisualbell
 
-
-set modifiable
-" Search options
-set incsearch                " 从键入时就开始匹配
-set hlsearch                 " 高亮搜索结果
-set ignorecase smartcase     " 搜索时不区分大小写，如果键入了大写字母则区分大小写 
- " 高亮字符，让其不受100列限制
-highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
-match OverLength '\%101v.*'
-" 去掉windows下编辑器产生的 
-noremap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
 
 " => Files and backups
 
@@ -279,12 +276,12 @@ noremap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
 
 " 把html文件当作xml文件来编辑，因为html按=号格式化有问题，而xml没问题
 "au FileType smarty,html set ft=xml 
-"au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高亮
+au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高亮
 " xmledit
 "let xml_use_xhtml = 1
 
 
- " JavaScript 语法高亮
+" JavaScript 语法高亮
 "au FileType html,htm,smarty,javascript let g:javascript_enable_domhtmlcss = 1
 
 " 给 Javascript 文件添加 Dict
@@ -301,12 +298,14 @@ au BufRead,BufNewFile *.json set filetype=json
 "}}}
 
 
-
 "----------------自己设定的map ab{{{
+
+"去掉windows下编辑器产生的 
+noremap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
 " => Command current dir
 map <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
-" Shift+F12 删除所有行未尾空格
- nmap <S-F12> :%s,/s/+$,,g
+"Shift+F12 删除所有行未尾空格
+nmap <S-F12> :%s,/s/+$,,g
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
 "定义 thi  $this->
@@ -322,23 +321,44 @@ map <M-n> :tabnew<cr>
 map <C-N> :Tlist<CR>
 "map , as <leader> key instead of \ by default
 let mapleader = "," 
+"jj to ESC
+inoremap jj <ESC>
+inoremap ?? =
 """"""""""""""""""""""""""""""""""""""""
 nmap <F9> <Esc>:!ctags -R *<CR>
 """"""""""""""""""""""""""""""""""""""""
 map <M-4> O+----------------------------------------------------------<ENTER><ESC>
 
 "ALT+6
-map <M-5> O#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-map <M-6> O#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+map <M-5> O#<ESC>33a<<ESC>
+map <M-6> O#<ESC>33a><ESC>
 "ALT+7
 map <M-7> O//+--------------------------------------------------------<ENTER><ESC>j
 "ALT+8插入下一部分
-map <M-8> O/*------------------------------------------------------------------------*/<ENTER>/*----------------------                           -----------------------*/<ENTER>/*----------------------        The Next Part      -----------------------*/<ENTER>/*----------------------                           -----------------------*/<ENTER>/*------------------------------------------------------------------------*/<ESC>j
+map <M-8> O/*<ESC>72a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>a<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>8a<space><ESC>aThe Next Part<ESC>6a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>72a-<ESC>a*/<ESC>j
 "ALT+9在行尾加 //
 map <M-9> A		//
 "定义mm跳回最近修改的地方
 map mm '.zz
+map ww :w!<Enter>
+map vp :vsp<Enter>
+map sp :sp<Enter>
+map qq :q<Enter>
+map QQ :q!<Enter>
+map == <Esc>gg=G
+
+"inoremap + <Space>+<Space>
+"inoremap - <Space>-<Space>
+"inoremap -- -
+"inoremap ++ +
+"inoremap , ,<Space>
+inoremap ;; <Esc>A;<Enter>
+"inoremap __ <Space>+=<Space>
+inoremap == <Space>==<Space>
+inoremap !! <Space>!=<Space>
 "定义折叠
+map QQ :q!<Enter>
+map == <Esc>gg=G
 map ff zf
 "修改文件编码
 map <leader>ft :set fileencoding=utf-8<cr> 
@@ -355,23 +375,18 @@ map <silent> <leader>ee :tabnew $MYVIMRC<CR>
 "Fast editing of hosts
 map <silent> <leader>pp :tabnew $MYHOSTS<CR>
 "Fast editing of conf 
-map <silent> <leader>qq :tabnew $MYVHOST<CR>
-"Fast editing of php.ini 
-map <silent> <leader>rr :tabnew $MYPHPINI<CR>
+map <silent> <leader>qq :tabnew d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf<CR>
 "When .vimrc is edited, reload it
 if has("autocmd")
-autocmd! bufwritepost vimrc source $MYVIMRC
-au BufWinLeave *.* silent mkview
-au BufWinEnter *.* silent loadview
+    "autocmd! bufwritepost vimrc source $MYVIMRC
 endif
 
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
 "delete to the end of line
-map DD d$a
-
-"sudo
-map <leader>sudo :w !sudo tee %<CR>foursking<CR>L<ESC>
+map DD d$
+" copy to the end of line
+map YY y$
 
 "定义输入快捷键
 imap <M-h> <Left>
@@ -510,6 +525,7 @@ filetype plugin on
 au BufEnter *.txt setlocal ft=txt
 
 
+   
 "============================"
 "     weibo.vim
 "============================"
