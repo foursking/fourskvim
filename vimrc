@@ -323,7 +323,7 @@ map <C-N> :Tlist<CR>
 let mapleader = "," 
 "jj to ESC
 inoremap jj <ESC>
-inoremap ?? =
+"inoremap ?? =
 """"""""""""""""""""""""""""""""""""""""
 nmap <F9> <Esc>:!ctags -R *<CR>
 """"""""""""""""""""""""""""""""""""""""
@@ -345,8 +345,6 @@ map vp :vsp<Enter>
 map sp :sp<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
-map == <Esc>gg=G
-
 "inoremap + <Space>+<Space>
 "inoremap - <Space>-<Space>
 "inoremap -- -
@@ -358,7 +356,7 @@ inoremap == <Space>==<Space>
 inoremap !! <Space>!=<Space>
 "定义折叠
 map QQ :q!<Enter>
-map == <Esc>gg=G
+"map == <Esc>gg=G
 map ff zf
 "修改文件编码
 map <leader>ft :set fileencoding=utf-8<cr> 
@@ -531,3 +529,4 @@ au BufEnter *.txt setlocal ft=txt
 "============================"
 let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
+
