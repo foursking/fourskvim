@@ -3,13 +3,16 @@
 Authentically this is my first time to use the git&github and write something with markdown. Hope it is useful~
 
 # How To Use
-1. If windows , put the code in your vimfiles , rename `vimrc` to `_vimrc` and replace your own `_vimrc`
-2. Only for windows now :(
+1. If windows , put the code in your vimfiles , replace your `_vimrc` with [vimrc]()
 
 
 ![foursking-vim image](http://f.hiphotos.baidu.com/album/s%3D1100%3Bq%3D90/sign=542c814e4ec2d562f608d4ecd721ab9e/f703738da97739125e0faa4ff9198618367ae2f7.jpg)
 
-#   2012.03.10
+
+##  2012.03.13
+1. Add `calendar.vim` in `plugin`
+2. Add `csExplorer` in `bundle`
+##  2012.03.10
 1. Add `$MYPHPINI`
 2. Add `<leader>sudo :w !sudo tee %` in [vimrc]()
 
@@ -20,9 +23,9 @@ Authentically this is my first time to use the git&github and write something wi
 4. Set the path of $MYVIM $MYVIMRC $MYHOSTS
 
 ## 2012.03.05
-1. Add `CtrlP` in bundle
-2. Add `renamer.vim` in plugin
-3. Add `esfcodestyle.vim` in plugin
+1. Add `CtrlP` in `bundle`
+2. Add `renamer.vim` in `plugin`
+3. Add `esfcodestyle.vim` in `plugin`
 
 [Fousking]:https://github.com/forsking
 [Sround]:http://www.baidu.com

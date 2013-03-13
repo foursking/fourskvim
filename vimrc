@@ -345,6 +345,8 @@ map vp :vsp<Enter>
 map sp :sp<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
+
+map `` i`<ESC>l$a`<ESC>
 "inoremap + <Space>+<Space>
 "inoremap - <Space>-<Space>
 "inoremap -- -
@@ -355,8 +357,6 @@ inoremap ;; <Esc>A;<Enter>
 inoremap == <Space>==<Space>
 inoremap !! <Space>!=<Space>
 "定义折叠
-map QQ :q!<Enter>
-"map == <Esc>gg=G
 map ff zf
 "修改文件编码
 map <leader>ft :set fileencoding=utf-8<cr> 
