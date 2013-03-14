@@ -1,8 +1,7 @@
 "=============================================================================
-"     FileName: vimrc
 "   CreateTime: 2012-09-08 21:08:53
 "       Author: yifeng@leju.com
-"   LastChange: 2013-03-11 10:34:24
+"   LastChange: 2013-03-14 17:29:03
 "=============================================================================
 
 
@@ -118,10 +117,10 @@ set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 "set fileencodings=utf-8,chinese,latin1
 set ambiwidth=double 					"防止特殊字符显示错误
 set langmenu=zh_CN.UTF-8
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim   菜单栏
+"source $VIMRUNTIME/mswin.vim  模拟win快捷键 
 "}}}
 
 
@@ -310,6 +309,8 @@ nmap <S-F12> :%s,/s/+$,,g
 ab pri print_r($_GET);exit;
 "定义 thi  $this->
 ab thi $this->
+ab calss class
+
 "标签页跳转
 map <M-q> gT     
 map <M-e> gt     
@@ -341,12 +342,13 @@ map <M-9> A		//
 "定义mm跳回最近修改的地方
 map mm '.zz
 map ww :w!<Enter>
-map vp :vsp<Enter>
-map sp :sp<Enter>
+map vp :vsp+enew<Enter>
+map sp :sp+enew<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
 
-map `` i`<ESC>l$a`<ESC>
+
+map `` i`<ESC>$a`<ESC>
 "inoremap + <Space>+<Space>
 "inoremap - <Space>-<Space>
 "inoremap -- -
@@ -354,9 +356,11 @@ map `` i`<ESC>l$a`<ESC>
 "inoremap , ,<Space>
 inoremap ;; <Esc>A;<Enter>
 "inoremap __ <Space>+=<Space>
-inoremap == <Space>==<Space>
+"inoremap == <Space>==<Space>
 inoremap !! <Space>!=<Space>
 "定义折叠
+map QQ :q!<Enter>
+"map == <Esc>gg=G
 map ff zf
 "修改文件编码
 map <leader>ft :set fileencoding=utf-8<cr> 
@@ -529,4 +533,3 @@ au BufEnter *.txt setlocal ft=txt
 "============================"
 let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
-

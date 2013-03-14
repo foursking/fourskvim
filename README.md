@@ -9,6 +9,7 @@ Authentically this is my first time to use the git&github and write something wi
 ![foursking-vim image](http://f.hiphotos.baidu.com/album/s%3D1100%3Bq%3D90/sign=542c814e4ec2d562f608d4ecd721ab9e/f703738da97739125e0faa4ff9198618367ae2f7.jpg)
 
 
+
 ##  2012.03.13
 1. Add `calendar.vim` in `plugin`
 2. Add `csExplorer` in `bundle`
@@ -30,7 +31,7 @@ Authentically this is my first time to use the git&github and write something wi
 
 
 ##  Tips
-1.  `:h` for help **The Best Tip**
+1 .  `:h` for help **The Best Tip**
 2.  `ctrl+]` jump and `ctrl+o` jump back
 3.  `q:` in command edit mode. You can edit the command like nomal mode , it is useful especially for long command. Just TRY :)
 4.  cursor on a world  `#` for forword lookup `*` for reverse lookup
