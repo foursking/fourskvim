@@ -1,4 +1,5 @@
-#  Tips
+
+#   Tips
 
 01.  `:h` for help **The Best Tip**
 02.  `ctrl+]` jump and `ctrl+o` jump back
@@ -12,7 +13,5 @@
 10. `:sav! %<.bak` 换一个后缀保存
 11. `:echo g:mapleader`
 12. 块操作  `CTRL-A` 模式选中 s(修改) 保存 `<ESC>` 可以 `:h ctrl-v` 查看更多
-
-
 
 
