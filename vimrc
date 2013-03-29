@@ -192,6 +192,7 @@ set guioptions-=m
 set guioptions-=T
 
 
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 
 "Enable filetype plugin
 filetype plugin on
@@ -308,7 +309,7 @@ nmap <S-F12> :%s,/s/+$,,g
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
 "定义 thi  $this->
-ab thi $this->
+
 ab calss class
 
 "标签页跳转
@@ -451,6 +452,7 @@ let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 "============================"
 "    NerdTree setting
 "============================"
+"定义NERDTree快捷键
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
@@ -462,8 +464,6 @@ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn'
 "   let NERDTreeShowHidden=1
 "   let NERDTreeKeepTreeInNewTab=1
 
-"定义NERDTree快捷键
-map <C-B> :NERDTreeToggle<CR>
 
 
 
@@ -533,3 +533,4 @@ au BufEnter *.txt setlocal ft=txt
 "============================"
 let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
 "}}}
+"
