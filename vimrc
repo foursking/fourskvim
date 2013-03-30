@@ -1,13 +1,8 @@
 "=============================================================================
 "   CreateTime: 2012-09-08 21:08:53
 "       Author: yifeng@leju.com
-"   LastChange: 2013-03-14 17:29:03
+"   LastChange: 2013-03-30 15:02:56
 "=============================================================================
-
-
-
-"----------------自己设定的function {{{
-
 " check MySys 检测当先系统类型
 function! MySys()
     if has("win32")
@@ -19,9 +14,9 @@ endfunction
 
 "}}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"----------------自己设定的function {{{
+
 " 获取当前路径
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CurDir()
     let $home_vim = ""
     let curdir = substitute(getcwd(), $home_vim, "", "g")
@@ -124,26 +119,6 @@ source $VIMRUNTIME/vimrc_example.vim
 "}}}
 
 
-
-" => Setting VIM and VIMRUNTIME
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if MySys() == "windows"
-    let $TESTMSG    = "testmsg"
-    let $MYVIM      = $PROGRAMFILES."\\Vim"
-    let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
-    let $MYVIMRC    = $PROGRAMFILES."\\Vim\\vimrc"
-    "let $DESKTOP   = $USERPROFILE."\\桌面"
-    let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
-    let $EJU        = "D://workspace/esf.eju.com"
-elseif MySys() == "linux"
-    "	let $MYVIM      = $HOME."/usr/four/vim"
-    "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
-    let $MYVIMRC    = "/Users/mac/.vimrc"
-    "	let $DESKTOP    = $HOME
-    let $MYHOSTS    = "/etc/hosts" 
-    "else
-endif
-
 " 运行mac_vim
 if has("gui_macvim") 
     " 取消默认的快捷键
@@ -168,6 +143,24 @@ else
     " colorscheme evening
 endif
 
+" => Setting VIM and VIMRUNTIME
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if MySys() == "windows"
+    let $MYVIM      = $PROGRAMFILES."\\Vim"
+    let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
+    let $MYVIMRC    = $PROGRAMFILES."\\Vim\\vimrc"
+    let $MYVHOSTS   = "d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf"
+    "let $DESKTOP   = $USERPROFILE."\\桌面"
+    let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
+    let $EJU        = "D://workspace/esf.eju.com"
+elseif MySys() == "linux"
+    "	let $MYVIM      = $HOME."/usr/four/vim"
+    "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
+    let $MYVIMRC    = "/Users/mac/.vimrc"
+    "	let $DESKTOP    = $HOME
+    let $MYHOSTS    = "/etc/hosts" 
+    "else
+endif
 
 "---------------界面选项{{{
 
@@ -183,16 +176,12 @@ set guitablabel=%{ShortTabLabel()}
 
 "vim 标签定制
 set tabline=%!MyTabLine()
-
 "}}}
 
 
 "隐藏任务栏&菜单栏&工具条
 set guioptions-=m
 set guioptions-=T
-
-
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 
 "Enable filetype plugin
 filetype plugin on
@@ -204,6 +193,7 @@ filetype plugin indent on
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
 set helplang=cn                        "设置中文帮助
 set showcmd
+set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式 
 set tabstop=4                          "设置tab字符 
 set shiftwidth=4                       "设置shift宽度
@@ -231,10 +221,12 @@ set autoread                           "当文件内容被其他编辑器改变�
 set novisualbell                       "不要闪烁
 set modifiable                         "允许修改缓冲区内容
 set fillchars=vert:\ ,stl:\ ,stlnc:\   " 在被分割的窗口间显示空白，便于阅读
+
 " Search options
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
+
 
 "高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
@@ -251,8 +243,6 @@ set selection=exclusive
 set selectmode=mouse,key
 au BufWinLeave *.* silent mkview
 au BufWinEnter *.* silent loadview
-
-
 
 " => Files and backups
 
@@ -299,7 +289,6 @@ au BufRead,BufNewFile *.json set filetype=json
 
 
 "----------------自己设定的map ab{{{
-
 "去掉windows下编辑器产生的 
 noremap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
 " => Command current dir
@@ -309,7 +298,6 @@ nmap <S-F12> :%s,/s/+$,,g
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
 "定义 thi  $this->
-
 ab calss class
 
 "标签页跳转
@@ -319,8 +307,6 @@ map <M-e> gt
 map <M-x> :tabc<cr>     
 "新建标签页
 map <M-n> :tabnew<cr>     
-"定义Tlist快捷键
-map <C-N> :Tlist<CR>
 "map , as <leader> key instead of \ by default
 let mapleader = "," 
 "jj to ESC
@@ -340,6 +326,7 @@ map <M-7> O//+--------------------------------------------------------<ENTER><ES
 map <M-8> O/*<ESC>72a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>a<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>8a<space><ESC>aThe Next Part<ESC>6a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>72a-<ESC>a*/<ESC>j
 "ALT+9在行尾加 //
 map <M-9> A		//
+
 "定义mm跳回最近修改的地方
 map mm '.zz
 map ww :w!<Enter>
@@ -348,16 +335,7 @@ map sp :sp+enew<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
 
-
-map `` i`<ESC>$a`<ESC>
-"inoremap + <Space>+<Space>
-"inoremap - <Space>-<Space>
-"inoremap -- -
-"inoremap ++ +
-"inoremap , ,<Space>
 inoremap ;; <Esc>A;<Enter>
-"inoremap __ <Space>+=<Space>
-"inoremap == <Space>==<Space>
 inoremap !! <Space>!=<Space>
 "定义折叠
 map QQ :q!<Enter>
@@ -378,7 +356,7 @@ map <silent> <leader>ee :tabnew $MYVIMRC<CR>
 "Fast editing of hosts
 map <silent> <leader>pp :tabnew $MYHOSTS<CR>
 "Fast editing of conf 
-map <silent> <leader>qq :tabnew d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf<CR>
+map <silent> <leader>qq :tabnew $MYVHOSTS<CR>
 "When .vimrc is edited, reload it
 if has("autocmd")
     "autocmd! bufwritepost vimrc source $MYVIMRC
@@ -398,61 +376,25 @@ imap <M-k> <Up>
 imap <M-l> <Right>
 "}}}
 
-
-
 "------------------ Bundle plugin settiny {{{
 
 
 "============================"
 "      ctags setting 
 "============================"
-"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>  
-set tags=d:\workspace\tags
-let Tlist_Show_One_File=1  
-let Tlist_Exit_OnlyWindow=1 
-let g:winManagerWindowLayout = "FileExplorer|TagList"
-let g:persistentBehaviour=0 
-let g:winManagerWidth=25
-let g:defaultExplorer=1
-map <c-w><c-f> :FirstExplorerWindow<cr> 
-map <c-w><c-b> :BottomExplorerWindow<cr> 
-map <c-w><c-t> :WMToggle<cr>
 
-
-
-
-"============================"
-"      taglist setting 
-"============================"
-" 这项必须设定，否则出错,配置taglist的ctags路径
-let Tlist_Ctags_Cmd = 'c:\windows\system32\ctags.exe'
-" 不同时显示多个文件的 tag ，只显示当前文件的
-let Tlist_Show_One_File=1
-" 如果 taglist 窗口是最后一个窗口，则退出 vim
-let Tlist_Exit_OnlyWindow=1
-"让当前不被编辑的文件的方法列表自动折叠起来 
-let Tlist_File_Fold_Auto_Close=1
-"把taglist窗口放在屏幕的右侧，缺省在左侧 
-let Tlist_Use_Right_Window=1 
-"显示taglist菜单
-let Tlist_Show_Menu=1
-"启动vim自动打开taglist
-"let Tlist_Auto_Open=1
-""""""""""""""""""""""""""""""""""""""""
 
 "============================"
 "  neocomplcache补全插件
 "============================"
 let g:neocomplcache_enable_at_startup=1
-let g:NeroCompCache_DisableAutoComplete=1
-let g:SuperTabDefaultCompletionType='<C-X><C-U>'
-
+"let g:NeroCompCache_DisableAutoComplete=1
+"let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 
 
 "============================"
 "    NerdTree setting
 "============================"
-"定义NERDTree快捷键
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
@@ -464,6 +406,8 @@ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn'
 "   let NERDTreeShowHidden=1
 "   let NERDTreeKeepTreeInNewTab=1
 
+"定义NERDTree快捷键
+map <C-B> :NERDTreeToggle<CR>
 
 
 
@@ -472,6 +416,18 @@ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn'
 "============================"
 "开启pathogen插件
 call pathogen#infect()
+
+"============================"
+"    tagbar    setting
+"============================"
+"设置ctags路径
+if  MySys() == 'windows'
+    let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
+endif
+nmap <c-n> :TagbarToggle<CR>   "设置快捷键
+let g:tagbar_width = 30       "设置宽度，默认为40
+"autocmd VimEnter * nested :call tagbar#autoopen(1)    "打开vim时自动打开tagbar
+let g:tagbar_right = 1        "在右侧
 
 
 
@@ -529,8 +485,23 @@ au BufEnter *.txt setlocal ft=txt
 
    
 "============================"
-"     weibo.vim
+"     DoxygenToolkit
 "============================"
-let g:weibo_access_token = 'BB951AEDEB8A75917CB8241EC7F0DBA0'
+let g:DoxygenToolkit_authorName="foursking, lyf021408@gmail.com"
+let s:licenseTag = "Copyright(C)\<enter>"
+let s:licenseTag = s:licenseTag . "For free\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+
+"============================"
+"    surround setting 
+"============================"
+
+
+
 "}}}
-"
+
+
+
