@@ -1,7 +1,7 @@
 "=============================================================================
 "   CreateTime: 2012-09-08 21:08:53
 "       Author: yifeng@leju.com
-"   LastChange: 2013-03-30 15:02:56
+"   LastChange: 2013-04-02 15:20:48
 "=============================================================================
 " check MySys 检测当先系统类型
 function! MySys()
@@ -15,6 +15,7 @@ endfunction
 "}}}
 
 "----------------自己设定的function {{{
+
 
 " 获取当前路径
 function! CurDir()
@@ -104,6 +105,35 @@ function! AddPythonFuncList()
     " set complete+=k~/.vim/pydiction isk+=.,
 endfunction
 
+" Run it
+function! Runit()
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc  % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java' 
+        exec "!javac %" 
+        exec "!java %<"
+    elseif &filetype == 'php'
+        exec "!php %"
+    elseif &filetype =='python'
+        exec "!python %"
+    elseif &filetype=='ruby'
+        exec "!ruby %"
+    elseif &filetype=='javascript'
+        exec "!js %"
+    elseif &filetype=='sh'
+        exec "!sh %"
+    elseif &filetype=='go'
+        exec "!go build %"
+        exec "! ./%<"
+    elseif &filetype=='coffee'
+        exec "!coffee %"
+    endif
+endfunc
 
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
@@ -335,6 +365,8 @@ map sp :sp+enew<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
 
+"定义剪切板快捷键
+
 inoremap ;; <Esc>A;<Enter>
 inoremap !! <Space>!=<Space>
 "定义折叠
@@ -438,8 +470,6 @@ let g:tagbar_right = 1        "在右侧
 map <leader>ff :CtrlP<CR>
 
 
-
-
 "============================"
 "    snipMate  setting
 "============================"
@@ -494,13 +524,6 @@ let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
 let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
-
-"============================"
-"    surround setting 
-"============================"
-
-
-
 "}}}
 
 
