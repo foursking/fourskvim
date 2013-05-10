@@ -3,13 +3,10 @@
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
-	url = https://github.com/foursking/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "tabular"]
-	path = tabular
-	url = https://github.com/godlygeek/tabular.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
