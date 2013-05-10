@@ -1,5 +1,4 @@
 # Tips
-#   Tips
 
 01.  `:h` for help **The Best Tip**
 02.  `ctrl+]` jump and `ctrl+o` jump back
