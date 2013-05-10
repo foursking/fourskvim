@@ -13,3 +13,6 @@
 [submodule "bundle/ack-vim"]
 	path = bundle/ack-vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "bundle/LustyExplorer"]
+	path = bundle/LustyExplorer
+	url = https://github.com/vim-scripts/LustyExplorer.git
