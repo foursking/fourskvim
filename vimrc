@@ -251,6 +251,7 @@ set autoread                           "当文件内容被其他编辑器改变�
 set novisualbell                       "不要闪烁
 set modifiable                         "允许修改缓冲区内容
 set fillchars=vert:\ ,stl:\ ,stlnc:\   " 在被分割的窗口间显示空白，便于阅读
+set hidden
 
 " Search options
 set incsearch                          "从键入时就开始匹配
@@ -398,7 +399,7 @@ endif
 " remove windows ^M
 map <leader>M :%s/\r//g <cr>
 "delete to the end of line
-map DD d$
+map DD d$a
 " copy to the end of line
 map YY y$
 
