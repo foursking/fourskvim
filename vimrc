@@ -256,7 +256,10 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\   " 在被分割的窗口间显示空白，
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
+set hidden
 
+set modifiable
+set write
 
 "高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
