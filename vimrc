@@ -276,8 +276,8 @@ set selection=exclusive
 set selectmode=mouse,key
 au BufWinLeave *.* silent mkview
 au BufWinEnter *.* silent loadview
-
 " => Files and backups
+
 
 "set guioptions-=m       " 隐藏菜单栏
 "set guioptions-=T        " 隐藏工具栏
@@ -424,10 +424,16 @@ imap <M-l> <Right>
 "============================"
 let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
-"let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 
 
 "============================"
+"  supertab
+"============================"
+
+let g:SuperTabMappingForward = '<c-space>'
+let g:SuperTabMappingBackward = '<s-c-space>'
+
+
 "    NerdTree setting
 "============================"
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
