@@ -404,6 +404,10 @@ map <leader>M :%s/\r//g <cr>
 map DD d$a
 " copy to the end of line
 map YY y$
+" jump to the line head
+map hh ^
+" jump to the line end
+map ll $
 
 "定义输入快捷键
 imap <M-h> <Left>
