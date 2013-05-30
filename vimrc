@@ -405,9 +405,9 @@ map DD d$a
 " copy to the end of line
 map YY y$
 " jump to the line head
-map hh ^
+map HH ^
 " jump to the line end
-map ll $
+map LL $
 
 "定义输入快捷键
 imap <M-h> <Left>
