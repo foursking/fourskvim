@@ -538,6 +538,15 @@ let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
 let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
+
+
+"============================"
+"     vim-youdao
+"============================"
+vnoremap <Leader>yd <ESC>:Ydt<CR>
+
+
+
 "}}}
 
 
