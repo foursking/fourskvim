@@ -135,6 +135,30 @@ function! Runit()
     endif
 endfunc
 
+
+"检查当前文件代码语法(php){{{
+function! CheckSyntax()
+ if &filetype!="php"
+  echohl WarningMsg | echo "Fail to check syntax! Please select the right file!" | echohl None
+  return
+ endif
+ if &filetype=="php"
+  " Check php syntax
+  setlocal makeprg=\"php\"\ -l\ -n\ -d\ html_errors=off
+  " Set shellpipe
+  setlocal shellpipe=>
+  " Use error format for parsing PHP error output
+  setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+ endif
+ execute "silent make %"
+ set makeprg=make
+ execute "normal :"
+ execute "copen"
+endfunction
+map <C-J> :call CheckSyntax()<CR>
+"}}}
+
+
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
 "set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936 
@@ -539,6 +563,12 @@ let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 "}}}
+
+
+
+
+
+
 
 
 
