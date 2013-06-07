@@ -583,7 +583,9 @@ vnoremap <Leader>yd <ESC>:Ydt<CR>
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 
-"}}}
+let g:syntastic_check_on_open=1
+""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
+let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
 
 
