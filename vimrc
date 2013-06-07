@@ -27,7 +27,7 @@ endfunction
 function! SetOption()
     set expandtab    " 使用空格代替tab
     set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
-    set tabstop=4    " 用4个空格代替1个tab
+    set tabstop=2    " 用4个空格代替1个tab
     set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
     set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
     set smartindent  " 智能对齐方式
@@ -540,11 +540,23 @@ let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
 
+let g:DoxygenToolkit_interCommentTag = "* "
+let g:DoxygenToolkit_startCommentTag = "/*"
+let g:DoxygenToolkit_endCommentTag = "*/"
+let g:DoxygenToolkit_startCommentBlock = "//!< "
+let g:DoxygenToolkit_endCommentBlock = ""
+
+
 "============================"
 "     vim-youdao
 "============================"
 vnoremap <Leader>yd <ESC>:Ydt<CR>
 
+
+"============================"
+"     vim-markdown
+"============================"
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 
 "}}}

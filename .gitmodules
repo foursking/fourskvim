@@ -25,3 +25,9 @@
 [submodule "bundle/vim-youdao"]
 	path = bundle/vim-youdao
 	url = https://github.com/ianva/vim-youdao-translater
+[submodule "bundle/vimtip"]
+	path = bundle/vimtip
+	url = https://github.com/tobyS/vimtip.git
+[submodule "bundle/vim-doxygentoolkit"]
+	path = bundle/vim-doxygentoolkit
+	url = https://github.com/mrtazz/DoxygenToolkit.vim.git
