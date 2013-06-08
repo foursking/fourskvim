@@ -580,7 +580,7 @@ vnoremap <Leader>yd <ESC>:Ydt<CR>
 "============================"
 "     vim-markdown
 "============================"
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+"au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 
 let g:syntastic_check_on_open=1
@@ -592,7 +592,7 @@ set listchars=tab:--,trail:-
 
 hi SpecialKey ctermfg=77 guifg=#696969
 
-
+let g:cssColorVimDoNotMessMyUpdatetime=1
 
 
 
