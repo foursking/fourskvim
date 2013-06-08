@@ -16,7 +16,6 @@ endfunction
 
 "----------------自己设定的function {{{
 
-
 " 获取当前路径
 function! CurDir()
     let $home_vim = ""
@@ -24,22 +23,6 @@ function! CurDir()
     return curdir
 endfunction
 
-function! SetOption()
-    set expandtab    " 使用空格代替tab
-    set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
-    set tabstop=2    " 用4个空格代替1个tab
-    set sts=4        " 设置softtabstop 为 4，输入tab后就跳了4格.
-    set cindent      " 开启C/C++风格缩进，:set paste 关闭缩进，nopaste打开
-    set smartindent  " 智能对齐方式
-    set autoindent   " 自动对齐
-    set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
-    set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
-    set matchtime=2  " 短暂跳转到匹配括号的时间
-    " set fdm=indent " 代码折叠
-    set lbr          " 智能换行
-    set tw=500       " 500个字符后自动换行(回车效果)fo+=Mn支持中文
-    set wrap         " 自动换行
-endfunction
 
 function! ShortTabLabel ()
     let bufnrlist = tabpagebuflist (v:lnum)
@@ -104,59 +87,6 @@ function! AddPythonFuncList()
     set complete-=k complete+=k isk-=., isk+=.,
     " set complete+=k~/.vim/pydiction isk+=.,
 endfunction
-
-" Run it
-function! Runit()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc  % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'java' 
-        exec "!javac %" 
-        exec "!java %<"
-    elseif &filetype == 'php'
-        exec "!php %"
-    elseif &filetype =='python'
-        exec "!python %"
-    elseif &filetype=='ruby'
-        exec "!ruby %"
-    elseif &filetype=='javascript'
-        exec "!js %"
-    elseif &filetype=='sh'
-        exec "!sh %"
-    elseif &filetype=='go'
-        exec "!go build %"
-        exec "! ./%<"
-    elseif &filetype=='coffee'
-        exec "!coffee %"
-    endif
-endfunc
-
-
-"检查当前文件代码语法(php){{{
-function! CheckSyntax()
- if &filetype!="php"
-  echohl WarningMsg | echo "Fail to check syntax! Please select the right file!" | echohl None
-  return
- endif
- if &filetype=="php"
-  " Check php syntax
-  setlocal makeprg=\"php\"\ -l\ -n\ -d\ html_errors=off
-  " Set shellpipe
-  setlocal shellpipe=>
-  " Use error format for parsing PHP error output
-  setlocal errorformat=%m\ in\ %f\ on\ line\ %l
- endif
- execute "silent make %"
- set makeprg=make
- execute "normal :"
- execute "copen"
-endfunction
-map <C-J> :call CheckSyntax()<CR>
-"}}}
 
 
 "--------- setting the langmenu{{{
@@ -237,16 +167,28 @@ set tabline=%!MyTabLine()
 set guioptions-=m
 set guioptions-=T
 
-"Enable filetype plugin
-filetype plugin on
-filetype indent on
-" 开启 插件 自动缩进 格式化代码
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           ====  通用设置 ====                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible                       "关闭兼容vi模式
 filetype on
 filetype plugin indent on
+syntax enable
+syntax on
+let mapleader      = ","               "设置leader
+let g:mapleader    = ","
+let maplocalleader = ","
+set history=400                        "设置历史记录数
 
+
+
+"界面设置
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
 set helplang=cn                        "设置中文帮助
-set showcmd
+set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式 
 set tabstop=4                          "设置tab字符 
@@ -254,7 +196,6 @@ set shiftwidth=4                       "设置shift宽度
 set sts=4
 set nobackup                           "不生成备份文件
 set noswapfile                         "不要生成swap文件，当buffer被丢弃的时候隐藏它
-set history=180                        "设置历史记录数
 set nu                                 "设置行号
 set showmatch                          "高亮显示匹配的括号
 set iskeyword+=_,$,@,%,#,-             "带有如下符号的单词不要被换行分割
@@ -269,8 +210,7 @@ set novisualbell
 set whichwrap=b,s,<,>,[,]              "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
 set et                                 "编辑时将所有tab替换为空格
 set ambiwidth=double                   "防止特殊符号无法正常显示，如五角星等
-set nocompatible	                   "Disable vi-compatibility
-set laststatus=2	                   "Always show the statusline
+set laststatus=2
 set autoread                           "当文件内容被其他编辑器改变时自动加载
 set novisualbell                       "不要闪烁
 set modifiable                         "允许修改缓冲区内容
@@ -291,9 +231,13 @@ highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 match OverLength '\%101v.*'
 
 "开启语法高亮
-syntax enable
-syntax on
 
+
+
+"tab space display '----'
+set list
+set listchars=tab:--,trail:-
+hi SpecialKey ctermfg=77 guifg=#696969
 
 "可以在buffer的任何区域使用鼠标
 set mouse=a
@@ -359,34 +303,33 @@ ab pri print_r($_GET);exit;
 ab calss class
 
 "标签页跳转
-map <M-q> gT     
-map <M-e> gt     
+map <M-q> gT
+map <M-e> gtj
 "关闭当前标签页
-map <M-x> :tabc<cr>     
+map <M-x> :tabc<cr>
 "新建标签页
-map <M-n> :tabnew<cr>     
+map <M-n> :tabnew<cr>
 "map , as <leader> key instead of \ by default
-let mapleader = "," 
 "jj to ESC
 inoremap jj <ESC>
 "inoremap ?? =
 """"""""""""""""""""""""""""""""""""""""
 nmap <F9> <Esc>:!ctags -R *<CR>
 """"""""""""""""""""""""""""""""""""""""
-map <M-4> O+----------------------------------------------------------<ENTER><ESC>
+map <M-4> O+71a-<ENTER><ESC>
 
 "ALT+6
 map <M-5> O#<ESC>33a<<ESC>
 map <M-6> O#<ESC>33a><ESC>
 "ALT+7
-map <M-7> O//+--------------------------------------------------------<ENTER><ESC>j
+map <M-7> O//+71a-<ENTER><ESC>j
 "ALT+8插入下一部分
 map <M-8> O/*<ESC>72a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>a<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>8a<space><ESC>aThe Next Part<ESC>6a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>72a-<ESC>a*/<ESC>j
-"ALT+9在行尾加 //
-map <M-9> A		//
 
 "定义mm跳回最近修改的地方
 map mm '.zz
+nmap n nzz
+nmap N Nzz
 map ww :w!<Enter>
 map vp :vsp+enew<Enter>
 map sp :sp+enew<Enter>
@@ -394,9 +337,7 @@ map qq :q<Enter>
 map QQ :q!<Enter>
 
 "定义剪切板快捷键
-
 inoremap ;; <Esc>A;<Enter>
-inoremap !! <Space>!=<Space>
 "定义折叠
 map QQ :q!<Enter>
 "map == <Esc>gg=G
@@ -580,19 +521,21 @@ vnoremap <Leader>yd <ESC>:Ydt<CR>
 "============================"
 "     vim-markdown
 "============================"
-"au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 
+
+"============================"
+"     vim-syntastic
+"============================"
 let g:syntastic_check_on_open=1
 ""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
-set list
-set listchars=tab:--,trail:-
 
-hi SpecialKey ctermfg=77 guifg=#696969
 
-let g:cssColorVimDoNotMessMyUpdatetime=1
+
+
 
 
 
