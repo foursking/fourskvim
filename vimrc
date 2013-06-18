@@ -117,7 +117,6 @@ if has("gui_macvim")
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
-    set t_Co=256       " 让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
     set linespace=2
     set columns=180
     set lines=45
@@ -135,10 +134,10 @@ if MySys() == "windows"
     let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
     let $EJU        = "D://workspace/esf.eju.com"
 elseif MySys() == "linux"
-    "	let $MYVIM      = $HOME."/usr/four/vim"
-    "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
+    "let $MYVIM      = $HOME."/usr/four/vim"
+    "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
     let $MYVIMRC    = "/Users/mac/.vimrc"
-    "	let $DESKTOP    = $HOME
+    "let $DESKTOP    = $HOME
     let $MYHOSTS    = "/etc/hosts" 
     "else
 endif
@@ -149,7 +148,7 @@ if MySys() == "windows"
     set guifont=YaHei\ Mono:h11 "设置中文字体
     au GUIEnter * simalt ~x     "窗口最大化
 else
-    "	au GUIEnter * call MaximizeWindow()
+    "au GUIEnter * call MaximizeWindow()
 endif
 
 "gvim 标签定制
@@ -184,7 +183,9 @@ set history=400                        "设置历史记录数
 
 "界面设置
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
-colorscheme molokai                    "颜色设置
+set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
+set background=dark
+colorscheme desert_my                  "颜色设置
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
@@ -428,7 +429,7 @@ map <C-B> :NERDTreeToggle<CR>
 call pathogen#infect()
 
 "============================"
-"    tagbar    setting
+"    tagbar
 "============================"
 "设置ctags路径
 if  MySys() == 'windows'
@@ -441,20 +442,20 @@ let g:tagbar_right = 1        "在右侧
 
 
 "============================"
-"    CtrlP setting
+"    CtrlP
 "============================"
-"map :CtrlP 
+"map :CtrlP
 map <leader>ff :CtrlP<CR>
 
 
 "============================"
-"    snipMate  setting
+"    snipMate
 "============================"
-filetype plugin on 
+filetype plugin on
 
 
 "============================"
-"    AuthorInfo  setting
+"    AuthorInfo
 "============================"
 let g:vimrc_author = "yifeng@leju.com"
 "ALT+a 更新用户信息
@@ -477,7 +478,7 @@ function! SetColorColumn()
 endfunction
 
 "============================"
-"     Fenc View 
+"     Fenc View
 "============================"
 "let g:fencview_autodetect = 1  "打开文件时自动识别编码
 "let g:fencview_checklines = 10 "检查前后10行来判断编码
@@ -528,7 +529,21 @@ let g:syntastic_check_on_open=1
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
 
+"============================"
+"     vim-surround
+"============================"
+" :h surround
 
+
+"============================"
+"     vim-easymotion
+"============================"
+
+
+
+"============================"
+"     vim-yankring
+"============================"
 
 
 "}}}
