@@ -185,7 +185,7 @@ set history=400                        "设置历史记录数
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
 set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
 set background=dark
-colorscheme desert_my                  "颜色设置
+colorscheme molokai                    "颜色设置
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
@@ -247,9 +247,9 @@ match OverLength '\%101v.*'
 
 
 ""tab space 显示 '----'
-set list
-set listchars=tab:--,trail:-
-hi SpecialKey ctermfg=77 guifg=#696969
+"set list
+"set listchars=tab:--,trail:-
+"hi SpecialKey ctermfg=77 guifg=#696969
 
 ""可以在buffer的任何区域使用鼠标
 set mouse=a
@@ -546,6 +546,17 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "============================"
 
 
+
+"============================"
+"     vim-mark
+"============================"
+" mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+" \m  mark or unmark the word under (or before) the cursor
+" \r  manually input a regular expression. 用于搜索.
+" \n  clear this mark (i.e. the mark under the cursor), or clear all
+" highlighted marks .
+" " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
+" " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
 "}}}
 
 
