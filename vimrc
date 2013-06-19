@@ -3,6 +3,8 @@
 "       Author: yifeng@leju.com
 "   LastChange: 2013-05-15 16:49:15
 "=============================================================================
+
+"----------------自己设定的function {{{
 " check MySys 检测当先系统类型
 function! MySys()
     if has("win32")
@@ -11,10 +13,6 @@ function! MySys()
         return "linux"
     endif
 endfunction
-
-"}}}
-
-"----------------自己设定的function {{{
 
 " 获取当前路径
 function! CurDir()
@@ -89,6 +87,7 @@ function! AddPythonFuncList()
 endfunction
 
 
+
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
 "set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936 
@@ -104,7 +103,7 @@ source $VIMRUNTIME/vimrc_example.vim
 
 
 " 运行mac_vim
-if has("gui_macvim") 
+if has("gui_macvim")
     " 取消默认的快捷键
     "let macvim_skip_cmd_opt_movement = 1
     "let macvim_hig_shift_movement = 1
@@ -114,13 +113,10 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    colorscheme molokai
     set guifont=Monaco:h12
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
-    set t_Co=256       " 让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
-    colorscheme molokai
     set linespace=2
     set columns=180
     set lines=45
@@ -138,10 +134,10 @@ if MySys() == "windows"
     let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
     let $EJU        = "D://workspace/esf.eju.com"
 elseif MySys() == "linux"
-    "	let $MYVIM      = $HOME."/usr/four/vim"
-    "	let $VIMRUNTIME = $HOME."/usr/four/vim/share"
+    "let $MYVIM      = $HOME."/usr/four/vim"
+    "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
     let $MYVIMRC    = "/Users/mac/.vimrc"
-    "	let $DESKTOP    = $HOME
+    "let $DESKTOP    = $HOME
     let $MYHOSTS    = "/etc/hosts" 
     "else
 endif
@@ -152,7 +148,7 @@ if MySys() == "windows"
     set guifont=YaHei\ Mono:h11 "设置中文字体
     au GUIEnter * simalt ~x     "窗口最大化
 else
-    "	au GUIEnter * call MaximizeWindow()
+    "au GUIEnter * call MaximizeWindow()
 endif
 
 "gvim 标签定制
@@ -187,6 +183,9 @@ set history=400                        "设置历史记录数
 
 "界面设置
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
+set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
+set background=dark
+colorscheme molokai                    "颜色设置
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
@@ -214,54 +213,56 @@ set laststatus=2
 set autoread                           "当文件内容被其他编辑器改变时自动加载
 set novisualbell                       "不要闪烁
 set modifiable                         "允许修改缓冲区内容
-set fillchars=vert:\ ,stl:\ ,stlnc:\   " 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\   "在被分割的窗口间显示空白，便于阅读
 set hidden
-
-" Search options
-set incsearch                          "从键入时就开始匹配
-set hlsearch                           "高亮搜索结果
-set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
-set hidden
-
 set modifiable
 set write
 
-"高亮字符，让其不受100列限制
+"set guioptions-=m                     "隐藏菜单栏
+"set guioptions-=T                     "隐藏工具栏
+"set guioptions-=L                     "隐藏左侧滚动条
+"set guioptions-=r                     "隐藏右侧滚动条
+"set guioptions-=b                     "隐藏底部滚动条
+"set showtabline=0                     "隐藏Tab栏
+":tabnew                               "新建标签页
+":tabs                                 "显示已打开标签页的列表
+":tabc                                 "关闭当前标签页
+":tabn                                 "移动到下一个标签页
+":tabp                                 "移动到上一个标签页
+":tabfirst                             "移动到第一个标签页
+":tablast                              "移动到最后一个标签页
+
+
+""搜索设置
+set incsearch                          "从键入时就开始匹配
+set hlsearch                           "高亮搜索结果
+set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
+
+
+""高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 match OverLength '\%101v.*'
 
-"开启语法高亮
 
 
 
-"tab space display '----'
-set list
-set listchars=tab:--,trail:-
-hi SpecialKey ctermfg=77 guifg=#696969
+""tab space 显示 '----'
+"set list
+"set listchars=tab:--,trail:-
+"hi SpecialKey ctermfg=77 guifg=#696969
 
-"可以在buffer的任何区域使用鼠标
+""可以在buffer的任何区域使用鼠标
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
+
+
+
+""自动载入
 au BufWinLeave *.* silent mkview
 au BufWinEnter *.* silent loadview
 " => Files and backups
 
-
-"set guioptions-=m       " 隐藏菜单栏
-"set guioptions-=T        " 隐藏工具栏
-"set guioptions-=L       " 隐藏左侧滚动条
-"set guioptions-=r       " 隐藏右侧滚动条
-"set guioptions-=b       " 隐藏底部滚动条
-"set showtabline=0       " 隐藏Tab栏
-
-":tabnew	新建标签页
-":tabs	显示已打开标签页的列表
-":tabc	关闭当前标签页
-":tabn	移动到下一个标签页
-":tabp	移动到上一个标签页
-":tabfirst	移动到第一个标签页
-":tablast	移动到最后一个标签页
 
 
 "---------------Files and backups{{{
@@ -269,9 +270,6 @@ au BufWinEnter *.* silent loadview
 " 把html文件当作xml文件来编辑，因为html按=号格式化有问题，而xml没问题
 "au FileType smarty,html set ft=xml 
 au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高亮
-" xmledit
-"let xml_use_xhtml = 1
-
 
 " JavaScript 语法高亮
 "au FileType html,htm,smarty,javascript let g:javascript_enable_domhtmlcss = 1
@@ -290,30 +288,23 @@ au BufRead,BufNewFile *.json set filetype=json
 "}}}
 
 
-"----------------自己设定的map ab{{{
+
 "去掉windows下编辑器产生的 
-noremap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
+nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
 " => Command current dir
-map <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
+nmap <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
 "Shift+F12 删除所有行未尾空格
 nmap <S-F12> :%s,/s/+$,,g
+
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
 "定义 thi  $this->
 ab calss class
 
-"标签页跳转
-map <M-q> gT
-map <M-e> gtj
-"关闭当前标签页
-map <M-x> :tabc<cr>
-"新建标签页
-map <M-n> :tabnew<cr>
+
 "map , as <leader> key instead of \ by default
 "jj to ESC
-inoremap jj <ESC>
-"inoremap ?? =
-""""""""""""""""""""""""""""""""""""""""
+imap jj <ESC>
 nmap <F9> <Esc>:!ctags -R *<CR>
 """"""""""""""""""""""""""""""""""""""""
 map <M-4> O+71a-<ENTER><ESC>
@@ -328,26 +319,39 @@ map <M-8> O/*<ESC>72a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>a<ESC>27a<space><ESC>23a-<E
 
 "定义mm跳回最近修改的地方
 map mm '.zz
-nmap n nzz
-nmap N Nzz
 map ww :w!<Enter>
 map vp :vsp+enew<Enter>
 map sp :sp+enew<Enter>
 map qq :q<Enter>
 map QQ :q!<Enter>
-
-"定义剪切板快捷键
-inoremap ;; <Esc>A;<Enter>
-"定义折叠
-map QQ :q!<Enter>
-"map == <Esc>gg=G
 map ff zf
-"修改文件编码
-map <leader>ft :set fileencoding=utf-8<cr> 
-map <leader>fb :set fileencoding=gbk<cr> 
+"delete to the end of line
+map DD d$a
+"copy to the end of line
+map YY y$
+"jump to the line head
+map HH ^
+"jump to the line end
+map LL $
 
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-" set fileformats=unix,dos,mac  设置文本的格式,Linux的svn经常需要用到
+"标签页跳转
+map <M-q> gT
+map <M-e> gt
+"关闭当前标签页
+map <M-x> :tabc<cr>
+"新建标签页
+map <M-n> :tabnew<cr>
+"定义剪切板快捷键
+"remove windows ^M
+map <leader>M :%s/\r//g <cr>
+"修改文件编码
+map <leader>ft :set fileencoding=utf-8<cr>
+map <leader>fb :set fileencoding=gbk<cr>
+
+nmap n nzz
+nmap N Nzz
+
+"set fileformats=unix,dos,mac  设置文本的格式,Linux的svn经常需要用到
 nmap <leader>fd :se fileformat=dos<CR>
 nmap <leader>fu :se fileformat=unix<CR>
 "Fast reloading of the .vimrc
@@ -363,22 +367,18 @@ if has("autocmd")
     "autocmd! bufwritepost vimrc source $MYVIMRC
 endif
 
-" remove windows ^M
-map <leader>M :%s/\r//g <cr>
-"delete to the end of line
-map DD d$a
-" copy to the end of line
-map YY y$
-" jump to the line head
-map HH ^
-" jump to the line end
-map LL $
 
+imap ;; <Esc>A;<Enter>
 "定义输入快捷键
 imap <M-h> <Left>
 imap <M-j> <Down>
 imap <M-k> <Up>
 imap <M-l> <Right>
+
+
+
+"定义折叠
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "}}}
 
 "------------------ Bundle plugin settiny {{{
@@ -429,7 +429,7 @@ map <C-B> :NERDTreeToggle<CR>
 call pathogen#infect()
 
 "============================"
-"    tagbar    setting
+"    tagbar
 "============================"
 "设置ctags路径
 if  MySys() == 'windows'
@@ -441,22 +441,21 @@ let g:tagbar_width = 30       "设置宽度，默认为40
 let g:tagbar_right = 1        "在右侧
 
 
-
 "============================"
-"    CtrlP setting
+"    CtrlP
 "============================"
-"map :CtrlP 
+"map :CtrlP
 map <leader>ff :CtrlP<CR>
 
 
 "============================"
-"    snipMate  setting
+"    snipMate
 "============================"
-filetype plugin on 
+filetype plugin on
 
 
 "============================"
-"    AuthorInfo  setting
+"    AuthorInfo
 "============================"
 let g:vimrc_author = "yifeng@leju.com"
 "ALT+a 更新用户信息
@@ -479,7 +478,7 @@ function! SetColorColumn()
 endfunction
 
 "============================"
-"     Fenc View 
+"     Fenc View
 "============================"
 "let g:fencview_autodetect = 1  "打开文件时自动识别编码
 "let g:fencview_checklines = 10 "检查前后10行来判断编码
@@ -487,12 +486,8 @@ endfunction
 ":FencAutoDetect    自动检测编码
 ":FencView          列出所有编码 
 
-syntax on "syntax highlighting on 
-filetype plugin on 
-au BufEnter *.txt setlocal ft=txt
 
 
-   
 "============================"
 "     DoxygenToolkit
 "============================"
@@ -522,6 +517,7 @@ vnoremap <Leader>yd <ESC>:Ydt<CR>
 "     vim-markdown
 "============================"
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+au BufEnter *.txt setlocal filetype=txt
 
 
 
@@ -533,11 +529,34 @@ let g:syntastic_check_on_open=1
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
 
+"============================"
+"     vim-surround
+"============================"
+" :h surround
+
+
+"============================"
+"     vim-easymotion
+"============================"
 
 
 
+"============================"
+"     vim-yankring
+"============================"
 
 
 
+"============================"
+"     vim-mark
+"============================"
+" mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+" \m  mark or unmark the word under (or before) the cursor
+" \r  manually input a regular expression. 用于搜索.
+" \n  clear this mark (i.e. the mark under the cursor), or clear all
+" highlighted marks .
+" " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
+" " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
+"}}}
 
 
