@@ -322,8 +322,7 @@ map mm '.zz
 map ww :w!<Enter>
 map vp :vsp+enew<Enter>
 map sp :sp+enew<Enter>
-map qq :q<Enter>
-map QQ :q!<Enter>
+map QQ :q<Enter>
 map ff zf
 "delete to the end of line
 map DD d$a
@@ -445,7 +444,7 @@ let g:tagbar_right = 1        "在右侧
 "    CtrlP
 "============================"
 "map :CtrlP
-map <leader>ff :CtrlP<CR>
+map <c-c> :CtrlP<CR>
 
 
 "============================"
@@ -557,6 +556,113 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " highlighted marks .
 " " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
 " " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
+"
+"
+""============================"
+"     vim-surround
+"============================"
+" :h surround
+"
+"  Old text                  Command     New text ~
+"  "Hello *world!"           ds"         Hello world!
+"  [123+4*56]/2              cs])        (123+456)/2
+"  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+"  if *x>3 {                 ysW(        if ( x>3 ) {
+"  my $str = *whee!;         vllllS'     my $str = 'whee!';
+"  Hello *world!"           cs"'        'Hello world!'
+"  Hello *world!"           cs"<q>      <q>Hello world!</q>
+"  (123+4*56)/2              cs)]        [123+456]/2
+"  (123+4*56)/2              cs)[        [ 123+456 ]/2
+"  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+
+
+"============================"
+"     vim-easymotion
+"============================"
+":h easymotion
+"<leader><leader>w for word
+"<leader><leader>c for character 
+
+
+
+"============================"
+"     vim-yankring
+"============================"
+
+
+
+"============================"
+"     vim-mark
+"============================"
+" mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
+" \m  mark or unmark the word under (or before) the cursor
+" \r  manually input a regular expression. 用于搜索.
+" \n  clear this mark (i.e. the mark under the cursor), or clear all
+" highlighted marks .
+" " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
+" " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
+
+nmap <silent> <Leader>hl <Plug>MarkSet
+vmap <silent> <Leader>hl <Plug>MarkSet
+nmap <silent> <Leader>hh <Plug>MarkClear
+vmap <silent> <Leader>hh <Plug>MarkClear
+nmap <silent> <Leader>hr <Plug>MarkRegex
+vmap <silent> <Leader>hr <Plug>MarkRegex
+
+
+
+"============================"
+"   vim-rainbowparentheses
+"============================"
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au Syntax * RainbowParenthesesToggleAll "always on
+"
+":RainbowParenthesesToggle       " Toggle it on/off
+":RainbowParenthesesLoadRound    " (), the default when toggling
+":RainbowParenthesesLoadSquare   " []
+":RainbowParenthesesLoadBraces   " {}
+":RainbowParenthesesLoadChevrons " <>
+
+
+
+
+"============================"
+"   vim-indentLine
+"============================"
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+
+
+
+
+"============================"
+"       vim-gundo
+"============================"
+"h gundo
+map <C-G> :GundoToggle<CR>
+
+
 "}}}
 
 

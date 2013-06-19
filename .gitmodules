@@ -52,3 +52,12 @@
 [submodule "bundle/vim-solarized"]
 	path = bundle/vim-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/vim-indentLine"]
+	path = bundle/vim-indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+[submodule "bundle/vim-trailing-whitespace"]
+	path = bundle/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
+[submodule "bundle/vim-rainbow-parentheses"]
+	path = bundle/vim-rainbow-parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim.git
