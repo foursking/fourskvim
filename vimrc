@@ -557,6 +557,13 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " highlighted marks .
 " " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
 " " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
+
+nmap  ,hl MarkSet
+vmap  ,hl MarkSet
+nmap  ,hh MarkClear
+vmap  ,hh MarkClear
+nmap  ,hr MarkRegex
+vmap  ,hr MarkRegex
 "}}}
 
 
