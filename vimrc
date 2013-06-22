@@ -80,12 +80,12 @@ endfunction
 
 " 当编辑python文件的时候，导入python函数列表，按 ctrl+n 自动补全
 " au FileType python call AddPythonFuncList() " 有neocomplacache都不用这些函数了，自带的
-function! AddPythonFuncList()
-    set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
-    set complete-=k complete+=k isk-=., isk+=.,
-    " set complete+=k~/.vim/pydiction isk+=.,
-endfunction
-
+"function! AddPythonFuncList()
+"    set dict-=~/.vim/pydiction dict+=~/.vim/pydiction
+"    set complete-=k complete+=k isk-=., isk+=.,
+"    " set complete+=k~/.vim/pydiction isk+=.,
+"endfunction
+"
 
 
 "--------- setting the langmenu{{{
@@ -100,7 +100,7 @@ source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/menu.vim   菜单栏
 "source $VIMRUNTIME/mswin.vim  模拟win快捷键 
 "}}}
-
+"
 
 " 运行mac_vim
 if has("gui_macvim")
@@ -122,6 +122,8 @@ else
     set lines=45
     " colorscheme evening
 endif
+
+
 
 " => Setting VIM and VIMRUNTIME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -218,6 +220,11 @@ set hidden
 set modifiable
 set write
 
+if has("gui_running")
+    set transparency=8
+endif
+
+
 "set guioptions-=m                     "隐藏菜单栏
 "set guioptions-=T                     "隐藏工具栏
 "set guioptions-=L                     "隐藏左侧滚动条
@@ -242,8 +249,6 @@ set ignorecase smartcase               "搜索时不区分大小写，如果键�
 ""高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 match OverLength '\%101v.*'
-
-
 
 
 ""tab space 显示 '----'
@@ -322,8 +327,7 @@ map mm '.zz
 map ww :w!<Enter>
 map vp :vsp+enew<Enter>
 map sp :sp+enew<Enter>
-map qq :q<Enter>
-map QQ :q!<Enter>
+map QQ :q<Enter>
 map ff zf
 "delete to the end of line
 map DD d$a
@@ -406,17 +410,18 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 "    NerdTree setting
 "============================"
-map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <leader>e :NERDTreeFind<CR>
-nmap <leader>nt :NERDTreeFind<CR>
-
-"   let NERDTreeShowBookmarks=1
+"let NERDTreeKeepTreeInNewTab=1
+let NERDChristmasTree=1										" 类似圣诞树的显示方式
+let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
+"let NERDTreeMouseMode=2										" 指定鼠标模式(1.双击打开 2.单目录双文件 3.单击打开)
+let NERDTreeShowBookmarks=1									" 是否默认显示书签列表
+let NERDTreeShowFiles=1										" 是否默认显示文件
+let NERDTreeShowHidden=1									" 是否默认显示隐藏文件
+let NERDTreeShowLineNumbers=0								" 是否默认显示行号
+let NERDTreeWinPos='left'									" 窗口位置（'left' or 'right'）
+let NERDTreeWinSize=30										" 窗口宽度
+"let NERDTreeQuitOnOpen = 1									" 当通过NERD Tree打开文件自动退出NERDTree界面
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-"   let NERDTreeChDirMode=2     "setting root dir in NT also sets VIM's cd
-"   let NERDTreeQuitOnOpen=1 "the Nerdtree window will be close after a file is opend.
-"   let NERDTreeShowHidden=1
-"   let NERDTreeKeepTreeInNewTab=1
-
 "定义NERDTree快捷键
 map <C-B> :NERDTreeToggle<CR>
 
@@ -445,7 +450,7 @@ let g:tagbar_right = 1        "在右侧
 "    CtrlP
 "============================"
 "map :CtrlP
-map <leader>ff :CtrlP<CR>
+map <c-c> :CtrlP<CR>
 
 
 "============================"
@@ -529,15 +534,32 @@ let g:syntastic_check_on_open=1
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
 
-"============================"
+
+
+""============================"
 "     vim-surround
 "============================"
 " :h surround
+"
+"  Old text                  Command     New text ~
+"  "Hello *world!"           ds"         Hello world!
+"  [123+4*56]/2              cs])        (123+456)/2
+"  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+"  if *x>3 {                 ysW(        if ( x>3 ) {
+"  my $str = *whee!;         vllllS'     my $str = 'whee!';
+"  Hello *world!"           cs"'        'Hello world!'
+"  Hello *world!"           cs"<q>      <q>Hello world!</q>
+"  (123+4*56)/2              cs)]        [123+456]/2
+"  (123+4*56)/2              cs)[        [ 123+456 ]/2
+"  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
 
 
 "============================"
 "     vim-easymotion
 "============================"
+":h easymotion
+"<leader><leader>w for word
+"<leader><leader>c for character 
 
 
 
@@ -558,12 +580,67 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " " \*  当前MarkWord的下一个     \#  当前MarkWord的上一个
 " " \/  所有MarkWords的下一个    \?  所有MarkWords的上一个
 
-nmap  ,hl MarkSet
-vmap  ,hl MarkSet
-nmap  ,hh MarkClear
-vmap  ,hh MarkClear
-nmap  ,hr MarkRegex
-vmap  ,hr MarkRegex
+nmap <silent> <Leader>hl <Plug>MarkSet
+vmap <silent> <Leader>hl <Plug>MarkSet
+nmap <silent> <Leader>hh <Plug>MarkClear
+vmap <silent> <Leader>hh <Plug>MarkClear
+nmap <silent> <Leader>hr <Plug>MarkRegex
+vmap <silent> <Leader>hr <Plug>MarkRegex
+
+
+
+"============================"
+"   vim-rainbowparentheses
+"============================"
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au Syntax * RainbowParenthesesToggleAll "always on
+"
+":RainbowParenthesesToggle       " Toggle it on/off
+":RainbowParenthesesLoadRound    " (), the default when toggling
+":RainbowParenthesesLoadSquare   " []
+":RainbowParenthesesLoadBraces   " {}
+":RainbowParenthesesLoadChevrons " <>
+
+
+
+
+"============================"
+"   vim-indentLine
+"============================"
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+
+
+
+
+"============================"
+"       vim-gundo
+"============================"
+"h gundo
+map <C-G> :GundoToggle<CR>
+
+
 "}}}
 
 
