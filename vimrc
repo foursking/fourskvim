@@ -640,6 +640,8 @@ let g:indentLine_color_gui = '#A4E57E'
 "h gundo
 map <C-G> :GundoToggle<CR>
 
+let g:pydoc_cmd = 'python -m pydoc'
+
 
 "}}}
 
