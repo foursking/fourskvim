@@ -90,15 +90,15 @@ endfunction
 
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
-"set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
-set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+"set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936 
+set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1  
 "set fileencodings=utf-8,chinese,latin1
 set ambiwidth=double 					"防止特殊字符显示错误
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/delmenu.vim
 "source $VIMRUNTIME/menu.vim   菜单栏
-"source $VIMRUNTIME/mswin.vim  模拟win快捷键
+"source $VIMRUNTIME/mswin.vim  模拟win快捷键 
 "}}}
 "
 
@@ -140,7 +140,7 @@ elseif MySys() == "linux"
     "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
     let $MYVIMRC    = "/Users/mac/.vimrc"
     "let $DESKTOP    = $HOME
-    let $MYHOSTS    = "/etc/hosts"
+    let $MYHOSTS    = "/etc/hosts" 
     "else
 endif
 
@@ -191,8 +191,8 @@ colorscheme molokai                    "颜色设置
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
-set fileformat=unix                    "设置文件格式
-set tabstop=4                          "设置tab字符
+set fileformat=unix                    "设置文件格式 
+set tabstop=4                          "设置tab字符 
 set shiftwidth=4                       "设置shift宽度
 set sts=4
 set nobackup                           "不生成备份文件
@@ -243,7 +243,7 @@ endif
 ""搜索设置
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
-set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
+set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写 
 
 
 ""高亮字符，让其不受100列限制
@@ -273,7 +273,7 @@ au BufWinEnter *.* silent loadview
 "---------------Files and backups{{{
 
 " 把html文件当作xml文件来编辑，因为html按=号格式化有问题，而xml没问题
-"au FileType smarty,html set ft=xml
+"au FileType smarty,html set ft=xml 
 au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高亮
 
 " JavaScript 语法高亮
@@ -294,8 +294,8 @@ au BufRead,BufNewFile *.json set filetype=json
 
 
 
-"去掉windows下编辑器产生的
-nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
+"去掉windows下编辑器产生的 
+nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
 " => Command current dir
 nmap <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
 "Shift+F12 删除所有行未尾空格
@@ -364,7 +364,7 @@ map <silent> <leader>ss :source $MYVIMRC<CR>
 map <silent> <leader>ee :tabnew $MYVIMRC<CR>
 "Fast editing of hosts
 map <silent> <leader>pp :tabnew $MYHOSTS<CR>
-"Fast editing of conf
+"Fast editing of conf 
 map <silent> <leader>qq :tabnew $MYVHOSTS<CR>
 "When .vimrc is edited, reload it
 if has("autocmd")
@@ -389,7 +389,7 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 
 "============================"
-"      ctags setting
+"      ctags setting 
 "============================"
 
 
@@ -451,20 +451,6 @@ let g:tagbar_right = 1        "在右侧
 "============================"
 "map :CtrlP
 map <c-c> :CtrlP<CR>
-noremap <C-W><C-U> :CtrlPMRU<CR>
-nnoremap <C-W>u :CtrlPMRU<CR>
-
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=10
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
-" <C-Z> 标注打开文件
-" <C-O> 打开
-" <C-T> 新标签打开
-" <c-w><c-o> 窗口最大化
 
 
 "============================"
@@ -478,7 +464,7 @@ filetype plugin on
 "============================"
 let g:vimrc_author = "yifeng@leju.com"
 "ALT+a 更新用户信息
-nmap <M-o> :AuthorInfoDetect<cr>
+nmap <M-o> :AuthorInfoDetect<cr> 
 "url http://www.vim.org/scripts/script.php?script_id=2902
 
 "============================"
@@ -503,7 +489,7 @@ endfunction
 "let g:fencview_checklines = 10 "检查前后10行来判断编码
 
 ":FencAutoDetect    自动检测编码
-":FencView          列出所有编码
+":FencView          列出所有编码 
 
 
 
@@ -573,7 +559,7 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "============================"
 ":h easymotion
 "<leader><leader>w for word
-"<leader><leader>c for character
+"<leader><leader>c for character 
 
 
 
@@ -660,6 +646,10 @@ let g:pydoc_cmd = 'python -m pydoc'
 "       vim-ack
 "============================"
 map <C-F> :Ack<space>
+
+
+
+
 "}}}
 
 
