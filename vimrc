@@ -21,6 +21,36 @@ function! CurDir()
     return curdir
 endfunction
 
+" Run it
+function! Runit()
+  exec "w"
+    if &filetype == 'c'
+        exec "!gcc  % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'php'
+        exec "!php %"
+    elseif &filetype =='python'
+        exec "!python %"
+    elseif &filetype=='ruby'
+        exec "!ruby %"
+    elseif &filetype=='javascript'
+        exec "!js %"
+    elseif &filetype=='sh'
+        exec "!sh %"
+    elseif &filetype=='go'
+        exec "!go build %"
+        exec "! ./%<"
+    elseif &filetype=='coffee'
+        exec "!coffee %"
+    endif
+endfunc
+
 
 function! ShortTabLabel ()
     let bufnrlist = tabpagebuflist (v:lnum)
@@ -245,7 +275,6 @@ match OverLength '\%101v.*'
 
 
 
-
 ""tab space 显示 '----'
 "set list
 "set listchars=tab:--,trail:-
@@ -268,7 +297,7 @@ au BufWinEnter *.* silent loadview
 "---------------Files and backups{{{
 
 " 把html文件当作xml文件来编辑，因为html按=号格式化有问题，而xml没问题
-"au FileType smarty,html set ft=xml 
+"au FileType smarty,html set ft=xml
 au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高亮
 
 " JavaScript 语法高亮
@@ -285,12 +314,59 @@ au BufRead,BufNewFile *.json set filetype=json
 
 "au FileType php,python,c,java,javascript,html,htm,smarty,json call SetOption()
 
+" Objective-C
+autocmd! BufNewFile,BufRead *.m set filetype=objc
+
+" ActionScript
+autocmd! BufNewFile,BufRead *.as set filetype=actionscript
+autocmd! BufNewFile,BufRead *.mxml set filetype=mxml
+
+" SCSS
+autocmd! BufNewFile,BufRead *.scss set filetype=scss.css
+
+" eRuby
+autocmd! BufNewFile,BufRead *.erb set filetype=eruby.html
+
+" JSON
+autocmd! BufNewFile,BufRead *.json set filetype=javascript
+
+" GitIgnore
+autocmd! BufNewFile,BufRead *.gitignore set filetype=gitignore
+
+" ZSH
+autocmd! BufNewFile,BufRead *.zsh-theme set filetype=zsh
+
+" Nginx Config
+autocmd! BufNewFile,BufRead nginx.conf set filetype=nginx
+
+" CocoaPods
+autocmd! BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
+
 "}}}
 
 
 
-"去掉windows下编辑器产生的 
-nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm  
+
+" Python
+if executable("python")
+  autocmd BufRead,BufNewFile *.py map <F5> :% w !python<CR>
+else
+  autocmd BufRead,BufNewFile *.py map <F5> :echo "you need to install Python first!"<CR>
+endif
+
+" Php
+if executable("php")
+  autocmd BufRead,BufNewFile *.php map <F5> :% w !php<CR>
+else
+  autocmd BufRead,BufNewFile *.php map <F5> :echo "you need to install php first!"<CR>
+endif
+
+" VimScript
+autocmd BufRead,BufNewFile *.vim map <F5> :source %<CR>:echon "script reloaded!"<CR>
+
+
+"去掉windows下编辑器产生的
+nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
 " => Command current dir
 nmap <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
 "Shift+F12 删除所有行未尾空格
@@ -408,6 +484,7 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
 
 "   let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -661,6 +738,13 @@ let g:indentLine_color_gui = '#A4E57E'
 "============================"
 "h gundo
 map <C-G> :GundoToggle<CR>
+
+
+"============================"
+"       vim-ack
+"============================"
+noremap FF :Ack<SPACE>
+
 
 
 "}}}
