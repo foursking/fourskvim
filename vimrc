@@ -379,6 +379,7 @@ nmap <S-F12> :%s,/s/+$,,g
 
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
+ab raw raw_input("> ")
 "定义 thi  $this->
 ab calss class
 
