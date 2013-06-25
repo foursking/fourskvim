@@ -139,6 +139,7 @@ if has("gui_macvim")
     "let macvim_hig_shift_movement = 1
     "设置背景透明度
     "set transparency=10
+    set transparency=8
     set macmeta     "设置macmeta
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
@@ -249,10 +250,8 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\   "在被分割的窗口间显示空白，�
 set hidden
 set modifiable
 set write
+set wildmenu                           "候选词出现在界面上
 
-if has("gui_running")
-    set transparency=8
-endif
 
 
 "set guioptions-=m                     "隐藏菜单栏
@@ -281,10 +280,6 @@ highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 match OverLength '\%101v.*'
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 04559f239fbc9babe30f1cd8d46a1e242746eabd
 ""tab space 显示 '----'
 "set list
 "set listchars=tab:--,trail:-
@@ -356,7 +351,6 @@ autocmd! BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 
 
 
-<<<<<<< HEAD
 
 " Python
 if executable("python")
@@ -376,8 +370,6 @@ endif
 autocmd BufRead,BufNewFile *.vim map <F5> :source %<CR>:echon "script reloaded!"<CR>
 
 
-=======
->>>>>>> 04559f239fbc9babe30f1cd8d46a1e242746eabd
 "去掉windows下编辑器产生的
 nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
 " => Command current dir
@@ -494,14 +486,11 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 "    NerdTree setting
 "============================"
-<<<<<<< HEAD
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
 
-"   let NERDTreeShowBookmarks=1
-=======
 "let NERDTreeKeepTreeInNewTab=1
 let NERDChristmasTree=1										" 类似圣诞树的显示方式
 let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
@@ -513,7 +502,6 @@ let NERDTreeShowLineNumbers=0								" 是否默认显示行号
 let NERDTreeWinPos='left'									" 窗口位置（'left' or 'right'）
 let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeQuitOnOpen = 1									" 当通过NERD Tree打开文件自动退出NERDTree界面
->>>>>>> 04559f239fbc9babe30f1cd8d46a1e242746eabd
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
 map <C-B> :NERDTreeToggle<CR>
@@ -659,6 +647,8 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "  (123+4*56)/2              cs)]        [123+456]/2
 "  (123+4*56)/2              cs)[        [ 123+456 ]/2
 "  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+"
+"  hello* world               v4lS&      hello &world&
 
 
 "============================"
@@ -721,13 +711,15 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-au Syntax * RainbowParenthesesToggleAll "always on
+au Syntax * call rainbow_parentheses#activate()
 "
 ":RainbowParenthesesToggle       " Toggle it on/off
 ":RainbowParenthesesLoadRound    " (), the default when toggling
 ":RainbowParenthesesLoadSquare   " []
 ":RainbowParenthesesLoadBraces   " {}
 ":RainbowParenthesesLoadChevrons " <>
+"call RainbowParenthesesLoadSquare()
+"call rainbow#activate()
 
 
 
@@ -752,14 +744,8 @@ let g:pydoc_cmd = 'python -m pydoc'
 "============================"
 "       vim-ack
 "============================"
-<<<<<<< HEAD
-noremap FF :Ack<SPACE>
-
-
-
-=======
 map <C-F> :Ack<space>
->>>>>>> 04559f239fbc9babe30f1cd8d46a1e242746eabd
+
 "}}}
 
 
