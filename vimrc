@@ -29,6 +29,7 @@ function! ShortTabLabel ()
     return filename
 endfunction
 
+
 function! MyTabLine()
     let s = ''
     for i in range(tabpagenr('$'))
@@ -455,12 +456,13 @@ noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
-let g:ctrlp_working_path_mode=0
+"let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=10
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
 " <C-Z> 标注打开文件
 " <C-O> 打开
 " <C-T> 新标签打开
