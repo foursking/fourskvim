@@ -21,6 +21,36 @@ function! CurDir()
     return curdir
 endfunction
 
+" Run it
+function! Runit()
+  exec "w"
+    if &filetype == 'c'
+        exec "!gcc  % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'php'
+        exec "!php %"
+    elseif &filetype =='python'
+        exec "!python %"
+    elseif &filetype=='ruby'
+        exec "!ruby %"
+    elseif &filetype=='javascript'
+        exec "!js %"
+    elseif &filetype=='sh'
+        exec "!sh %"
+    elseif &filetype=='go'
+        exec "!go build %"
+        exec "! ./%<"
+    elseif &filetype=='coffee'
+        exec "!coffee %"
+    endif
+endfunc
+
 
 function! ShortTabLabel ()
     let bufnrlist = tabpagebuflist (v:lnum)
@@ -110,6 +140,7 @@ if has("gui_macvim")
     "let macvim_hig_shift_movement = 1
     "设置背景透明度
     "set transparency=10
+    set transparency=8
     set macmeta     "设置macmeta
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
@@ -220,10 +251,8 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\   "在被分割的窗口间显示空白，�
 set hidden
 set modifiable
 set write
+set wildmenu                           "候选词出现在界面上
 
-if has("gui_running")
-    set transparency=8
-endif
 
 
 "set guioptions-=m                     "隐藏菜单栏
@@ -291,8 +320,55 @@ au BufRead,BufNewFile *.json set filetype=json
 
 "au FileType php,python,c,java,javascript,html,htm,smarty,json call SetOption()
 
+" Objective-C
+autocmd! BufNewFile,BufRead *.m set filetype=objc
+
+" ActionScript
+autocmd! BufNewFile,BufRead *.as set filetype=actionscript
+autocmd! BufNewFile,BufRead *.mxml set filetype=mxml
+
+" SCSS
+autocmd! BufNewFile,BufRead *.scss set filetype=scss.css
+
+" eRuby
+autocmd! BufNewFile,BufRead *.erb set filetype=eruby.html
+
+" JSON
+autocmd! BufNewFile,BufRead *.json set filetype=javascript
+
+" GitIgnore
+autocmd! BufNewFile,BufRead *.gitignore set filetype=gitignore
+
+" ZSH
+autocmd! BufNewFile,BufRead *.zsh-theme set filetype=zsh
+
+" Nginx Config
+autocmd! BufNewFile,BufRead nginx.conf set filetype=nginx
+
+" CocoaPods
+autocmd! BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
+
 "}}}
 
+
+
+
+" Python
+if executable("python")
+  autocmd BufRead,BufNewFile *.py map <F5> :% w !python<CR>
+else
+  autocmd BufRead,BufNewFile *.py map <F5> :echo "you need to install Python first!"<CR>
+endif
+
+" Php
+if executable("php")
+  autocmd BufRead,BufNewFile *.php map <F5> :% w !php<CR>
+else
+  autocmd BufRead,BufNewFile *.php map <F5> :echo "you need to install php first!"<CR>
+endif
+
+" VimScript
+autocmd BufRead,BufNewFile *.vim map <F5> :source %<CR>:echon "script reloaded!"<CR>
 
 
 "去掉windows下编辑器产生的
@@ -304,6 +380,7 @@ nmap <S-F12> :%s,/s/+$,,g
 
 "设置ab 快捷键
 ab pri print_r($_GET);exit;
+ab raw raw_input("> ")
 "定义 thi  $this->
 ab calss class
 
@@ -411,6 +488,11 @@ let g:SuperTabMappingBackward = '<s-c-space>'
 
 "    NerdTree setting
 "============================"
+map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+
 "let NERDTreeKeepTreeInNewTab=1
 let NERDChristmasTree=1										" 类似圣诞树的显示方式
 let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
@@ -568,6 +650,8 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "  (123+4*56)/2              cs)]        [123+456]/2
 "  (123+4*56)/2              cs)[        [ 123+456 ]/2
 "  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+"
+"  hello* world               v4lS&      hello &world&
 
 
 "============================"
@@ -630,13 +714,15 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-au Syntax * RainbowParenthesesToggleAll "always on
+au Syntax * call rainbow_parentheses#activate()
 "
 ":RainbowParenthesesToggle       " Toggle it on/off
 ":RainbowParenthesesLoadRound    " (), the default when toggling
 ":RainbowParenthesesLoadSquare   " []
 ":RainbowParenthesesLoadBraces   " {}
 ":RainbowParenthesesLoadChevrons " <>
+"call RainbowParenthesesLoadSquare()
+"call rainbow#activate()
 
 
 
@@ -662,6 +748,7 @@ let g:pydoc_cmd = 'python -m pydoc'
 "       vim-ack
 "============================"
 map <C-F> :Ack<space>
+
 "}}}
 
 

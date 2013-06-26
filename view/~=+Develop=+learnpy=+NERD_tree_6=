@@ -48,7 +48,7 @@ setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=2
-setlocal imsearch=2
+setlocal imsearch=0
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
@@ -92,7 +92,7 @@ if &syntax != 'nerdtree'
 setlocal syntax=nerdtree
 endif
 setlocal tabstop=4
-setlocal tags=
+setlocal tags=~/Develop/learnpy/.git/tags,./tags,./TAGS,tags,TAGS
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
@@ -100,12 +100,13 @@ setlocal nowinfixheight
 setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 19 - ((17 * winheight(0) + 17) / 35)
+let s:l = 83 - ((33 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 0
+83
+normal! 06l
+lcd ~/Develop/learnpy
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
