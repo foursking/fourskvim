@@ -117,7 +117,20 @@ endfunction
 "    " set complete+=k~/.vim/pydiction isk+=.,
 "endfunction
 "
-
+" Remove trailing whitespace when writing a buffer, but not for diff files.
+" 自动去除无效空白，包括行尾和文件尾
+" From: Vigil
+" @see http://blog.bs2.to/post/EdwardLee/17961
+function RemoveTrailingWhitespace()
+    if &ft != "diff"
+        let b:curcol = col(".")
+        let b:curline = line(".")
+        silent! %s/\s\+$//
+        silent! %s/\(\s*\n\)\+\%$//
+        call cursor(b:curline, b:curcol)
+    endif
+endfunction
+autocmd BufWritePre * call RemoveTrailingWhitespace()
 
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
@@ -714,7 +727,7 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
-au Syntax * call rainbow_parentheses#activate()
+au Syntax * call rainbow_parentheses#toggleall()
 "
 ":RainbowParenthesesToggle       " Toggle it on/off
 ":RainbowParenthesesLoadRound    " (), the default when toggling
@@ -735,6 +748,18 @@ let g:indentLine_color_gui = '#A4E57E'
 
 
 
+"============================"
+"   vim-Tabularize
+"============================"
+nmap <leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a" :Tabularize /:\zs<CR>
+vmap <Leader>a" :Tabularize /:\zs<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+
+
+
 
 "============================"
 "       vim-gundo
@@ -750,5 +775,3 @@ let g:pydoc_cmd = 'python -m pydoc'
 map <C-F> :Ack<space>
 
 "}}}
-
-
