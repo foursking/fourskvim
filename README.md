@@ -3,7 +3,7 @@
 Authentically this is my first time to use the git&github and write something with markdown. Hope it is useful~
 
 # How To Use
-1. `git clone https://github.com/foursking/fourskvim.git ~/` 
+1. `git clone https://github.com/foursking/fourskvim.git ~/`
 2. `mv fourskvim .vim`
 3. `ln -s ~/.vim/vimrc ~/.vimrc`
 4. Done! :)
@@ -63,5 +63,3 @@ Authentically this is my first time to use the git&github and write something wi
 [Sround]:http://www.baidu.com
 [vimrc]:https://github.com/foursking/.vim/blob/master/vimrc
 [foursking-vim-img]:http://h.hiphotos.baidu.com/album/s%3D1100%3Bq%3D90/sign=7b29971418d8bc3ec20802cbb2bb9d6f/63d0f703918fa0ec1f524623279759ee3d6ddb02.jpg
-
-
