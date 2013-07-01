@@ -70,3 +70,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "bundle/vim-gundo"]
+	path = bundle/vim-gundo
+	url = https://github.com/sjl/gundo.vim
