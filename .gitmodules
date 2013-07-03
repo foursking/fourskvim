@@ -73,3 +73,6 @@
 [submodule "bundle/vim-gundo"]
 	path = bundle/vim-gundo
 	url = https://github.com/sjl/gundo.vim
+[submodule "bundle/phprc"]
+	path = bundle/phprc
+	url = https://github.com/h2ero/phprc.git
