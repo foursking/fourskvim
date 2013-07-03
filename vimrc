@@ -774,4 +774,14 @@ let g:pydoc_cmd = 'python -m pydoc'
 "============================"
 map <C-F> :Ack<space>
 
+
+"============================"
+"       vim-syntastic
+"============================"
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_always_populate_loc_list = 1
+
+
+
 "}}}

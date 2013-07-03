@@ -100,12 +100,13 @@ setlocal nowinfixheight
 setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 59 - ((24 * winheight(0) + 17) / 35)
+let s:l = 20 - ((19 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-59
+20
 normal! 0
+lcd ~/Develop/openvim/application/controllers
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
