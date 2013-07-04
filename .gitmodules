@@ -79,3 +79,6 @@
 [submodule "bundle/phpcr"]
 	path = bundle/phpcr
 	url = https://github.com/h2ero/phpcr
+[submodule "bundle/php-indent"]
+	path = bundle/php-indent
+	url = https://github.com/2072/PHP-Indenting-for-VIm.git
