@@ -76,3 +76,6 @@
 [submodule "bundle/vim-python-mode"]
 	path = bundle/vim-python-mode
 	url = https://github.com/klen/python-mode
+[submodule "bundle/php-indent"]
+	path = bundle/php-indent
+	url = https://github.com/2072/PHP-Indenting-for-VIm.git
