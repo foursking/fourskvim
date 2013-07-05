@@ -76,6 +76,3 @@
 [submodule "bundle/vim-python-mode"]
 	path = bundle/vim-python-mode
 	url = https://github.com/klen/python-mode
-[submodule "bundle/phpcr"]
-	path = bundle/phpcr
-	url = https://github.com/h2ero/phpcr
