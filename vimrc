@@ -361,6 +361,9 @@ autocmd! BufNewFile,BufRead nginx.conf set filetype=nginx
 " CocoaPods
 autocmd! BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 
+" Txt
+autocmd BufNewFile,Bufread *.txt set syntax=help
+
 "}}}
 
 

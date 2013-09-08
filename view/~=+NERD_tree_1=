@@ -59,6 +59,7 @@ setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal nolist
+setlocal macmeta
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
@@ -100,12 +101,12 @@ setlocal nowinfixheight
 setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 59 - ((24 * winheight(0) + 17) / 35)
+let s:l = 29 - ((13 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-59
-normal! 0
+29
+normal! 013l
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

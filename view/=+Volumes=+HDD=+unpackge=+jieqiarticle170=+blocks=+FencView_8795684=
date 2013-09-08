@@ -5,9 +5,9 @@ setlocal noarabic
 setlocal noautoindent
 setlocal balloonexpr=
 setlocal nobinary
-setlocal bufhidden=hide
+setlocal bufhidden=delete
 setlocal nobuflisted
-setlocal buftype=nofile
+setlocal buftype=nowrite
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
@@ -30,8 +30,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'nerdtree'
-setlocal filetype=nerdtree
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -72,7 +72,7 @@ setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
-setlocal noreadonly
+setlocal readonly
 setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
@@ -85,15 +85,15 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!Pl#Statusline(11,1)
+setlocal statusline=%!Pl#Statusline(0,1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'nerdtree'
-setlocal syntax=nerdtree
+if &syntax != ''
+setlocal syntax=
 endif
 setlocal tabstop=4
-setlocal tags=~/Develop/openvim/.git/tags,./tags,tags
+setlocal tags=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
@@ -101,13 +101,18 @@ setlocal nowinfixheight
 setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 20 - ((19 * winheight(0) + 18) / 36)
+let s:l = 36 - ((35 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 09l
-lcd ~/Develop/openvim/application/controllers
+36
+let s:c = 10 - ((0 * winwidth(0) + 17) / 34)
+if s:c > 0
+  exe 'normal! 0' . s:c . 'lzs' . (10 - s:c) . 'l'
+else
+  normal! 010l
+endif
+lcd /Volumes/HDD/unpackge/jieqiarticle170/blocks
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
