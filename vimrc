@@ -165,6 +165,9 @@ else
     set linespace=2
     set columns=180
     set lines=45
+    set guifont=Monospace\ 10
+    "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     " colorscheme evening
 endif
 
@@ -785,7 +788,15 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_always_populate_loc_list = 1
 
-let g:airline_theme="solarized"
+
+"let g:airline_theme="solarized"
 "let g:airline#extensions#tabline#enabled = 1
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+
+
+
 
 "}}}
