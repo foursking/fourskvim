@@ -4,8 +4,11 @@
 "   LastChange: 2013-05-15 16:49:15
 "=============================================================================
 
+
 "----------------自己设定的function {{{
 " check MySys 检测当先系统类型
+
+
 function! MySys()
     if has("win32")
         return "windows"
@@ -369,6 +372,7 @@ autocmd BufNewFile,Bufread *.txt set syntax=help
 
 "}}}
 
+ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 
 
@@ -776,10 +780,9 @@ map <C-G> :GundoToggle<CR>
 let g:pydoc_cmd = 'python -m pydoc'
 
 "============================"
-"       vim-ack
+"       vim-ag
 "============================"
-map <C-F> :Ack<space>
-
+"let g:agprg="<custom-ag-path-goes-here> --column"
 
 "============================"
 "       vim-syntastic
