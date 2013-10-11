@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/foursk/.vim'
 let g:netrw_dirhist_2='/home/foursk/workspace/jjshouse/v5/vendor/blu3gui7ar/esmeralda/lib/esmeralda'
+let g:netrw_dirhist_3='/home/foursk/Develop/twslim/htdocs'
+let g:netrw_dirhist_4='/home/foursk/.vim'
