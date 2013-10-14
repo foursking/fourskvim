@@ -118,3 +118,6 @@
 	path = bundle/vim-ag
 	url = https://github.com/rking/ag.vim
     ignore = untracked
+[submodule "bundle/vim-debug"]
+	path = bundle/vim-debug
+	url = https://github.com/joonty/vdebug
