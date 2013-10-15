@@ -117,3 +117,6 @@
 [submodule "bundle/vim-debug"]
 	path = bundle/vim-debug
 	url = https://github.com/joonty/vdebug
+[submodule "bundle/vim-powerline"]
+	path = bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline

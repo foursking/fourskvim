@@ -4,11 +4,8 @@
 "   LastChange: 2013-05-15 16:49:15
 "=============================================================================
 
-
 "----------------自己设定的function {{{
 " check MySys 检测当先系统类型
-
-
 function! MySys()
     if has("win32")
         return "windows"
@@ -161,14 +158,16 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    set guifont=Monaco:h12
+    "set guifont=Monaco:h12
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
     set linespace=2
     set columns=180
     set lines=45
-    set guifont=Monospace\ 10
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
+
+    "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
     "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     " colorscheme evening
@@ -271,6 +270,7 @@ set hidden
 set modifiable
 set write
 set wildmenu                           "候选词出现在界面上
+"set paste                              "终端code格式
 
 
 
@@ -313,10 +313,9 @@ set selectmode=mouse,key
 
 
 ""自动载入
-au BufWinLeave *.* silent mkview
-au BufWinEnter *.* silent loadview
-" => Files and backups
-
+"au BufWinLeave * silent mkview
+"au BufWinEnter * silent loadview
+"" => Files and backups
 
 
 "---------------Files and backups{{{
@@ -493,6 +492,10 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "      ctags setting
 "============================"
 
+"============================"
+"     Powerline
+"============================"
+let g:Powerline_colorscheme='solarized256'
 
 "============================"
 "  neocomplcache补全插件
@@ -519,7 +522,7 @@ let NERDTreeShowBookmarks=1
 "let NERDTreeKeepTreeInNewTab=1
 let NERDChristmasTree=1										" 类似圣诞树的显示方式
 let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
-"let NERDTreeMouseMode=2										" 指定鼠标模式(1.双击打开 2.单目录双文件 3.单击打开)
+"let NERDTreeMouseMode=2									" 指定鼠标模式(1.双击打开 2.单目录双文件 3.单击打开)
 let NERDTreeShowBookmarks=1									" 是否默认显示书签列表
 let NERDTreeShowFiles=1										" 是否默认显示文件
 let NERDTreeShowHidden=1									" 是否默认显示隐藏文件
@@ -787,17 +790,21 @@ let g:pydoc_cmd = 'python -m pydoc'
 "============================"
 "       vim-syntastic
 "============================"
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
 
 
-"let g:airline_theme="solarized"
+"let g:airline_theme="serene"
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline_left_sep = ''
 "let g:airline_left_alt_sep = ''
 "let g:airline_right_sep = ''
 "let g:airline_right_alt_sep = ''
+
+
+
+
 
 
 
