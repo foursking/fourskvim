@@ -73,12 +73,13 @@ Bundle "markwu/LargeFile"
 Bundle "leshill/vim-json"
 
 Bundle "pangloss/vim-javascript"
-Bundle "ugo5/AuthorInfo"
+"Bundle "ugo5/AuthorInfo"
 
 Bundle "lijoantony/log"
 
 "Bundle "tomtom/startup_profile_vim"
 "Bundle "vim-scripts/log.vim"
+
 
 
 
@@ -615,11 +616,6 @@ map <C-B> :NERDTreeToggle<CR>
 
 
 
-"============================"
-"    pathogen  setting
-"============================"
-"开启pathogen插件
-"call pathogen#infect()
 
 "============================"
 "    tagbar
