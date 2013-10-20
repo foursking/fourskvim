@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/etc/apache2'
-let g:netrw_dirhist_2='/usr/local/etc'
-let g:netrw_dirhist_3='/usr/local/bin'
-let g:netrw_dirhist_4='/etc/apache2/sites-enabled'
-let g:netrw_dirhist_5='/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/backlight/acpi_video0/device'
-let g:netrw_dirhist_6='/home/foursk/bin'
