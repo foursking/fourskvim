@@ -1,4 +1,4 @@
-view/      # 忽略view目录
+/view      # 忽略view目录
 bundle/    # 忽略bundle
 tags       # 忽略tags
 .netrwhist # 忽略.netrwhist
