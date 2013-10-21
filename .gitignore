@@ -1,2 +1,6 @@
-view/*
 .netrwhist
+view/
+tags
+.gitmodules
+vim.log
+bundle/
