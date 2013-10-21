@@ -1,2 +1,5 @@
-view/*.*
+view/
 tags
+.gitmodules
+vim.log
+bundle/
