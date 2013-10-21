@@ -21,7 +21,6 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
-"Bundle 'airblade/vim-gitgutter'
 Bundle 'Townk/vim-autoclose'
 
 
@@ -29,58 +28,57 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 
 
 
-Bundle "sjas/csExplorer"
-Bundle "kien/ctrlp.vim"
-Bundle "mbbill/fencview"
-Bundle "nathanaelkane/vim-indent-guides"
-Bundle "michalliu/jsruntime.vim"
-Bundle "Shougo/vimshell.vim"
-Bundle "Shougo/neocomplcache.vim"
-Bundle "michalliu/sourcebeautify.vim"
-Bundle "tpope/vim-surround"
-Bundle "godlygeek/tabular"
-Bundle "mileszs/ack.vim"
-Bundle "vim-scripts/matchit.zip"
-Bundle "plasticboy/vim-markdown"
-Bundle "vim-scripts/LustyExplorer"
-Bundle "ianva/vim-youdao-translater"
-Bundle "tobyS/vimtip"
-Bundle "mrtazz/DoxygenToolkit.vim"
-Bundle "scrooloose/syntastic"
-Bundle "mattn/zencoding-vim"
-Bundle "dimasg/vim-mark"
-Bundle "Shougo/neocomplcache.vim"
-Bundle "vim-scripts/YankRing.vim"
-Bundle "altercation/vim-colors-solarized"
-Bundle "Yggdroot/indentLine"
-Bundle "bronson/vim-trailing-whitespace"
-Bundle "kien/rainbow_parentheses.vim"
-Bundle "ap/vim-css-color"
-Bundle "terryma/vim-multiple-cursors"
-Bundle "tpope/vim-repeat"
-"Bundle "sjl/gundo.vim"
-Bundle "klen/python-mode"
-Bundle "2072/PHP-Indenting-for-VIm"
-Bundle "markwu/LargeFile"
+Bundle 'sjas/csExplorer'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mbbill/fencview'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'michalliu/jsruntime.vim'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'michalliu/sourcebeautify.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'vim-scripts/LustyExplorer'
+Bundle 'ianva/vim-youdao-translater'
+Bundle 'mrtazz/DoxygenToolkit.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'mattn/zencoding-vim'
+Bundle 'dimasg/vim-mark'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Yggdroot/indentLine'
+Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'ap/vim-css-color'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-repeat'
+Bundle 'klen/python-mode'
+Bundle '2072/PHP-Indenting-for-VIm'
+Bundle 'markwu/LargeFile'
 
-Bundle "leshill/vim-json"
+Bundle 'leshill/vim-json'
 
-Bundle "pangloss/vim-javascript"
-Bundle "ugo5/AuthorInfo"
+Bundle 'pangloss/vim-javascript'
 
-Bundle "lijoantony/log"
+Bundle 'lijoantony/log'
 
-"Bundle "tomtom/startup_profile_vim"
-"Bundle "vim-scripts/log.vim"
-
-
+"Bundle 'tomtom/startup_profile_vim'
+"Bundle 'vim-scripts/log.vim'
+"Bundle 'ugo5/AuthorInfo'
+"Bundle 'sjl/gundo.vim'
+"Bundle 'airblade/vim-gitgutter'
+"Bundle 'tobyS/vimtip'
 
 
 "----------------自己设定的function {{{
