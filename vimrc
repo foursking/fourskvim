@@ -17,68 +17,60 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-
-
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Townk/vim-autoclose'
-
-
+Bundle 'bling/vim-airline'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fugitive'
-
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
-
-
-
 Bundle 'sjas/csExplorer'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mbbill/fencview'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'michalliu/jsruntime.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/neocomplcache.vim'
 Bundle 'michalliu/sourcebeautify.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
-Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'vim-scripts/LustyExplorer'
 Bundle 'ianva/vim-youdao-translater'
 Bundle 'mrtazz/DoxygenToolkit.vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'mattn/zencoding-vim'
 Bundle 'dimasg/vim-mark'
 Bundle 'Shougo/neocomplcache.vim'
-Bundle 'vim-scripts/YankRing.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'ap/vim-css-color'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-repeat'
 Bundle 'klen/python-mode'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'markwu/LargeFile'
-
 Bundle 'leshill/vim-json'
-
 Bundle 'pangloss/vim-javascript'
-
 Bundle 'lijoantony/log'
 
+"Bundle 'ap/vim-css-color'
 "Bundle 'tomtom/startup_profile_vim'
 "Bundle 'vim-scripts/log.vim'
 "Bundle 'ugo5/AuthorInfo'
 "Bundle 'sjl/gundo.vim'
 "Bundle 'airblade/vim-gitgutter'
 "Bundle 'tobyS/vimtip'
+"Bundle 'Townk/vim-autoclose'
+"Bundle 'vim-scripts/YankRing.vim'
+"Bundle 'mileszs/ack.vim'
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'mattn/zencoding-vim'
+"Bundle 'michalliu/jsruntime.vim'
+"Bundle 'Shougo/vimproc.vim'
+"Bundle 'Shougo/vimshell.vim'
+"Bundle 'vim-scripts/LustyExplorer'
+
 
 
 "----------------自己设定的function {{{
@@ -213,7 +205,7 @@ autocmd BufWritePre * call RemoveTrailingWhitespace()
 set fileencoding=utf-8
 "set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
 set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
-"set fileencodings=utf-8,chinese,latin1
+"set encoding=utf-8
 set ambiwidth=double 					"防止特殊字符显示错误
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/vimrc_example.vim
@@ -317,7 +309,7 @@ set background=dark
 colorscheme molokai                    "颜色设置
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
-set autochdir                          "自动切换文件目录
+"set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式
 set tabstop=4                          "设置tab字符
 set shiftwidth=4                       "设置shift宽度
@@ -347,6 +339,7 @@ set hidden
 set modifiable
 set write
 set wildmenu                           "候选词出现在界面上
+set listchars=tab:▸\ ,eol:¬
 "set paste                              "终端code格式
 
 
@@ -514,6 +507,8 @@ map YY y$
 map HH ^
 "jump to the line end
 map LL $
+map Y "+y
+map P "+p
 
 "标签页跳转
 map <M-q> gT
@@ -580,6 +575,7 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "     Powerline
 "============================"
 let g:Powerline_colorscheme='solarized256'
+"let g:Powerline_symbols = 'fancy'
 
 "============================"
 "  neocomplcache补全插件
@@ -588,12 +584,41 @@ let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
 
 
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplcache#smart_close_popup()
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+"endfunction
+" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+
+
+
+
 "============================"
 "  supertab
 "============================"
 
-let g:SuperTabMappingForward = '<c-space>'
-let g:SuperTabMappingBackward = '<s-c-space>'
+"let g:SuperTabMappingForward = '<c-space>'
+"let g:SuperTabMappingBackward = '<s-c-space>'
 
 
 "    NerdTree setting
@@ -879,12 +904,12 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
 
 
-"let g:airline_theme="serene"
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
+let g:airline_theme="serene"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 
 
