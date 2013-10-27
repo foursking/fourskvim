@@ -489,6 +489,9 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "noremap <c-F5> :MyCodeStyleOn<cr>
 "noremap <c-F6> :MyCodeStyleOff<cr>
 
+
+nnoremap <leader>md :silent !open -a Marked.app '%:p'<cr>
+
 "}}}
 
 "------------------ Bundle plugin settiny {{{
@@ -616,7 +619,6 @@ let g:ctrlp_follow_symlinks=1
 "============================"
 "    snipMate
 "============================"
-filetype plugin on
 
 
 "============================"
