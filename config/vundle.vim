@@ -53,7 +53,7 @@ Bundle 'markwu/LargeFile'
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'lijoantony/log'
-
+Bundle 'fishy/projtags-vim'
 Bundle 'bling/vim-airline'
 "Bundle 'ap/vim-css-color'
 "Bundle 'tomtom/startup_profile_vim'
