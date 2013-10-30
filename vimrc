@@ -15,7 +15,6 @@ source $VIMRUNTIME/vimrc_example.vim
 "source $VIMRUNTIME/menu.vim   菜单栏
 "source $VIMRUNTIME/mswin.vim  模拟win快捷键
 "}}}
-"
 
 " 运行mac_vim
 if has("gui_macvim")
@@ -55,7 +54,6 @@ if MySys() == "windows"
     let $MYVHOSTS   = "d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf"
     "let $DESKTOP   = $USERPROFILE."\\桌面"
     let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
-    let $EJU        = "D://workspace/esf.eju.com"
 elseif MySys() == "linux"
     "let $MYVIM      = $HOME."/usr/four/vim"
     "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
@@ -143,6 +141,8 @@ set write
 set wildmenu                           "候选词出现在界面上
 set listchars=tab:▸\ ,eol:¬
 "set paste                              "终端code格式
+
+set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 
 
 

@@ -4,15 +4,13 @@
 "      ctags setting
 "============================"
 
-"============================"
-"     Powerline
+"---Powerline setting {{{
 "============================"
 let g:Powerline_colorscheme='solarized256'
 "let g:Powerline_symbols = 'fancy'
+" }}}
 
-"============================"
-"  neocomplcache补全插件
-"============================"
+"--- neocomplcache setting {{{
 let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
 
@@ -41,21 +39,19 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" }}}
 
 
 
 
 
-"============================"
-"  supertab
-"============================"
-
+"---supertab setting {{{
 "let g:SuperTabMappingForward = '<c-space>'
 "let g:SuperTabMappingBackward = '<s-c-space>'
+" }}}
 
 
-"    NerdTree setting
-"============================"
+"---NerdTree setting {{{
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
@@ -75,32 +71,27 @@ let NERDTreeWinSize=30										" 窗口宽度
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
 map <C-B> :NERDTreeToggle<CR>
+" }}}
 
 
 
-"============================"
-"    pathogen  setting
-"============================"
-"开启pathogen插件
-"call pathogen#infect()
 
-"============================"
-"    tagbar
-"============================"
+"---tagbar setting {{{
 "设置ctags路径
 if  MySys() == 'windows'
     let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
+elseif MySys() == 'unix'
+    let g:tagbar_ctags_bin = '/usr/bin/ctags'
 endif
+
 nmap <c-n> :TagbarToggle<CR>   "设置快捷键
 let g:tagbar_width = 30       "设置宽度，默认为40
 "autocmd VimEnter * nested :call tagbar#autoopen(1)    "打开vim时自动打开tagbar
 let g:tagbar_right = 1        "在右侧
 
+" }}}
 
-"============================"
-"    CtrlP
-"============================"
-"map :CtrlP
+"---CtrlP {{{
 map <c-c> :CtrlP<CR>
 noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
@@ -117,20 +108,11 @@ let g:ctrlp_follow_symlinks=1
 " <C-O> 打开
 " <C-T> 新标签打开
 " <c-w><c-o> 窗口最大化
+" }}}
 
 
-"============================"
-"    snipMate
-"============================"
 
 
-"============================"
-"    AuthorInfo
-"============================"
-let g:vimrc_author = "yifeng@leju.com"
-"ALT+a 更新用户信息
-nmap <M-o> :AuthorInfoDetect<cr>
-"url http://www.vim.org/scripts/script.php?script_id=2902
 
 "============================"
 "      Indent Guides
@@ -147,14 +129,15 @@ function! SetColorColumn()
     endif
 endfunction
 
-"============================"
-"     Fenc View
-"============================"
+
+
+" Fenc View setting {{{
 "let g:fencview_autodetect = 1  "打开文件时自动识别编码
 "let g:fencview_checklines = 10 "检查前后10行来判断编码
 
 ":FencAutoDetect    自动检测编码
 ":FencView          列出所有编码
+" }}}
 
 
 
@@ -177,33 +160,29 @@ let g:DoxygenToolkit_startCommentBlock = "//!< "
 let g:DoxygenToolkit_endCommentBlock = ""
 
 
-"============================"
-"     vim-youdao
-"============================"
+"---vim-youdao setting {{{
 vnoremap <Leader>yd <ESC>:Ydt<CR>
+" }}}
 
 
-"============================"
-"     vim-markdown
+"---vim-markdown setting {{{
 "============================"
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufEnter *.txt setlocal filetype=txt
+" }}}
 
 
 
-"============================"
-"     vim-syntastic
-"============================"
+"---vim-syntastic setting {{{
 let g:syntastic_check_on_open=1
 ""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+" }}}
 
 
 
 
-""============================"
-"     vim-surround
-"============================"
+"--- vim-surround setting {{{
 " :h surround
 "
 "  Old text                  Command     New text ~
@@ -219,26 +198,24 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 "  <div>Yo!*</div>           cst<p>      <p>Yo!</p>
 "
 "  hello* world               v4lS&      hello &world&
+" }}}
 
 
-"============================"
-"     vim-easymotion
-"============================"
+"---vim-easymotion setting {{{
 ":h easymotion
 "<leader><leader>w for word
 "<leader><leader>c for character
+" }}}
 
 
 
-"============================"
-"     vim-yankring
-"============================"
+"---vim-yankring setting {{{
+
+" }}}
 
 
 
-"============================"
-"     vim-mark
-"============================"
+"--- vim-mark setting {{{
 " mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
 " \m  mark or unmark the word under (or before) the cursor
 " \r  manually input a regular expression. 用于搜索.
@@ -253,12 +230,11 @@ nmap <silent> <Leader>hh <Plug>MarkClear
 vmap <silent> <Leader>hh <Plug>MarkClear
 nmap <silent> <Leader>hr <Plug>MarkRegex
 vmap <silent> <Leader>hr <Plug>MarkRegex
+" }}}
 
 
 
-"============================"
-"   vim-rainbowparentheses
-"============================"
+"--- vim-rainbowparentheses {{{
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -290,6 +266,7 @@ au Syntax * call rainbow_parentheses#toggleall()
 ":RainbowParenthesesLoadChevrons " <>
 "call RainbowParenthesesLoadSquare()
 "call rainbow#activate()
+" }}}
 
 
 
@@ -302,15 +279,14 @@ let g:indentLine_color_gui = '#A4E57E'
 
 
 
-"============================"
-"   vim-Tabularize
-"============================"
+"---vim-Tabularize setting {{{
 nmap <leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a" :Tabularize /:\zs<CR>
 vmap <Leader>a" :Tabularize /:\zs<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
+" }}}
 
 
 
