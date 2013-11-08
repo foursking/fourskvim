@@ -55,6 +55,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'lijoantony/log'
 Bundle 'fishy/projtags-vim'
 Bundle 'vim-scripts/DrawIt'
+Bundle 'foursking/vim-escalt'
 
 "Bundle 'bling/vim-airline'
 "Bundle 'ap/vim-css-color'
