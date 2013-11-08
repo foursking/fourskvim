@@ -96,12 +96,6 @@ function! MyTabLabel(n)
     return bufname(buflist[winnr - 1])
 endfunction
 
-" 当编辑php文件的时候，导入PHP函数列表，按 ctrl+n 自动补全
-" au FileType php call AddPHPFuncList() " 有neocomplacache都不用这些函数了，自带的
-function! AddPHPFuncList()
-    set dict-=~/.vim/php_funclist.txt dict+=~/.vim/php_funclist.txt
-    set complete-=k complete+=k
-endfunction
 
 " 当编辑python文件的时候，导入python函数列表，按 ctrl+n 自动补全
 " au FileType python call AddPythonFuncList() " 有neocomplacache都不用这些函数了，自带的
@@ -115,7 +109,7 @@ endfunction
 " 自动去除无效空白，包括行尾和文件尾
 " From: Vigil
 " @see http://blog.bs2.to/post/EdwardLee/17961
-function RemoveTrailingWhitespace()
+function! RemoveTrailingWhitespace()
     if &ft != "diff"
         let b:curcol = col(".")
         let b:curline = line(".")

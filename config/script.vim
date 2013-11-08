@@ -1,16 +1,12 @@
 "------------------ Bundle plugin settiny {{{
 
-"============================"
-"      ctags setting
-"============================"
 
-"---Powerline setting {{{
-"============================"
-"let g:Powerline_colorscheme='solarized256'
+"---Powerline setting --- {{{
+let g:Powerline_colorscheme='solarized256'
 "let g:Powerline_symbols = 'fancy'
 " }}}
 
-"--- neocomplcache setting {{{
+"--- neocomplcache setting --- {{{
 let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
 
@@ -45,13 +41,13 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
 
-"---supertab setting {{{
+"---supertab setting --- {{{
 "let g:SuperTabMappingForward = '<c-space>'
 "let g:SuperTabMappingBackward = '<s-c-space>'
 " }}}
 
 
-"---NerdTree setting {{{
+"---NerdTree setting --- {{{
 map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
@@ -91,7 +87,7 @@ let g:tagbar_right = 1        "在右侧
 
 " }}}
 
-"---CtrlP {{{
+"---CtrlP --- {{{
 map <c-c> :CtrlP<CR>
 noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
@@ -114,9 +110,7 @@ let g:ctrlp_follow_symlinks=1
 
 
 
-"============================"
-"      Indent Guides
-"============================"
+" --- Indent Guides ---{{{
 let g:indent_guides_guide_size=1
 map rr :call SetColorColumn()<CR>
 function! SetColorColumn()
@@ -128,6 +122,7 @@ function! SetColorColumn()
         execute "set cc-=".col_num
     endif
 endfunction
+"}}}
 
 
 
@@ -141,9 +136,7 @@ endfunction
 
 
 
-"============================"
-"     DoxygenToolkit
-"============================"
+"--- DoxygenToolkit ---{{{
 let g:DoxygenToolkit_authorName="foursking, lyf021408@gmail.com"
 let s:licenseTag = "Copyright(C)\<enter>"
 let s:licenseTag = s:licenseTag . "For free\<enter>"
@@ -152,21 +145,20 @@ let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
-
 let g:DoxygenToolkit_interCommentTag = "* "
 let g:DoxygenToolkit_startCommentTag = "/*"
 let g:DoxygenToolkit_endCommentTag = "*/"
 let g:DoxygenToolkit_startCommentBlock = "//!< "
 let g:DoxygenToolkit_endCommentBlock = ""
+" }}}
 
 
-"---vim-youdao setting {{{
+"---vim-youdao setting --- {{{
 vnoremap <Leader>yd <ESC>:Ydt<CR>
 " }}}
 
 
 "---vim-markdown setting {{{
-"============================"
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufEnter *.txt setlocal filetype=txt
 " }}}
@@ -215,7 +207,7 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 
 
 
-"--- vim-mark setting {{{
+"--- vim-mark setting ---{{{
 " mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
 " \m  mark or unmark the word under (or before) the cursor
 " \r  manually input a regular expression. 用于搜索.
@@ -234,7 +226,7 @@ vmap <silent> <Leader>hr <Plug>MarkRegex
 
 
 
-"--- vim-rainbowparentheses {{{
+"--- vim-rainbowparentheses ---{{{
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -271,15 +263,14 @@ au Syntax * call rainbow_parentheses#toggleall()
 
 
 
-"============================"
-"   vim-indentLine
-"============================"
+"--- vim-indentLine ---{{{
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
+" }}}
 
 
 
-"---vim-Tabularize setting {{{
+"---vim-Tabularize ---{{{
 nmap <leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a" :Tabularize /:\zs<CR>
@@ -289,29 +280,34 @@ vmap <Leader>a: :Tabularize /:<CR>
 " }}}
 
 
+"---vim-Multiple-Cursors---{{{
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+"}}}
 
 
-"============================"
-"       vim-gundo
-"============================"
+"--- vim-gundo ---{{{
 "h gundo
 map <C-G> :GundoToggle<CR>
+"}}}
 
 let g:pydoc_cmd = 'python -m pydoc'
 
-"============================"
-"       vim-ag
-"============================"
+"--- vim-ag ---{{{
 let g:agprg="<custom-ag-path-goes-here> --column"
+"}}}
 
-"============================"
-"       vim-syntastic
-"============================"
+
+"--- vim-syntastic ---{{{
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
+"}}}
 
 
+"--- vim-airline ---{{{
 let g:airline_theme="serene"
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_left_sep = ''
@@ -320,16 +316,18 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_alt_sep = ''
 let g:airline_exclude_preview=1
 
-" ---------------
-" vimshell
-" ---------------
+"--- vimshell ---{{{
 let g:vimshell_temporary_directory = expand('~/.vim/cache/vimshell')
 let g:vimshell_force_overwrite_statusline = 0
+"}}}
 
 
 let g:gitgutter_enabled = 0
 map <leader>gg :GitGutterToggle<CR>
 
-
+if !exists("g:DisableAutoPHPFolding")
+    let g:DisableAutoPHPFolding = 0
+endif
+let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
 
 "}}}
