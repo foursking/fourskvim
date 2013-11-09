@@ -84,6 +84,12 @@ set tabline=%!MyTabLine()
 set guioptions-=m
 set guioptions-=T
 
+if &term =~ "xterm\|rxvt"
+  silent !echo -ne "\e]12;HotPink\007"
+  let &t_SI="\e]12;RoyalBlue1\007"
+  let &t_EI="\e]12;HotPink\007"
+  autocmd VimLeave * :!echo -ne "\e]12;green\007"
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
