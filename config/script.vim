@@ -321,6 +321,9 @@ let g:vimshell_temporary_directory = expand('~/.vim/cache/vimshell')
 let g:vimshell_force_overwrite_statusline = 0
 "}}}
 
+"--- youdaodict---{{{
+vnoremap <silent> <C-T> <Esc>:Ydt<CR>
+"}}}
 
 let g:gitgutter_enabled = 0
 map <leader>gg :GitGutterToggle<CR>
@@ -331,3 +334,6 @@ endif
 let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
 
 "}}}
+
+let g:pipe2eval_map_key = '<Leader>p2e'
+vmap <buffer> <Space> ':/home/foursk/.vim/bundle/pipe2eval/plugin/pipe2eval.sh text<CR><CR>'

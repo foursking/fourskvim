@@ -141,10 +141,10 @@ set write
 set wildmenu                           "候选词出现在界面上
 set listchars=tab:▸\ ,eol:¬
 "set paste                              "终端code格式
+"set display=lastline
 
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
-
-
+"set gcr=a:block-blinkon1000
 
 "set guioptions-=m                     "隐藏菜单栏
 "set guioptions-=T                     "隐藏工具栏
