@@ -28,7 +28,7 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    "set guifont=Monaco:h12
+    set guifont=Monaco:h12
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else

@@ -50,7 +50,12 @@ Authentically this is my first time to use the git&github and write something wi
 
 
 
+Ripple Address
 
+r3wmBGBBCgoNG2xN7JtVatKV5N4FSxqyh9
+Secret Account key:
+
+snKup3rkgqfs89svecTHWLExQkLqS
 
 
 
