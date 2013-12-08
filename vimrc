@@ -28,7 +28,7 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    set guifont=Monaco:h12
+    set guifont=Menlo:h12
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
     "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 else
@@ -45,7 +45,7 @@ endif
 
 
 
-" => Setting VIM and VIMRUNTIME
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if MySys() == "windows"
     let $MYVIM      = $PROGRAMFILES."\\Vim"
@@ -84,13 +84,9 @@ set tabline=%!MyTabLine()
 set guioptions-=m
 set guioptions-=T
 
-if &term =~ "xterm\|rxvt"
-  silent !echo -ne "\e]12;HotPink\007"
-  let &t_SI="\e]12;RoyalBlue1\007"
-  let &t_EI="\e]12;HotPink\007"
-  autocmd VimLeave * :!echo -ne "\e]12;green\007"
-endif
 
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ====  通用设置 ====                                   "
