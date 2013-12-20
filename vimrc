@@ -366,7 +366,6 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 "noremap <c-F5> :MyCodeStyleOn<cr>
 "noremap <c-F6> :MyCodeStyleOff<cr>
 
-
 nnoremap <leader>md :silent !open -a Marked.app '%:p'<cr>
 
 "}}}
