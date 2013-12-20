@@ -35,7 +35,7 @@ else
     set linespace=2
     set columns=180
     set lines=45
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
+    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
 
     "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
