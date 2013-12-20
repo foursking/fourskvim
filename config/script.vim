@@ -48,6 +48,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
 "---NerdTree setting --- {{{
+"定义NERDTree快捷键
 map <C-E> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
