@@ -65,7 +65,8 @@ let NERDTreeShowLineNumbers=0								" 是否默认显示行号
 let NERDTreeWinPos='left'									" 窗口位置（'left' or 'right'）
 let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeQuitOnOpen = 1									" 当通过NERD Tree打开文件自动退出NERDTree界面
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+"let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+"定义NERDTree快捷键
 " }}}
 
 
