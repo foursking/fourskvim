@@ -146,6 +146,9 @@ set listchars=tab:▸\ ,eol:¬
 "set paste                              "终端code格式
 "set display=lastline
 
+
+
+
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
