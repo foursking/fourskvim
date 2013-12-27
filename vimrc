@@ -35,7 +35,7 @@ else
     set linespace=2
     set columns=180
     set lines=45
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
+    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
 
     "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
@@ -368,7 +368,6 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 
 "noremap <c-F5> :MyCodeStyleOn<cr>
 "noremap <c-F6> :MyCodeStyleOff<cr>
-
 
 nnoremap <leader>md :silent !open -a Marked.app '%:p'<cr>
 

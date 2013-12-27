@@ -67,6 +67,7 @@ let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeQuitOnOpen = 1									" 当通过NERD Tree打开文件自动退出NERDTree界面
 "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
+"map <C-B> :NERDTreeToggle<CR>
 " }}}
 
 
