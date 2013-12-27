@@ -281,6 +281,8 @@ ab raw raw_input("> ")
 "定义 thi  $this->
 ab calss class
 
+map j gj
+map k gk
 
 "map , as <leader> key instead of \ by default
 "jj to ESC
