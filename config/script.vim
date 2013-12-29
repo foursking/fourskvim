@@ -48,7 +48,8 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
 "---NerdTree setting --- {{{
-map <C-B> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+"定义NERDTree快捷键
+map <C-E> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
@@ -66,7 +67,7 @@ let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeQuitOnOpen = 1									" 当通过NERD Tree打开文件自动退出NERDTree界面
 "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
-map <C-B> :NERDTreeToggle<CR>
+"map <C-B> :NERDTreeToggle<CR>
 " }}}
 
 

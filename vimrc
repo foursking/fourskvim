@@ -35,7 +35,7 @@ else
     set linespace=2
     set columns=180
     set lines=45
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
+    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
 
     "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
@@ -87,6 +87,7 @@ set guioptions-=T
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ====  通用设置 ====                                   "
@@ -144,6 +145,9 @@ set wildmenu                           "候选词出现在界面上
 set listchars=tab:▸\ ,eol:¬
 "set paste                              "终端code格式
 "set display=lastline
+
+
+
 
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
@@ -280,6 +284,8 @@ ab raw raw_input("> ")
 "定义 thi  $this->
 ab calss class
 
+map j gj
+map k gk
 
 "map , as <leader> key instead of \ by default
 "jj to ESC
@@ -365,7 +371,6 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 
 "noremap <c-F5> :MyCodeStyleOn<cr>
 "noremap <c-F6> :MyCodeStyleOff<cr>
-
 
 nnoremap <leader>md :silent !open -a Marked.app '%:p'<cr>
 
