@@ -13,4 +13,3 @@
 11. `:echo g:mapleader`
 12. 块操作  `CTRL-A` 模式选中 s(修改) 保存 `<ESC>` 可以 `:h ctrl-v` 查看更多
 14. 打开长行文件的时候速度慢 map j gj  & map k gk , :syntax=off
-15.
