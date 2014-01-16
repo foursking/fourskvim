@@ -309,7 +309,7 @@ let g:syntastic_always_populate_loc_list = 1
 
 
 "--- vim-airline ---{{{
-let g:airline_theme="serene"
+let g:airline_theme="wombat"
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_left_sep = ''
 "let g:airline_left_alt_sep = ''

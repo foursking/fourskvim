@@ -39,7 +39,7 @@ else
 
     "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     " colorscheme evening
 endif
 
@@ -143,8 +143,11 @@ set modifiable
 set write
 set wildmenu                           "候选词出现在界面上
 set listchars=tab:▸\ ,eol:¬
+set keywordprg=help
+
 "set paste                              "终端code格式
 "set display=lastline
+set wrap
 
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
@@ -175,7 +178,6 @@ highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 match OverLength '\%101v.*'
 
 
-""tab space 显示 '----'
 "set list
 "set listchars=tab:--,trail:-
 "hi SpecialKey ctermfg=77 guifg=#696969
@@ -244,10 +246,13 @@ autocmd! BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 " Txt
 autocmd BufNewFile,Bufread *.txt set syntax=help
 
+
+autocmd BufNewFile,Bufread *.ros,*.inc,*.php set keywordprg="help"
+
 "}}}
 
+"Using vim as calculator
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-
 
 
 " Python
