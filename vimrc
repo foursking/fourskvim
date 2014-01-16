@@ -149,6 +149,9 @@ set keywordprg=help
 "set display=lastline
 set wrap
 
+
+
+
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
@@ -286,6 +289,8 @@ ab raw raw_input("> ")
 "定义 thi  $this->
 ab calss class
 
+map j gj
+map k gk
 
 "map , as <leader> key instead of \ by default
 "jj to ESC
