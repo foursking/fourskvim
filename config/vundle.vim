@@ -30,7 +30,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 
-
+Bundle 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mbbill/fencview'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -56,6 +56,8 @@ Bundle 'lijoantony/log'
 Bundle 'fishy/projtags-vim'
 Bundle 'toupeira/vim-desertink'
 
+Bundle 'edkolev/promptline.vim'
+Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'foursking/vim-doc-cn'
 Bundle 'foursking/vim-escalt'
 Bundle 'foursking/PIV'
@@ -63,7 +65,7 @@ Bundle 'foursking/vim-colorscheme'
 
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'thinca/vim-quickrun'
-
+Bundle 'jacekd/vim-iawriter'
 Bundle 'tpope/vim-commentary'
 Bundle 'h2ero/phpcr'
 Bundle 'zweifisch/pipe2eval'
@@ -75,12 +77,14 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'junegunn/goyo.vim'
 Bundle 'evanmiller/nginx-vim-syntax'
 
+
+Bundle 'edkolev/tmuxline.vim'
+
 "Bundle 'sjas/csExplorer'
 "Bundle 'honza/vim-snippets'
 "Bundle 'sjas/csExplorer'
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'terryma/vim-expand-region'
-"Bundle 'vim-scripts/vcscommand.vim'
 "Bundle 'thinca/vim-quickrun'
 "Bundle 'vim-scripts/DrawIt'
 "Bundle 'mrtazz/DoxygenToolkit.vim'

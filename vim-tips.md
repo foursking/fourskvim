@@ -12,7 +12,6 @@
 10. `:sav! %<.bak` 换一个后缀保存
 11. `:echo g:mapleader`
 12. 块操作  `CTRL-A` 模式选中 s(修改) 保存 `<ESC>` 可以 `:h ctrl-v` 查看更多
-<<<<<<< HEAD
 13. zo	將游標所在處的折疊打開。open。
     zc	將游標所在處已打開的內容再度折疊起來。close。
     zr	將全文的所有折疊依層次通通打開。reduce。
@@ -22,6 +21,4 @@
     zi	這是個切換，是折疊與不折疊指令間的切換。
     zn	打開全文的所有折疊。fold none。
     zN	這是 zn 的相對指令，回復所有的折疊。
-=======
 14. 打开长行文件的时候速度慢 map j gj  & map k gk , :syntax=off
->>>>>>> 5f038a2e1bc7e39d507c83f43f6bb93f2d5422da

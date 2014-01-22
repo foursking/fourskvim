@@ -309,14 +309,33 @@ let g:syntastic_always_populate_loc_list = 1
 
 
 "--- vim-airline ---{{{
-let g:airline_theme="wombat"
+let g:airline_theme="tomorrow"
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_exclude_preview=1
+let g:airline#extensions#bufferline#enabled = 1
 
+"--- vim-tmuxline---{{{
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
+
+"}}}
+
+
+"--- vim-bufferline{{{
+let g:bufferline_echo = 0
+
+"}}}
 "--- vimshell ---{{{
 let g:vimshell_temporary_directory = expand('~/.vim/cache/vimshell')
 let g:vimshell_force_overwrite_statusline = 0
