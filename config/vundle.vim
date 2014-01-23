@@ -58,7 +58,7 @@ Bundle 'toupeira/vim-desertink'
 
 Bundle 'foursking/vim-doc-cn'
 Bundle 'foursking/vim-escalt'
-
+"Bundle 'dyng/ctrlsf.vim'
 Bundle 'foursking/vim-php-manual'
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'thinca/vim-quickrun'

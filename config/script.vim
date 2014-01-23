@@ -207,7 +207,13 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " }}}
 
 
+"---vim-agsetting {{{
+let g:agprg="<custom-ag-path-goes-here> --column"
+" }}}
 
+let g:ctrlsf_ackprg ='ag'
+let g:strlsf_auto_close = 0
+let g:ctrlsf_context = '-B 5 -A 3'
 "--- vim-mark setting ---{{{
 " mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
 " \m  mark or unmark the word under (or before) the cursor
