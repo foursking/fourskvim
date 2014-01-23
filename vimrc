@@ -39,7 +39,8 @@ else
 
     "set guifont=Monospace\ 10
     "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
+    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
+    set guifont=Liberation\ Mono\ for\ Powerline\ 10
     " colorscheme evening
 endif
 
