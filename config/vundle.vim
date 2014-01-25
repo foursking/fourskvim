@@ -60,6 +60,8 @@ Bundle 'edkolev/promptline.vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'foursking/vim-doc-cn'
 Bundle 'foursking/vim-escalt'
+"Bundle 'dyng/ctrlsf.vim'
+"Bundle 'foursking/vim-php-manual'
 Bundle 'foursking/PIV'
 Bundle 'foursking/vim-colorscheme'
 
