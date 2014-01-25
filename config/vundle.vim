@@ -29,7 +29,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
-
+Bundle 'leshill/vim-json'
 Bundle 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mbbill/fencview'
