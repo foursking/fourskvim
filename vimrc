@@ -101,7 +101,7 @@ set t_Co=256                           "让终端支持256色，否则很多配�
 set background=dark
 colorscheme molokai
 set helplang=cn                        "设置中文帮助
-set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
+"set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式
 set tabstop=4                          "设置tab字符
@@ -121,7 +121,7 @@ set magic                              "正则 Set magic on
 set noerrorbells                       "取消滴滴声 :) No sound on errors.
 set novisualbell
 set whichwrap=b,s,<,>,[,]              "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
-set et                                 "编辑时将所有tab替换为空格
+"set et                                 "编辑时将所有tab替换为空格
 set ambiwidth=double                   "防止特殊符号无法正常显示，如五角星等
 set laststatus=2
 set autoread                           "当文件内容被其他编辑器改变时自动加载
@@ -132,7 +132,7 @@ set hidden
 set modifiable
 set write
 set wildmenu                           "候选词出现在界面上
-set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ ,eol:¬
 set keywordprg=help
 
 "set paste                              "终端code格式
@@ -145,6 +145,7 @@ set wrap
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
+<<<<<<< HEAD
 "set guioptions-=m                     "隐藏菜单栏
 "set guioptions-=T                     "隐藏工具栏
 "set guioptions-=L                     "隐藏左侧滚动条
@@ -161,6 +162,9 @@ set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 
 
 " search setting {{{
+=======
+""搜索设置
+>>>>>>> 1c2a3a8a53508fa62e5a5b486121bb38f952cf92
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
@@ -223,7 +227,7 @@ autocmd! BufNewFile,BufRead *.scss set filetype=scss.css
 autocmd! BufNewFile,BufRead *.erb set filetype=eruby.html
 
 " JSON
-autocmd! BufNewFile,BufRead *.json set filetype=javascript
+"autocmd! BufNewFile,BufRead *.json set filetype=javascript
 
 " GitIgnore
 autocmd! BufNewFile,BufRead *.gitignore set filetype=gitignore
@@ -273,12 +277,6 @@ nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
 nmap <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
 "Shift+F12 删除所有行未尾空格
 nmap <S-F12> :%s,/s/+$,,g
-
-"设置ab 快捷键
-ab pri print_r($_GET);exit;
-ab raw raw_input("> ")
-"定义 thi  $this->
-ab calss class
 
 map j gj
 map k gk
@@ -350,7 +348,6 @@ if has("autocmd")
 endif
 
 
-imap ;; <Esc>A;<Enter>
 "定义输入快捷键
 imap <M-h> <Left>
 imap <M-j> <Down>

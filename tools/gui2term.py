@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # vim:fileencoding=utf-8
 
 '''
@@ -300,7 +300,7 @@ def loadRgb(): # {{{2
           name = "'%s'" % name
         name2rgb[name] = int(r), int(g), int(b)
   except IOError:
-    print('Failed to open rgb file', rgbfile, file=sys.stderr)
+    print('Failed to open rgb file')
 
 def convert(infile, outfile): # {{{2
   global Normal
@@ -554,7 +554,7 @@ if __name__ == '__main__': # {{{1
     try:
       convert(sys.argv[1], sys.argv[2])
     except IOError:
-      print('Error opening file', file=sys.stderr)
+      print('Error opening file')
       sys.exit(2)
   else:
     print('Usage: gui2term.py SRC_FILE DEST_FILE')
