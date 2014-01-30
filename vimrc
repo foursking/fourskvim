@@ -28,26 +28,17 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    set guifont=Menlo:h12
-    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
-    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 else
     set linespace=2
     set columns=180
     set lines=45
-    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
-
-    "set guifont=Monospace\ 10
-    "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     set guifont=Liberation\ Mono\ for\ Powerline\ 10
-    " colorscheme evening
 endif
 
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if MySys() == "windows"
     let $MYVIM      = $PROGRAMFILES."\\Vim"
     let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
@@ -90,9 +81,7 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ====  通用设置 ====                                   "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible                       "关闭兼容vi模式
 filetype on
@@ -110,7 +99,7 @@ set history=400                        "设置历史记录数
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
 set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
 set background=dark
-colorscheme molokai                    "颜色设置
+colorscheme molokai
 set helplang=cn                        "设置中文帮助
 set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
@@ -171,10 +160,11 @@ set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 ":tablast                              "移动到最后一个标签页
 
 
-""搜索设置
+" search setting {{{
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
+" }}}
 
 
 ""高亮字符，让其不受100列限制
