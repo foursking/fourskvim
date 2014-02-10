@@ -109,13 +109,13 @@ endfunction
 " 自动去除无效空白，包括行尾和文件尾
 " From: Vigil
 " @see http://blog.bs2.to/post/EdwardLee/17961
-function! RemoveTrailingWhitespace()
-    if &ft != "diff"
-        let b:curcol = col(".")
-        let b:curline = line(".")
-        silent! %s/\s\+$//
-        silent! %s/\(\s*\n\)\+\%$//
-        call cursor(b:curline, b:curcol)
-    endif
-endfunction
-autocmd BufWritePre * call RemoveTrailingWhitespace()
+" function! RemoveTrailingWhitespace()
+"     if &ft != "diff"
+"         let b:curcol = col(".")
+"         let b:curline = line(".")
+"         silent! %s/\s\+$//
+"         silent! %s/\(\s*\n\)\+\%$//
+"         call cursor(b:curline, b:curcol)
+"     endif
+" endfunction
+" autocmd BufWritePre * call RemoveTrailingWhitespace()
