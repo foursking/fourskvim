@@ -145,7 +145,6 @@ set wrap
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
-<<<<<<< HEAD
 "set guioptions-=m                     "隐藏菜单栏
 "set guioptions-=T                     "隐藏工具栏
 "set guioptions-=L                     "隐藏左侧滚动条
@@ -162,9 +161,6 @@ set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 
 
 " search setting {{{
-=======
-""搜索设置
->>>>>>> 1c2a3a8a53508fa62e5a5b486121bb38f952cf92
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
@@ -346,7 +342,6 @@ map <silent> <leader>qq :tabnew $MYVHOSTS<CR>
 if has("autocmd")
     "autocmd! bufwritepost vimrc source $MYVIMRC
 endif
-
 
 "定义输入快捷键
 imap <M-h> <Left>
