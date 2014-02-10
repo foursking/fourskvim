@@ -74,11 +74,7 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
-<<<<<<< HEAD
 "通用设置{{{
-=======
-"                           ====  通用设置 ====                                   "
->>>>>>> 39898f69246ea0d7fe5dd4941c388bbe839d4f13
 
 set nocompatible                       "关闭兼容vi模式
 filetype on
@@ -142,7 +138,6 @@ set wrap
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
-<<<<<<< HEAD
 "set guioptions-=m                     "隐藏菜单栏
 "set guioptions-=T                     "隐藏工具栏
 "set guioptions-=L                     "隐藏左侧滚动条
@@ -159,9 +154,6 @@ set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 
 
 " search setting {{{
-=======
-""搜索设置
->>>>>>> 1c2a3a8a53508fa62e5a5b486121bb38f952cf92
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
