@@ -28,26 +28,17 @@ if has("gui_macvim")
     set linespace=2 "行间距
     set columns=180 "初始化窗口宽度
     set lines=55    "初始化窗口高度
-    set guifont=Menlo:h12
-    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
-    "au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 else
     set linespace=2
     set columns=180
     set lines=45
-    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 9
-
-    "set guifont=Monospace\ 10
-    "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
     set guifont=Liberation\ Mono\ for\ Powerline\ 10
-    " colorscheme evening
 endif
 
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if MySys() == "windows"
     let $MYVIM      = $PROGRAMFILES."\\Vim"
     let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
@@ -83,7 +74,11 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
+<<<<<<< HEAD
 "通用设置{{{
+=======
+"                           ====  通用设置 ====                                   "
+>>>>>>> 39898f69246ea0d7fe5dd4941c388bbe839d4f13
 
 set nocompatible                       "关闭兼容vi模式
 filetype on
@@ -147,10 +142,30 @@ set wrap
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
+<<<<<<< HEAD
+"set guioptions-=m                     "隐藏菜单栏
+"set guioptions-=T                     "隐藏工具栏
+"set guioptions-=L                     "隐藏左侧滚动条
+"set guioptions-=r                     "隐藏右侧滚动条
+"set guioptions-=b                     "隐藏底部滚动条
+"set showtabline=0                     "隐藏Tab栏
+":tabnew                               "新建标签页
+":tabs                                 "显示已打开标签页的列表
+":tabc                                 "关闭当前标签页
+":tabn                                 "移动到下一个标签页
+":tabp                                 "移动到上一个标签页
+":tabfirst                             "移动到第一个标签页
+":tablast                              "移动到最后一个标签页
+
+
+" search setting {{{
+=======
 ""搜索设置
+>>>>>>> 1c2a3a8a53508fa62e5a5b486121bb38f952cf92
 set incsearch                          "从键入时就开始匹配
 set hlsearch                           "高亮搜索结果
 set ignorecase smartcase               "搜索时不区分大小写，如果键入了大写字母则区分大小写
+" }}}
 
 
 ""高亮字符，让其不受100列限制

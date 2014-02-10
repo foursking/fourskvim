@@ -317,12 +317,14 @@ let g:syntastic_always_populate_loc_list = 1
 "--- vim-airline ---{{{
 let g:airline_theme="tomorrow"
 let g:airline#extensions#tabline#enabled = 1
+
 let g:airline#extensions#tabline#show_buffers = 0
  let g:airline_left_sep = ''
  let g:airline_left_alt_sep = ''
  let g:airline_right_sep = ''
  let g:airline_right_alt_sep = ''
  let g:airline_exclude_preview=1
+
 let g:airline#extensions#bufferline#enabled = 1
 
 "--- vim-tmuxline---{{{
