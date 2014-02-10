@@ -57,13 +57,6 @@ endif
 
 "---------------界面选项{{{
 
-if MySys() == "windows"
-    set guifont=YaHei\ Mono:h11 "设置中文字体
-    au GUIEnter * simalt ~x     "窗口最大化
-else
-    "au GUIEnter * call MaximizeWindow()
-endif
-
 "gvim 标签定制
 set guitablabel=%{ShortTabLabel()}
 
@@ -81,7 +74,7 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
-"                           ====  通用设置 ====                                   "
+"通用设置{{{
 
 set nocompatible                       "关闭兼容vi模式
 filetype on
@@ -310,24 +303,18 @@ map LL $
 map Y "+y
 map P "+p
 
-"标签页跳转
 map <M-q> gT
 map <M-e> gt
-"关闭当前标签页
 map <M-x> :tabc<cr>
-"新建标签页
 map <M-n> :tabnew<cr>
-"定义剪切板快捷键
 "remove windows ^M
 map <leader>M :%s/\r//g <cr>
-"修改文件编码
 map <leader>ft :set fileencoding=utf-8<cr>
 map <leader>fb :set fileencoding=gbk<cr>
 
 nmap n nzz
 nmap N Nzz
 
-"set fileformats=unix,dos,mac  设置文本的格式,Linux的svn经常需要用到
 nmap <leader>fd :se fileformat=dos<CR>
 nmap <leader>fu :se fileformat=unix<CR>
 "Fast reloading of the .vimrc
@@ -339,11 +326,9 @@ map <silent> <leader>pp :tabnew $MYHOSTS<CR>
 "Fast editing of conf
 map <silent> <leader>qq :tabnew $MYVHOSTS<CR>
 "When .vimrc is edited, reload it
-if has("autocmd")
-    "autocmd! bufwritepost vimrc source $MYVIMRC
-endif
 
 "定义输入快捷键
+
 imap <M-h> <Left>
 imap <M-j> <Down>
 imap <M-k> <Up>

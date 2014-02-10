@@ -43,7 +43,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'dimasg/vim-mark'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Yggdroot/indentLine'
-Bundle 'bronson/vim-trailing-whitespace'
+"Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-repeat'
@@ -79,7 +79,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'junegunn/goyo.vim'
 Bundle 'evanmiller/nginx-vim-syntax'
 
-
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'edkolev/tmuxline.vim'
 
 "Bundle 'sjas/csExplorer'
