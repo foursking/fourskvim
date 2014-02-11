@@ -133,8 +133,6 @@ set keywordprg=help
 set wrap
 
 
-
-
 set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
 "set gcr=a:block-blinkon1000
 
@@ -162,8 +160,8 @@ set ignorecase smartcase               "搜索时不区分大小写，如果键�
 
 ""高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
-match OverLength '\%101v.*'
-
+"match OverLength '\%100v.*'
+"set colorcolumn=120
 
 "set list
 "set listchars=tab:--,trail:-
