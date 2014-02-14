@@ -18,16 +18,14 @@ source $VIMRUNTIME/vimrc_example.vim
 
 " 运行mac_vim
 if has("gui_macvim")
-    " 取消默认的快捷键
     "let macvim_skip_cmd_opt_movement = 1
     "let macvim_hig_shift_movement = 1
     "设置背景透明度
-    "set transparency=10
     set transparency=8
     set macmeta     "设置macmeta
-    set linespace=2 "行间距
-    set columns=180 "初始化窗口宽度
-    set lines=55    "初始化窗口高度
+    set linespace=2 
+    set columns=180 
+    set lines=55    
     set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 else
     set linespace=2
@@ -40,12 +38,8 @@ endif
 
 
 if MySys() == "windows"
-    let $MYVIM      = $PROGRAMFILES."\\Vim"
-    let $MYRUNTIME  = $PROGRAMFILES."\\Vim\\vim73"
-    let $MYVIMRC    = $PROGRAMFILES."\\Vim\\vimrc"
-    let $MYVHOSTS   = "d://AppServ/Apache2.2/conf/httpd-vhosts_newesf.conf"
-    "let $DESKTOP   = $USERPROFILE."\\桌面"
-    let $MYHOSTS    = "c://windows/system32/drivers/etc/hosts"
+	"code here
+    
 elseif MySys() == "linux"
     "let $MYVIM      = $HOME."/usr/four/vim"
     "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
@@ -94,7 +88,6 @@ set t_Co=256                           "让终端支持256色，否则很多配�
 set background=dark
 colorscheme molokai 
 set helplang=cn                        "设置中文帮助
-"set showcmd                            "屏幕最后一行显示部分命令 如果慢的话可以删掉
 set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式
 set tabstop=4                          "设置tab字符
@@ -291,7 +284,7 @@ map sp :sp+enew<Enter>
 map QQ :q<Enter>
 map ff zf
 "delete to the end of line
-map DD d$a
+map DD d$
 "copy to the end of line
 map YY y$
 "jump to the line head
