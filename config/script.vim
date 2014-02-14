@@ -70,9 +70,6 @@ let NERDTreeWinSize=30										" 窗口宽度
 "map <C-B> :NERDTreeToggle<CR>
 " }}}
 
-
-
-
 "---tagbar setting {{{
 "设置ctags路径
 if  MySys() == 'windows'
