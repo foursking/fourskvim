@@ -42,8 +42,7 @@ snippet i
 snippet t.
 	$this->
 snippet f
-	function ${1:foo}(${2:array }${3:$bar})
-	{
+	${1:public} function ${2:foo}(${3:$bar}) {
 		${0}
 	}
 # method
@@ -380,6 +379,9 @@ snippet gs
 		return $this;
 	}
 # anotation, get, and set, useful for doctrine
+
+snippet pub
+
 snippet ags
 	/**
 	 * ${1:description}
