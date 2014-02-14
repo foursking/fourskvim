@@ -122,7 +122,7 @@ set wildmenu                           "候选词出现在界面上
 set keywordprg=help
 
 "set paste                              "终端code格式
-"set display=lastline
+set display=lastline
 set wrap
 
 
