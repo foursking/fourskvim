@@ -1,15 +1,16 @@
 "------------------ Bundle plugin settiny {{{
 
 
-"---Powerline setting --- {{{
+"{{{ Powerline setting
 let g:Powerline_colorscheme='solarized256'
 "let g:Powerline_symbols = 'fancy'
-" }}}
+"}}}
 
-"--- neocomplcache setting --- {{{
+
+"{{{ neocomplcache setting
 let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
-
+"}}}
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -35,25 +36,24 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" }}}
+"}}}
 
 
 
 
 
-"---supertab setting --- {{{
+"{{{ supertab setting
 "let g:SuperTabMappingForward = '<c-space>'
 "let g:SuperTabMappingBackward = '<s-c-space>'
-" }}}
+"}}}
 
 
-"---NerdTree setting --- {{{
+"{{{ NerdTree setting
 "定义NERDTree快捷键
 map <C-E> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
-
 "let NERDTreeKeepTreeInNewTab=1
 let NERDChristmasTree=1										" 类似圣诞树的显示方式
 let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
@@ -68,9 +68,11 @@ let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
 "map <C-B> :NERDTreeToggle<CR>
-" }}}
 
-"---tagbar setting {{{
+"}}}
+
+
+"{{{ tagbar setting 
 "设置ctags路径
 if  MySys() == 'windows'
     let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
@@ -82,10 +84,9 @@ nmap <c-n> :TagbarToggle<CR>   "设置快捷键
 let g:tagbar_width = 30       "设置宽度，默认为40
 "autocmd VimEnter * nested :call tagbar#autoopen(1)    "打开vim时自动打开tagbar
 let g:tagbar_right = 1        "在右侧
+"}}}
 
-" }}}
-
-"---CtrlP --- {{{
+"{{{ CtrlP
 map <c-c> :CtrlP<CR>
 noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
@@ -97,7 +98,6 @@ let g:ctrlp_max_height=10
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-
 " <C-Z> 标注打开文件
 " <C-O> 打开
 " <C-T> 新标签打开
@@ -108,7 +108,7 @@ let g:ctrlp_follow_symlinks=1
 
 
 
-" --- Indent Guides ---{{{
+"{{{ Indent Guides
 let g:indent_guides_guide_size=1
 map rr :call SetColorColumn()<CR>
 function! SetColorColumn()
@@ -124,7 +124,7 @@ endfunction
 
 
 
-" Fenc View setting {{{
+"{{{ Fenc View setting 
 "let g:fencview_autodetect = 1  "打开文件时自动识别编码
 "let g:fencview_checklines = 10 "检查前后10行来判断编码
 
@@ -134,7 +134,7 @@ endfunction
 
 
 
-"--- DoxygenToolkit ---{{{
+"{{{ DoxygenToolkit
 let g:DoxygenToolkit_authorName="foursking, lyf021408@gmail.com"
 let s:licenseTag = "Copyright(C)\<enter>"
 let s:licenseTag = s:licenseTag . "For free\<enter>"
@@ -151,23 +151,23 @@ let g:DoxygenToolkit_endCommentBlock = ""
 " }}}
 
 
-"---vim-youdao setting --- {{{
-vnoremap <Leader>yd <ESC>:Ydt<CR>
-" }}}
+"{{{ vim-youdao setting
+vnoremap <silent><C-T> <Esc>:Ydt<CR>
+"}}}
 
 
-"---vim-markdown setting {{{
+"{{{ vim-markdown setting
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufEnter *.txt setlocal filetype=txt
-" }}}
+"}}}
 
 
 
-"---vim-syntastic setting {{{
+"{{{ vim-syntastic setting 
 let g:syntastic_check_on_open=1
 ""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
 let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
-" }}}
+"}}}
 
 
 
