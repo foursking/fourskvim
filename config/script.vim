@@ -60,7 +60,7 @@ let NERDTreeAutoCenter=1									" 控制当光标移动超过一定距离时，
 "let NERDTreeMouseMode=2									" 指定鼠标模式(1.双击打开 2.单目录双文件 3.单击打开)
 let NERDTreeShowBookmarks=1									" 是否默认显示书签列表
 let NERDTreeShowFiles=1										" 是否默认显示文件
-let NERDTreeShowHidden=1									" 是否默认显示隐藏文件
+let NERDTreeShowHidden=0									" 是否默认显示隐藏文件
 let NERDTreeShowLineNumbers=0								" 是否默认显示行号
 let NERDTreeWinPos='left'									" 窗口位置（'left' or 'right'）
 let NERDTreeWinSize=30										" 窗口宽度
@@ -68,7 +68,6 @@ let NERDTreeWinSize=30										" 窗口宽度
 "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 "定义NERDTree快捷键
 "map <C-B> :NERDTreeToggle<CR>
-
 "}}}
 
 
@@ -77,7 +76,7 @@ let NERDTreeWinSize=30										" 窗口宽度
 if  MySys() == 'windows'
     let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
 elseif MySys() == 'unix'
-    let g:tagbar_ctags_bin = '/usr/bin/ctags'
+    let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
 endif
 
 nmap <c-n> :TagbarToggle<CR>   "设置快捷键
@@ -204,9 +203,6 @@ let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
 " }}}
 
 
-"---vim-agsetting {{{
-let g:agprg="<custom-ag-path-goes-here> --column"
-" }}}
 
 let g:ctrlsf_ackprg ='ag'
 let g:strlsf_auto_close = 0
@@ -231,29 +227,28 @@ vmap <silent> <Leader>hr <Plug>MarkRegex
 
 
 "--- vim-rainbowparentheses ---{{{
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
 
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
 
-au Syntax * call rainbow_parentheses#toggleall()
 "
 ":RainbowParenthesesToggle       " Toggle it on/off
 ":RainbowParenthesesLoadRound    " (), the default when toggling
@@ -264,6 +259,10 @@ au Syntax * call rainbow_parentheses#toggleall()
 "call rainbow#activate()
 " }}}
 
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 
 
@@ -300,7 +299,7 @@ map <C-G> :GundoToggle<CR>
 let g:pydoc_cmd = 'python -m pydoc'
 
 "--- vim-ag ---{{{
-let g:agprg="<custom-ag-path-goes-here> --column"
+let g:agprg="ag --column --smart-case"
 "}}}
 
 
@@ -308,11 +307,12 @@ let g:agprg="<custom-ag-path-goes-here> --column"
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 "}}}
 
 
 "--- vim-airline ---{{{
-let g:airline_theme="tomorrow"
+let g:airline_theme="wombat"
 let g:airline#extensions#tabline#enabled = 1
 
 let g:airline#extensions#tabline#show_buffers = 0
@@ -322,7 +322,7 @@ let g:airline#extensions#tabline#show_buffers = 0
  let g:airline_right_alt_sep = ''
  let g:airline_exclude_preview=1
 
-let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 0 
 
 "--- vim-tmuxline---{{{
 let g:tmuxline_preset = {
@@ -333,6 +333,13 @@ let g:tmuxline_preset = {
       \'x'    : '%a',
       \'y'    : '#W %R',
       \'z'    : '#H'}
+
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 
 "}}}
 
@@ -353,12 +360,14 @@ vnoremap <silent> <C-T> <Esc>:Ydt<CR>
 let g:gitgutter_enabled = 0
 map <leader>gg :GitGutterToggle<CR>
 
-if !exists("g:DisableAutoPHPFolding")
-    let g:DisableAutoPHPFolding = 0
-endif
-let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
+let g:DisableAutoPHPFolding = 1
+" if !exists("g:DisableAutoPHPFolding")
+"     let g:DisableAutoPHPFolding = 0
+" endif
+" let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
 
 "}}}
 
 let g:pipe2eval_map_key = '<Leader>p2e'
 vmap <buffer> <Space> ':/home/foursk/.vim/bundle/pipe2eval/plugin/pipe2eval.sh text<CR><CR>'
+

@@ -3,6 +3,7 @@ runtime! config/function.vim
 runtime! config/script.vim
 
 
+
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
 "set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
@@ -11,9 +12,6 @@ set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
 set ambiwidth=double 					"防止特殊字符显示错误
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/vimrc_example.vim
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim   菜单栏
-"source $VIMRUNTIME/mswin.vim  模拟win快捷键
 "}}}
 
 " 运行mac_vim
@@ -86,13 +84,16 @@ set history=400                        "设置历史记录数
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
 set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
 set background=dark
-colorscheme molokai 
+colorscheme molokai
+
 set helplang=cn                        "设置中文帮助
 set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式
-set tabstop=4                          "设置tab字符
 set shiftwidth=4                       "设置shift宽度
 set sts=4
+set ts=4
+set expandtab
+set autoindent
 set nobackup                           "不生成备份文件
 set noswapfile                         "不要生成swap文件，当buffer被丢弃的时候隐藏它
 set nu                                 "设置行号
@@ -107,10 +108,11 @@ set magic                              "正则 Set magic on
 set noerrorbells                       "取消滴滴声 :) No sound on errors.
 set novisualbell
 set whichwrap=b,s,<,>,[,]              "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
-"set et                                 "编辑时将所有tab替换为空格
+" set et                                 "编辑时将所有tab替换为空格
 set ambiwidth=double                   "防止特殊符号无法正常显示，如五角星等
 set laststatus=2
 set autoread                           "当文件内容被其他编辑器改变时自动加载
+set autowriteall
 set novisualbell                       "不要闪烁
 set modifiable                         "允许修改缓冲区内容
 set fillchars=vert:\ ,stl:\ ,stlnc:\   "在被分割的窗口间显示空白，便于阅读
@@ -124,24 +126,12 @@ set keywordprg=help
 "set paste                              "终端code格式
 set display=lastline
 set wrap
+set synmaxcol=10000
 
 
-set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags
+set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags,./../../../../tags,/Users/mac/KingNet/workspace/.tags,/Users/mac/Develop/5say-blog.tags
 "set gcr=a:block-blinkon1000
 
-"set guioptions-=m                     "隐藏菜单栏
-"set guioptions-=T                     "隐藏工具栏
-"set guioptions-=L                     "隐藏左侧滚动条
-"set guioptions-=r                     "隐藏右侧滚动条
-"set guioptions-=b                     "隐藏底部滚动条
-"set showtabline=0                     "隐藏Tab栏
-":tabnew                               "新建标签页
-":tabs                                 "显示已打开标签页的列表
-":tabc                                 "关闭当前标签页
-":tabn                                 "移动到下一个标签页
-":tabp                                 "移动到上一个标签页
-":tabfirst                             "移动到第一个标签页
-":tablast                              "移动到最后一个标签页
 
 
 " search setting {{{
@@ -153,6 +143,7 @@ set ignorecase smartcase               "搜索时不区分大小写，如果键�
 
 ""高亮字符，让其不受100列限制
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+
 "match OverLength '\%100v.*'
 "set colorcolumn=120
 
@@ -188,10 +179,8 @@ au FileType smarty,html set syntax=html " 语法高亮还是用html自身的高�
 " 给 CSS 文件添加 Dict
 "au FileType html,htm,smarty,css setlocal dict+=~/.vim/dict/css.dict
 
-" vim不会像认php、java等一样认得json，所以需要加这句，遇到.json后缀的，告诉一下vim这个是json
+" 告诉vim 认识 json vim个笨蛋
 au BufRead,BufNewFile *.json set filetype=json
-
-"au FileType php,python,c,java,javascript,html,htm,smarty,json call SetOption()
 
 " Objective-C
 autocmd! BufNewFile,BufRead *.m set filetype=objc
@@ -233,6 +222,10 @@ autocmd BufNewFile,Bufread *.ros,*.inc,*.php set keywordprg="help"
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 
+" autosave php
+au InsertLeave *.php write
+
+
 " Python
 if executable("python")
   autocmd BufRead,BufNewFile *.py map <F5> :% w !python<CR>
@@ -242,7 +235,7 @@ endif
 
 " Php
 if executable("php")
-  autocmd BufRead,BufNewFile *.php map <F5> :% w !php<CR>
+  autocmd BufRead,BufNewFile *.php map <leader>R :! php %<CR>
 else
   autocmd BufRead,BufNewFile *.php map <F5> :echo "you need to install php first!"<CR>
 endif
@@ -252,7 +245,7 @@ autocmd BufRead,BufNewFile *.vim map <F5> :source %<CR>:echon "script reloaded!"
 
 
 "去掉windows下编辑器产生的
-nmap  <C-M> :%s/<C-V><cr>//ge<cr>'tzt'm
+nmap  <C-M> :%s/<C-V><cr>//ge<cr>
 " => Command current dir
 nmap <leader>cmd :lcd %:p:h<CR>:!cmd<CR>
 "Shift+F12 删除所有行未尾空格
@@ -271,10 +264,6 @@ map <M-4> O+71a-<ENTER><ESC>
 "ALT+6
 map <M-5> O#<ESC>33a<<ESC>
 map <M-6> O#<ESC>33a><ESC>
-"ALT+7
-map <M-7> O//+71a-<ENTER><ESC>j
-"ALT+8插入下一部分
-map <M-8> O/*<ESC>72a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>a<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>8a<space><ESC>aThe Next Part<ESC>6a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>22a-<ESC>27a<space><ESC>23a-<ESC>a*/<ENTER>/*<ESC>72a-<ESC>a*/<ESC>j
 
 "定义mm跳回最近修改的地方
 map mm '.zz
@@ -306,6 +295,7 @@ map <leader>fb :set fileencoding=gbk<cr>
 nmap n nzz
 nmap N Nzz
 
+
 nmap <leader>fd :se fileformat=dos<CR>
 nmap <leader>fu :se fileformat=unix<CR>
 "Fast reloading of the .vimrc
@@ -336,6 +326,6 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 "noremap <c-F5> :MyCodeStyleOn<cr>
 "noremap <c-F6> :MyCodeStyleOff<cr>
 
-nnoremap <leader>md :silent !open -a Marked.app '%:p'<cr>
+nnoremap <leader>md :!open -a Marked.app '%:p'<cr>
 
 "}}}
