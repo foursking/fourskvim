@@ -6,9 +6,7 @@ runtime! config/script.vim
 
 "--------- setting the langmenu{{{
 set fileencoding=utf-8
-"set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
 set fileencodings=ucs-bom,utf-8,gbk,cp936,gb2312,big5,euc-jp,euc-kr,latin1
-"set encoding=utf-8
 set ambiwidth=double 					"防止特殊字符显示错误
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/vimrc_example.vim
@@ -16,8 +14,6 @@ source $VIMRUNTIME/vimrc_example.vim
 
 " 运行mac_vim
 if has("gui_macvim")
-    "let macvim_skip_cmd_opt_movement = 1
-    "let macvim_hig_shift_movement = 1
     "设置背景透明度
     set transparency=8
     set macmeta     "设置macmeta
@@ -129,7 +125,7 @@ set wrap
 set synmaxcol=10000
 
 
-set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags,./../../../../tags,/Users/mac/KingNet/workspace/.tags,/Users/mac/Develop/5say-blog.tags
+set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags,./../../../../tags,/Users/mac/.tags
 "set gcr=a:block-blinkon1000
 
 
@@ -223,7 +219,7 @@ ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 
 " autosave php
-au InsertLeave *.php write
+"au InsertLeave *.php write
 
 
 " Python
@@ -234,11 +230,6 @@ else
 endif
 
 " Php
-if executable("php")
-  autocmd BufRead,BufNewFile *.php map <leader>R :! php %<CR>
-else
-  autocmd BufRead,BufNewFile *.php map <F5> :echo "you need to install php first!"<CR>
-endif
 
 " VimScript
 autocmd BufRead,BufNewFile *.vim map <F5> :source %<CR>:echon "script reloaded!"<CR>
@@ -329,3 +320,15 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 nnoremap <leader>md :!open -a Marked.app '%:p'<cr>
 
 "}}}
+"
+
+
+
+nmap <silent>gK <Plug>DashSearch
+
+
+autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
+
+
+"cmap w!! w !sudo tee % > /dev/null

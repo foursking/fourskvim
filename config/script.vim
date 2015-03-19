@@ -12,7 +12,7 @@ let g:neocomplcache_enable_at_startup=1
 "let g:NeroCompCache_DisableAutoComplete=1
 "}}}
 
-" Define keyword.
+"Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
@@ -30,7 +30,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 "endfunction
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -226,46 +226,6 @@ vmap <silent> <Leader>hr <Plug>MarkRegex
 
 
 
-"--- vim-rainbowparentheses ---{{{
-" let g:rbpt_colorpairs = [
-"     \ ['brown',       'RoyalBlue3'],
-"     \ ['Darkblue',    'SeaGreen3'],
-"     \ ['darkgray',    'DarkOrchid3'],
-"     \ ['darkgreen',   'firebrick3'],
-"     \ ['darkcyan',    'RoyalBlue3'],
-"     \ ['darkred',     'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['brown',       'firebrick3'],
-"     \ ['gray',        'RoyalBlue3'],
-"     \ ['black',       'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['Darkblue',    'firebrick3'],
-"     \ ['darkgreen',   'RoyalBlue3'],
-"     \ ['darkcyan',    'SeaGreen3'],
-"     \ ['darkred',     'DarkOrchid3'],
-"     \ ['red',         'firebrick3'],
-"     \ ]
-
-" let g:rbpt_max = 16
-" let g:rbpt_loadcmd_toggle = 0
-
-"
-":RainbowParenthesesToggle       " Toggle it on/off
-":RainbowParenthesesLoadRound    " (), the default when toggling
-":RainbowParenthesesLoadSquare   " []
-":RainbowParenthesesLoadBraces   " {}
-":RainbowParenthesesLoadChevrons " <>
-"call RainbowParenthesesLoadSquare()
-"call rainbow#activate()
-" }}}
-
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
-
-
-
 "--- vim-indentLine ---{{{
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
@@ -323,6 +283,7 @@ let g:airline#extensions#tabline#show_buffers = 0
  let g:airline_exclude_preview=1
 
 let g:airline#extensions#bufferline#enabled = 0 
+let g:airline#extensions#whitespace#enabled = 0
 
 "--- vim-tmuxline---{{{
 let g:tmuxline_preset = {
@@ -371,3 +332,22 @@ let g:DisableAutoPHPFolding = 1
 let g:pipe2eval_map_key = '<Leader>p2e'
 vmap <buffer> <Space> ':/home/foursk/.vim/bundle/pipe2eval/plugin/pipe2eval.sh text<CR><CR>'
 
+
+let g:tagbar_phpctags_bin='/Users/mac/Develop/git.clone/phpctags/phpctags'
+let g:tagbar_phpctags_memory_limit = '512M'
+
+
+
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+let g:vim_markdown_folding_disabled=1
