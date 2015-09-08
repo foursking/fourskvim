@@ -1,11 +1,11 @@
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-  let iCanHazVundle=0
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
 endif
 
 set nocompatible               " be iMproved
@@ -37,11 +37,19 @@ Bundle 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mbbill/fencview'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'chriskempson/base16-vim'
+Bundle 'morhetz/gruvbox'
+
+Bundle 'hdima/python-syntax'
+
+
+"Bundle 'eshion/vim-sftp-sync'
 
 Bundle 'crusoexia/vim-monokai'
 Bundle 'crusoexia/vim-dracula'
 Bundle 'crusoexia/vim-dream'
-
+Bundle 'vim-scripts/bash-support.vim'
 "Bundle 'tpope/vim-markdown'
 
 "Bundle 'nathanaelkane/vim-indent-guides'
@@ -50,12 +58,14 @@ Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache.vim'
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'fishy/projtags-vim'
 Bundle 'rizzatti/dash.vim'
+
+Bundle 'Chiel92/vim-autoformat'
 
 Bundle 'edkolev/promptline.vim'
 Bundle 'foursking/vim-escalt'
@@ -69,6 +79,14 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'junegunn/goyo.vim'
 Bundle 'vim-scripts/DrawIt'
 Bundle 'JazzCore/neocomplcache-ultisnips'
+
+
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
+Bundle 'm2mdas/phpcomplete-extended'
+
+
+
 "Bundle 'Yggdroot/indentLine'
 "Bundle 'vim-scripts/phpfolding.vim'
 "Bundle 'vingel/vim'

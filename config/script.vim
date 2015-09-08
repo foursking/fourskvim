@@ -26,8 +26,8 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 "function! s:my_cr_function()
 "  return neocomplcache#smart_close_popup()
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+" For no inserting <CR> key.
+"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 "endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -268,6 +268,8 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_python_checkers = ['flake8']
+
 "}}}
 
 
@@ -276,31 +278,31 @@ let g:airline_theme="wombat"
 let g:airline#extensions#tabline#enabled = 1
 
 let g:airline#extensions#tabline#show_buffers = 0
- let g:airline_left_sep = ''
- let g:airline_left_alt_sep = ''
- let g:airline_right_sep = ''
- let g:airline_right_alt_sep = ''
- let g:airline_exclude_preview=1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_exclude_preview=1
 
 let g:airline#extensions#bufferline#enabled = 0 
 let g:airline#extensions#whitespace#enabled = 0
 
 "--- vim-tmuxline---{{{
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '#W %R',
-      \'z'    : '#H'}
+            \'a'    : '#S',
+            \'b'    : '#W',
+            \'win'  : '#I #W',
+            \'cwin' : '#I #W',
+            \'x'    : '%a',
+            \'y'    : '#W %R',
+            \'z'    : '#H'}
 
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '>',
-    \ 'right' : '',
-    \ 'right_alt' : '<',
-    \ 'space' : ' '}
+            \ 'left' : '',
+            \ 'left_alt': '>',
+            \ 'right' : '',
+            \ 'right_alt' : '<',
+            \ 'space' : ' '}
 
 "}}}
 
@@ -351,3 +353,46 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 let g:vim_markdown_folding_disabled=1
+
+
+
+
+
+
+let g:vim_sftp_configs = {
+            \      'sample_server_1' : {
+            \       'upload_on_save'   : 1,
+            \       'download_on_open' : 0,
+            \       'confirm_downloads': 1,
+            \       'confirm_uploads'  : 0,
+            \       'local_base_path'  : '/Users/mac/Kingnet/workspace/',
+            \       'remote_base_path' : '/tmp/',
+            \       'sftp_command' : 'ftp',
+            \       'user' : 'kingnet',
+            \       'pass' : 'Em.SWYXlzxn0Q',
+            \		'host' : '192.168.78.22 22'
+            \   }
+            \}
+
+let g:phpcomplete_index_composer_command="composer"
+
+
+
+
+
+" python mode
+
+let g:pymode_indent = 1
+let g:pymode_python = 'python'
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+
+
+let g:pymode_run_bind = '<leader>py'
+
+
+let g:pymode_folding = 1 
+
+
+
+let python_highlight_all = 1
