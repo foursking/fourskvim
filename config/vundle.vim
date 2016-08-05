@@ -41,6 +41,9 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'chriskempson/base16-vim'
 Bundle 'morhetz/gruvbox'
 
+"Bundle 'stephpy/vim-php-cs-fixer'
+
+Bundle 'vim-scripts/phpfolding.vim'
 Bundle 'hdima/python-syntax'
 
 
@@ -100,7 +103,7 @@ Bundle 'm2mdas/phpcomplete-extended'
 "Bundle 'jacekd/vim-iawriter'
 "Bundle 'h2ero/phpcr'
 "Bundle 'zweifisch/pipe2eval'
-"Bundle 'sjl/gundo.vim'
+Bundle 'sjl/gundo.vim'
 "Bundle 'uguu-org/vim-matrix-screensaver'
 "Bundle 'michaeljsmith/vim-indent-object'
 "Bundle 'evanmiller/nginx-vim-syntax'

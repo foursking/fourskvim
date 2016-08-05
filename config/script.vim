@@ -163,9 +163,7 @@ au BufEnter *.txt setlocal filetype=txt
 
 
 "{{{ vim-syntastic setting 
-let g:syntastic_check_on_open=1
-""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
-let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+
 "}}}
 
 
@@ -267,8 +265,13 @@ let g:agprg="ag --column --smart-case"
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_python_checkers = ['flake8']
+
+let g:syntastic_check_on_open=1
+""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
+let g:syntastic_phpcs_conf = '--tab-width=4 --standard=CodeIgniter'
+let g:syntastic_php_checkers=['php']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 "}}}
 
@@ -323,7 +326,7 @@ vnoremap <silent> <C-T> <Esc>:Ydt<CR>
 let g:gitgutter_enabled = 0
 map <leader>gg :GitGutterToggle<CR>
 
-let g:DisableAutoPHPFolding = 1
+let g:DisableAutoPHPFolding = 1 
 " if !exists("g:DisableAutoPHPFolding")
 "     let g:DisableAutoPHPFolding = 0
 " endif
@@ -365,7 +368,7 @@ let g:vim_sftp_configs = {
             \       'download_on_open' : 0,
             \       'confirm_downloads': 1,
             \       'confirm_uploads'  : 0,
-            \       'local_base_path'  : '/Users/mac/Kingnet/workspace/',
+            \       'local_base_path'  : '',
             \       'remote_base_path' : '/tmp/',
             \       'sftp_command' : 'ftp',
             \       'user' : 'kingnet',
@@ -375,6 +378,9 @@ let g:vim_sftp_configs = {
             \}
 
 let g:phpcomplete_index_composer_command="composer"
+
+
+
 
 
 
@@ -396,3 +402,17 @@ let g:pymode_folding = 1
 
 
 let python_highlight_all = 1
+
+
+
+
+" If php-cs-fixer is in $PATH, you don't need to define line below
+let g:php_cs_fixer_path = "/usr/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_level = "psr2"              " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 1                    " Return the output of command if 1, else an inline information.
