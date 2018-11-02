@@ -1,15 +1,11 @@
 "------------------ Bundle plugin settiny {{{
 
 
-"{{{ Powerline setting
-let g:Powerline_colorscheme='solarized256'
-"let g:Powerline_symbols = 'fancy'
-"}}}
 
 
 "{{{ neocomplcache setting
 let g:neocomplcache_enable_at_startup=1
-"let g:NeroCompCache_DisableAutoComplete=1
+let g:NeroCompCache_DisableAutoComplete=1
 "}}}
 
 "Define keyword.
@@ -21,14 +17,15 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
+"
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplcache#smart_close_popup()
-" For no inserting <CR> key.
-"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-"endfunction
+function! s:my_cr_function()
+    return neocomplcache#smart_close_popup()
+    For no inserting <CR> key.
+    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -73,11 +70,11 @@ let NERDTreeWinSize=30										" 窗口宽度
 
 "{{{ tagbar setting 
 "设置ctags路径
-if  MySys() == 'windows'
-    let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
-elseif MySys() == 'unix'
-    let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
-endif
+"if  MySys() == 'windows'
+"    let g:tagbar_ctags_bin = 'C:\Program Files (x86)\Vim\ctags'
+"elseif MySys() == 'unix'
+"    let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
+"endif
 
 nmap <c-n> :TagbarToggle<CR>   "设置快捷键
 let g:tagbar_width = 30       "设置宽度，默认为40
@@ -135,10 +132,10 @@ endfunction
 
 "{{{ DoxygenToolkit
 let g:DoxygenToolkit_authorName="foursking, lyf021408@gmail.com"
-let s:licenseTag = "Copyright(C)\<enter>"
-let s:licenseTag = s:licenseTag . "For free\<enter>"
-let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
-let g:DoxygenToolkit_licenseTag = s:licenseTag
+"let s:licenseTag = "Copyright(C)\<enter>"
+"let s:licenseTag = s:licenseTag . "For free\<enter>"
+"let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+"let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
@@ -275,38 +272,68 @@ let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 "}}}
 
+let g:lightline = {
+            \ 'colorscheme': 'wombat',
+            \ 'component_function': {
+            \   'filename': 'LightlineFilename',
+            \ },
+            \ }
+
+function! LightlineFilename()
+    return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+                \ &filetype ==# 'unite' ? unite#get_status_string() :
+                \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+                \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+
+
+
+" airline {{{
+" 是否打开tabline
+" let g:airline#extensions#tabline#enabled = 1
+" }}}
+
 
 "--- vim-airline ---{{{
-let g:airline_theme="wombat"
+let g:airline_theme="luna"
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline_exclude_preview=1
 
-let g:airline#extensions#tabline#show_buffers = 0
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_exclude_preview=1
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
 
-let g:airline#extensions#bufferline#enabled = 0 
-let g:airline#extensions#whitespace#enabled = 0
-
-"--- vim-tmuxline---{{{
-let g:tmuxline_preset = {
-            \'a'    : '#S',
-            \'b'    : '#W',
-            \'win'  : '#I #W',
-            \'cwin' : '#I #W',
-            \'x'    : '%a',
-            \'y'    : '#W %R',
-            \'z'    : '#H'}
-
-let g:tmuxline_separators = {
-            \ 'left' : '',
-            \ 'left_alt': '>',
-            \ 'right' : '',
-            \ 'right_alt' : '<',
-            \ 'space' : ' '}
-
+"
+""--- vim-tmuxline---{{{
+"let g:tmuxline_preset = {
+"            \'a'    : '#S',
+"            \'b'    : '#W',
+"            \'win'  : '#I #W',
+"            \'cwin' : '#I #W',
+"            \'x'    : '%a',
+"            \'y'    : '#W %R',
+"            \'z'    : '#H'}
+"
+"let g:tmuxline_separators = {
+"            \ 'left' : '',
+"            \ 'left_alt': '>',
+"            \ 'right' : '',
+"            \ 'right_alt' : '<',
+"            \ 'space' : ' '}
+"
 "}}}
 
 
@@ -314,6 +341,7 @@ let g:tmuxline_separators = {
 let g:bufferline_echo = 0
 
 "}}}
+
 "--- vimshell ---{{{
 let g:vimshell_temporary_directory = expand('~/.vim/cache/vimshell')
 let g:vimshell_force_overwrite_statusline = 0
@@ -327,19 +355,15 @@ let g:gitgutter_enabled = 0
 map <leader>gg :GitGutterToggle<CR>
 
 let g:DisableAutoPHPFolding = 1 
-" if !exists("g:DisableAutoPHPFolding")
-"     let g:DisableAutoPHPFolding = 0
-" endif
-" let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
+if !exists("g:DisableAutoPHPFolding")
+    let g:DisableAutoPHPFolding = 0
+endif
+let g:DisablePHPFoldingClass = get(g:, 'DisablePHPFoldingClass', 1)
 
 "}}}
 
-let g:pipe2eval_map_key = '<Leader>p2e'
-vmap <buffer> <Space> ':/home/foursk/.vim/bundle/pipe2eval/plugin/pipe2eval.sh text<CR><CR>'
-
-
-let g:tagbar_phpctags_bin='/Users/mac/Develop/git.clone/phpctags/phpctags'
-let g:tagbar_phpctags_memory_limit = '512M'
+"let g:tagbar_phpctags_bin='/Users/mac/Develop/git.clone/phpctags/phpctags'
+"let g:tagbar_phpctags_memory_limit = '512M'
 
 
 
@@ -359,23 +383,6 @@ let g:vim_markdown_folding_disabled=1
 
 
 
-
-
-
-let g:vim_sftp_configs = {
-            \      'sample_server_1' : {
-            \       'upload_on_save'   : 1,
-            \       'download_on_open' : 0,
-            \       'confirm_downloads': 1,
-            \       'confirm_uploads'  : 0,
-            \       'local_base_path'  : '',
-            \       'remote_base_path' : '/tmp/',
-            \       'sftp_command' : 'ftp',
-            \       'user' : 'kingnet',
-            \       'pass' : 'Em.SWYXlzxn0Q',
-            \		'host' : '192.168.78.22 22'
-            \   }
-            \}
 
 let g:phpcomplete_index_composer_command="composer"
 
@@ -407,12 +414,30 @@ let python_highlight_all = 1
 
 
 " If php-cs-fixer is in $PATH, you don't need to define line below
-let g:php_cs_fixer_path = "/usr/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "psr2"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
+"let g:php_cs_fixer_path = "/usr/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
+"let g:php_cs_fixer_level = "psr2"              " which level ?
+"let g:php_cs_fixer_config = "default"             " configuration
+"let g:php_cs_fixer_php_path = "php"               " Path to PHP
+"" If you want to define specific fixers:
+""let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
 let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 1                    " Return the output of command if 1, else an inline information.
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+
+"let b:phpfold_use = 1
+"let b:phpfold_text_right_lines = 1
+
+
+
+" Vim
+let g:indentLine_color_term = 239
+
+" GVim
+let g:indentLine_color_gui = '#C0C0C0'
+
+" none X terminal
+let g:indentLine_color_tty_light = 4 " (default: 4)
+let g:indentLine_color_dark = 2 " (default: 2)
+
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css

@@ -1,4 +1,5 @@
-runtime! config/vundle.vim
+"runtime! config/vundle.vim
+runtime! config/vim-plug.vim
 runtime! config/function.vim
 runtime! config/script.vim
 
@@ -14,34 +15,23 @@ source $VIMRUNTIME/vimrc_example.vim
 
 " 运行mac_vim
 if has("gui_macvim")
-    "设置背景透明度
-    set transparency=8
-    set macmeta     "设置macmeta
-    set linespace=2 
-    set columns=180 
-    set lines=55    
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+	"设置背景透明度
+	set transparency=8
+	set macmeta     "设置macmeta
+	set linespace=3
+	set columns=180 
+	set lines=55    
+	set guifont=Inconsolata\ for\ Powerline:h14
 else
-    set linespace=2
-    set columns=180
-    set lines=45
-    set guifont=Liberation\ Mono\ for\ Powerline\ 10
+	set linespace=2
+	set columns=180
+	set lines=45
+	set guifont=Liberation\ Mono\ for\ Powerline\ 10
 endif
 
 
 
 
-if MySys() == "windows"
-	"code here
-    
-elseif MySys() == "linux"
-    "let $MYVIM      = $HOME."/usr/four/vim"
-    "let $VIMRUNTIME = $HOME."/usr/four/vim/share"
-    let $MYVIMRC    = "/Users/mac/.vimrc"
-    "let $DESKTOP    = $HOME
-    let $MYHOSTS    = "/etc/hosts"
-    "else
-endif
 
 "---------------界面选项{{{
 
@@ -78,10 +68,24 @@ set history=400                        "设置历史记录数
 
 "界面设置
 set cmdheight=1                        "命令行（在状态行下）的高度，默认为1，这里是2
-set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，molokai就是其中之一
+set t_Co=256                           "让终端支持256色，否则很多配色不会正常显示，monokai就是其中之一
 set background=dark
-colorscheme gruvbox
+"colorscheme ayu
+"colorscheme gruvbox
+colorscheme monokai-self 
+"colorscheme candystripe
+"colorscheme quantum
 
+if has("termguicolors")
+        set termguicolors
+endif
+
+set nobackup       " no backup files
+set noswapfile     " no swap files
+set nowritebackup  " only in case you don't want a backup file while editing
+set noundofile     " no undo files
+
+let g:quantum_black = 1
 set helplang=cn                        "设置中文帮助
 set autochdir                          "自动切换文件目录
 set fileformat=unix                    "设置文件格式
@@ -90,8 +94,6 @@ set sts=4
 set ts=4
 set expandtab
 set autoindent
-set nobackup                           "不生成备份文件
-set noswapfile                         "不要生成swap文件，当buffer被丢弃的时候隐藏它
 set nu                                 "设置行号
 set showmatch                          "高亮显示匹配的括号
 set iskeyword+=_,$,@,%,#,-             "带有如下符号的单词不要被换行分割
@@ -125,8 +127,9 @@ set wrap
 set synmaxcol=10000
 
 
-set tags=./tags,./TAGS,tags,TAGS,./../tags,./../../tags,./../../../tags,./../../../../tags,/Users/mac/.tags
 "set gcr=a:block-blinkon1000
+
+
 
 
 
@@ -212,10 +215,19 @@ autocmd BufNewFile,Bufread *.txt set syntax=help
 
 autocmd BufNewFile,Bufread *.ros,*.inc,*.php set keywordprg="help"
 
+
+
+" markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 "}}}
 
 "Using vim as calculator
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+
+
+autocmd BufNewFile,BufRead *.vue set filetype=vue
+
 
 
 " autosave php
@@ -224,9 +236,9 @@ ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 " Python
 if executable("python")
-  autocmd BufRead,BufNewFile *.py map <F5> :% w !python<CR>
+	autocmd BufRead,BufNewFile *.py map <F5> :% w !python<CR>
 else
-  autocmd BufRead,BufNewFile *.py map <F5> :echo "you need to install Python first!"<CR>
+	autocmd BufRead,BufNewFile *.py map <F5> :echo "you need to install Python first!"<CR>
 endif
 
 " Php
@@ -248,7 +260,6 @@ map k gk
 "map , as <leader> key instead of \ by default
 "jj to ESC
 imap jj <ESC>
-nmap <F9> <Esc>:!ctags -R *<CR>
 """"""""""""""""""""""""""""""""""""""""
 map <M-4> O+71a-<ENTER><ESC>
 
@@ -274,8 +285,8 @@ map LL $
 map Y "+y
 map P "+p
 
-map <M-q> gT
-map <M-e> gt
+"map <M-q> gT
+"map <M-e> gt
 map <M-x> :tabc<cr>
 map <M-n> :tabnew<cr>
 "remove windows ^M
@@ -301,10 +312,8 @@ map <silent> <leader>qq :tabnew $MYVHOSTS<CR>
 
 "定义输入快捷键
 
-imap <C-h> <Left>
-imap <M-j> <Down>
-imap <M-k> <Up>
-imap <M-l> <Right>
+map <C-h> gT
+map <C-l> gt
 
 
 
@@ -319,6 +328,9 @@ command! MyCodeStyleOff %s/^\(\s*\)\([_a-zA-Z].*\){$/\1\2\r\1{/ge
 
 nnoremap <leader>md :!open -a Marked.app '%:p'<cr>
 
+
+noremap <leader>ch :!open -a Google\ Chrome.app % <cr>
+
 "}}}
 "
 
@@ -331,4 +343,18 @@ autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufRead     * if expand('%') != '' && &buftype == '' | silent loadview | syntax on | endif
 
 
+
 "cmap w!! w !sudo tee % > /dev/null
+
+
+"fu! AirlineOff()
+"	if tabpagenr('$') > 1 | set go+=e | doautocmd user AirlineToggledOff |endif
+"endfu
+"
+"fu! AirlineOn()
+"	if tabpagenr('$') == 2 | set go-=e | doautocmd user AirlineToggledOn |endif
+"endfu
+"
+
+"au TabEnter * :call AirlineOff()
+"au TabLeave * :call AirlineOn()

@@ -18,7 +18,8 @@ call vundle#rc()
 " required!
 
 Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rking/ag.vim'
@@ -41,6 +42,11 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'chriskempson/base16-vim'
 Bundle 'morhetz/gruvbox'
 
+"Bundle 'zhenkunou/vim-tabline'
+
+Bundle 'WinterXMQ/escalt.vim'
+
+Bundle 'drmikehenry/vim-fixkey'
 "Bundle 'stephpy/vim-php-cs-fixer'
 
 Bundle 'vim-scripts/phpfolding.vim'
@@ -71,7 +77,6 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'Chiel92/vim-autoformat'
 
 Bundle 'edkolev/promptline.vim'
-Bundle 'foursking/vim-escalt'
 Bundle 'foursking/PIV'
 Bundle 'foursking/vim-colorscheme'
 "Bundle 'Valloric/YouCompleteMe'
@@ -83,13 +88,17 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'vim-scripts/DrawIt'
 Bundle 'JazzCore/neocomplcache-ultisnips'
 
+Bundle 'phpvim/phpcd.vim'
+
+Bundle 'NLKNguyen/papercolor-theme'
+
 
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
-Bundle 'm2mdas/phpcomplete-extended'
 
+Bundle 'Shougo/vimproc.vim'
 
-
+"Bundle 'm2mdas/phpcomplete-extended'
 "Bundle 'Yggdroot/indentLine'
 "Bundle 'vim-scripts/phpfolding.vim'
 "Bundle 'vingel/vim'

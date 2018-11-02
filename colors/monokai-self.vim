@@ -9,7 +9,7 @@
 "
 
 set background=dark
-let g:colors_name="molokai-self"
+let g:colors_name="monokai-self"
 
 " Basic Layout {{{
 
